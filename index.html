@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input Juara Mata Pelajaran KMMI 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .smooth-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Sembunyikan scrollbar tanpa menghilangkan fungsi scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 antialiased flex flex-col justify-between">
+
+    <!-- Header Aplikasi -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-md shadow-indigo-100 flex items-center justify-center">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-900 tracking-tight">Kurikulum KMMI 2026</h1>
+                    <p class="text-xs text-slate-500 font-medium">Sistem Pemilihan Juara Mata Pelajaran</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1.5 rounded-lg text-xs font-semibold">
+                <i class="fa-regular fa-clock text-sm"></i>
+                <span>Batas Pengumpulan: Sabtu, 12 Juni 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Kolom Kiri: Keterangan & Riwayat Pemilihan -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
+            
+            <!-- Box Keterangan / Petunjuk Pengisian -->
+            <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="bg-indigo-500 text-white px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider">Keterangan</span>
+                        <h2 class="text-base font-bold">Petunjuk Pengisian Nilai</h2>
+                    </div>
+                    
+                    <ul class="space-y-4 text-slate-300 text-sm">
+                        <li class="flex gap-3 items-start">
+                            <span class="bg-slate-800 text-indigo-400 w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">1</span>
+                            <p>Pilihlah Nama-nama santri yang berprestasi atau terbaik pada mata pelajaran yang diampu.</p>
+                        </li>
+                        <li class="flex gap-3 items-start">
+                            <span class="bg-slate-800 text-indigo-400 w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">2</span>
+                            <div>
+                                <p class="font-semibold text-slate-200 mb-1">Kategori terbaik bisa diambil dari:</p>
+                                <ul class="list-disc pl-5 space-y-1 text-slate-400 text-xs">
+                                    <li>Nilai tertinggi Ujian Akhir KMMI 2026</li>
+                                    <li>Kehadiran di kelas</li>
+                                    <li>Keaktifan di kelas</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="flex gap-3 items-start">
+                            <span class="bg-slate-800 text-indigo-400 w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">3</span>
+                            <p>Data dikumpulkan ke Kurikulum KMMI pada hari Sabtu, 12 Juni 2026.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tampilan Data Juara yang Telah Dipilih -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col gap-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-950 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-trophy text-amber-500"></i>
+                        Daftar Juara Terpilih
+                    </h3>
+                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full font-medium" id="history-count">0 Juara</span>
+                </div>
+
+                <div class="max-h-64 overflow-y-auto no-scrollbar flex flex-col gap-2.5" id="history-container">
+                    <!-- Tampilan Kosong -->
+                    <div class="text-center py-8 text-slate-400 text-xs flex flex-col items-center gap-2" id="history-empty">
+                        <i class="fa-regular fa-folder-open text-3xl text-slate-300"></i>
+                        <span>Belum ada juara yang dimasukkan.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kolom Kanan: Form Input Interaktif -->
+        <div class="lg:col-span-7">
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm relative">
+                
+                <!-- Overlay Loading saat Mengirim Data -->
+                <div id="loading-overlay" class="absolute inset-0 bg-white/90 backdrop-blur-sm rounded-2xl z-50 flex flex-col items-center justify-center gap-3 hidden opacity-0 transition-opacity duration-300">
+                    <div class="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-sm font-semibold text-slate-700">Sedang mengirim data ke Spreadsheet...</p>
+                </div>
+
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <h2 class="text-xl font-extrabold text-slate-900">Form Pemilihan Juara</h2>
+                    <p class="text-xs text-slate-500 mt-1">Silakan pilih kelas, mata pelajaran, lalu nama santri berprestasi.</p>
+                </div>
+
+                <!-- FORM INPUT -->
+                <form id="form-juara" class="space-y-6">
+                    
+                    <!-- Tahap 1: Dropdown Kelas -->
+                    <div class="space-y-2">
+                        <label for="input-kelas" class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-[10px]">1</span>
+                            Pilih Kelas
+                        </label>
+                        <div class="relative">
+                            <select id="input-kelas" required
+                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none appearance-none smooth-transition cursor-pointer">
+                                <option value="" disabled selected>-- Pilih Kelas --</option>
+                                <!-- Kelas 1 -->
+                                <optgroup label="Kelas 1">
+                                    <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="1D">Kelas 1D</option>
+                                    <option value="1E">Kelas 1E</option><option value="1F">Kelas 1F</option><option value="1G">Kelas 1G</option><option value="1H">Kelas 1H</option>
+                                </optgroup>
+                                <!-- Kelas 2 -->
+                                <optgroup label="Kelas 2">
+                                    <option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option>
+                                    <option value="2E">Kelas 2E</option><option value="2F">Kelas 2F</option><option value="2G">Kelas 2G</option><option value="2H">Kelas 2H</option>
+                                </optgroup>
+                                <!-- Kelas 3 -->
+                                <optgroup label="Kelas 3">
+                                    <option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option>
+                                    <option value="3E">Kelas 3E</option><option value="3F">Kelas 3F</option><option value="3G">Kelas 3G</option><option value="3H">Kelas 3H</option>
+                                    <option value="3I">Kelas 3I</option><option value="3J">Kelas 3J</option>
+                                </optgroup>
+                                <!-- Kelas 4 -->
+                                <optgroup label="Kelas 4">
+                                    <option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option>
+                                    <option value="4E">Kelas 4E</option>
+                                </optgroup>
+                                <!-- Kelas 5 -->
+                                <optgroup label="Kelas 5">
+                                    <option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="5D">Kelas 5D</option>
+                                    <option value="5E">Kelas 5E</option>
+                                </optgroup>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tahap 2: Dropdown Pelajaran (Aktif setelah Kelas dipilih) -->
+                    <div id="wrapper-pelajaran" class="space-y-2 opacity-40 pointer-events-none smooth-transition">
+                        <label for="input-pelajaran" class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-[10px]">2</span>
+                            Pilih Mata Pelajaran
+                        </label>
+                        <div class="relative">
+                            <select id="input-pelajaran" required
+                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none appearance-none smooth-transition cursor-pointer">
+                                <option value="" disabled selected>-- Pilih Mata Pelajaran --</option>
+                                <option value="Akhlak">Akhlak</option>
+                                <option value="Bahasa Arab">Bahasa Arab</option>
+                                <option value="Faroidh">Faroidh</option>
+                                <option value="Fiqih">Fiqih</option>
+                                <option value="Hadits">Hadits</option>
+                                <option value="Imla'">Imla'</option>
+                                <option value="Insya'">Insya'</option>
+                                <option value="Khot">Khot</option>
+                                <option value="Mahfudzat">Mahfudzat</option>
+                                <option value="Mantiq">Mantiq</option>
+                                <option value="Mustholah Hadits">Mustholah Hadits</option>
+                                <option value="Mutholaah">Mutholaah</option>
+                                <option value="Nahwu">Nahwu</option>
+                                <option value="Shorof">Shorof</option>
+                                <option value="Tafsir">Tafsir</option>
+                                <option value="Tajwid">Tajwid</option>
+                                <option value="Tauhid">Tauhid</option>
+                                <option value="Tarbiyah">Tarbiyah</option>
+                                <option value="Tarikh Islam">Tarikh Islam</option>
+                                <option value="Ushul Fiqih">Ushul Fiqih</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tahap 3: Dropdown Nama Siswa (Aktif setelah Pelajaran dipilih) -->
+                    <div id="wrapper-siswa" class="space-y-2 opacity-40 pointer-events-none smooth-transition">
+                        <label for="input-siswa" class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-[10px]">3</span>
+                            Pilih Nama Siswa Terbaik
+                        </label>
+                        <div class="relative">
+                            <select id="input-siswa" required
+                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none appearance-none smooth-transition cursor-pointer">
+                                <option value="" disabled selected>-- Pilih Siswa --</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                            </div>
+                        </div>
+                        <div id="notice-input-manual" class="hidden text-xs text-amber-600 bg-amber-50 px-3 py-2 rounded-lg flex items-center gap-1.5 mt-1">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Daftar siswa tidak terdeteksi otomatis, silakan masukkan nama secara manual di bawah.</span>
+                        </div>
+                    </div>
+
+                    <!-- Input Nama Manual (Apabila kelas yang dipilih tidak terdaftar di database lokal) -->
+                    <div id="wrapper-manual-nama" class="space-y-2 hidden opacity-0 smooth-transition">
+                        <label for="input-manual-nama" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                            Tulis Nama Siswa Secara Manual
+                        </label>
+                        <input type="text" id="input-manual-nama" placeholder="Masukkan nama lengkap santri..."
+                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none smooth-transition">
+                    </div>
+
+                    <!-- Tombol Kirim Data (Muncul setelah semua form terisi) -->
+                    <div id="wrapper-submit" class="opacity-0 pointer-events-none transform translate-y-2 smooth-transition pt-4">
+                        <button type="submit" 
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 active:scale-[0.98] smooth-transition cursor-pointer">
+                            <i class="fa-regular fa-paper-plane"></i>
+                            Kirim Data Ke Spreadsheet
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Custom Toast Notification -->
+    <div id="notification-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none smooth-transition max-w-sm w-full bg-white border border-slate-200 p-4 rounded-xl shadow-xl flex gap-3 items-center">
+        <div id="toast-icon-bg" class="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+            <i id="toast-icon" class="text-lg"></i>
+        </div>
+        <div class="flex-grow">
+            <h4 id="toast-title" class="text-sm font-bold text-slate-900"></h4>
+            <p id="toast-desc" class="text-xs text-slate-500 mt-0.5"></p>
+        </div>
+        <button id="toast-close" class="text-slate-400 hover:text-slate-600 shrink-0">
+            <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+    </div>
+
+    <!-- Kaki Halaman -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-400 font-medium">
+        <p>© 2026 Kurikulum KMMI. Sistem Validasi Otomatis & Terenkripsi.</p>
+    </footer>
+
+    <!-- Database & Alur Logika Utama -->
+    <script>
+        // Database Santri Lengkap KMMI 2026
+        const databaseSiswa = {
+            "1A": [
+                "Adeeva Athaleta Charmaraiza", "Afifa Fitiya", "Agnia Halimatu Sa'adah", "Aini Siti Nurlatifah", "Allea Nurri Azzahra",
+                "Aqila Putri Shabir", "Arsyilla Noureen Maulani", "Aufaa Mecca Anata", "Azzahra Malika Sidqia", "Bulan Falesia Ardhelia",
+                "Desi Humaira Syahputri", "Dzihni Vidia Dyno", "Hafiya Dinar", "Jelita Az Zahra", "Kanaya Zahro Adhiyaullami Fadilah",
+                "Kenza Syamela Elfaida", "Lulu Silviana Rahmah", "Meisya Trisha Xena", "Nadhirah Aflah Alesha", "Naura Dea Anindya",
+                "Nayla Husna Aulia", "Nurul Zahra Hidayat", "Raira Pratiwi Jatnika", "Runa Zahratur Raniah", "Salwa Khoirunnisa",
+                "Syaika Naqiyya Bhuwana", "Syifa Fauziah", "Tami Dawa Fuadi Jaelani", "Tazkia Ramadani Sadevi", "Yasmin Izzatul Imtyaz Nur Alam",
+                "Zilan Haura Izdihar"
+            ],
+            "1B": [
+                "Almahira Aisyah Putri", "Alya Yassirni Syarifah", "Alyanuha Khansa Zahramaulida", "Annisa Ramadhani", "Asyifa Husna",
+                "Aulia Sri Rahmawati", "Azzahra Putri Almesya", "Delawati", "Dinar Marchelina Winata", "Elsa Mardiana",
+                "Faiza Ainiya Syawalia", "Fionna Pramuditha Arisanti", "Haura Azkia Ramadhani", "Jihan Nuria Meisyabila", "Khanza Elma Mazea",
+                "Liefya Embun Roudhatunnisya", "Malca Khairana", "Mutiara Anisa Rahim", "Nadzifah Sadrina M Purba", "Naila Rahma Fauziyah Muttaqien",
+                "Nazwa Kirana", "Oriana Zarahusna", "Raisa Qazun", "Rajwa Naura Natisha", "Sabilla Natasya Ardiansyah",
+                "Salwa Nur Khoerunnisa", "Soraya Aisy", "Syaila Devita Nugraha", "Syifa Nur Fadhila", "Zahira Yumna Aufarachma"
+            ],
+            "1C": [
+                "Adinda Putri Kharenina", "Adiva Naimah Salsabila", "Afiqah Nadhira Salsabila", "Aisha Tsabita", "Alfiyya Farra Atthayalishy",
+                "Annisa Amira Azzahra", "Azkia Zahratunnisa Ridaka", "Azzahra Dinda Naira", "Chaitra Rifdah Hamidah", "Fitriyah Andini Febriyanti",
+                "Ghisyari Putri Allena", "Jihan Shafira Maharani", "Kalea Hasna Muttaqin", "Kaleysha Afifah Rahmah", "Kayla Livara Tsaqofa",
+                "Mahersa Qaireen Ellyana", "Maliqa Sakhiraissa Azalia", "Naila Alya Mahfudzah", "Naura Syaza Dzakira", "Naysila Nurfitria Sutisna",
+                "Neisya Aurellia", "Neng Anisa Sri Mulyani", "Queenyna Khansa Az Zahra", "Reisya Azkadina Setiaji", "Sidraturohmah Widaniah",
+                "Silvia Rizki Waluyo", "Siti Fakhira Annaila", "Syabila Alfina Destari", "Syaqila Shaumy Azara", "Tasya Regina Putri"
+            ],
+            "1D": [
+                "Aila Zulfa Fauziah", "Alika Qurratul Aini", "Andinia Ghaida AL-Husna", "Anida Kamilaini Hubba", "Annisa Ratifa Nugraha",
+                "Aqira Siti Azizah", "Audrey Jasmine", "Azkiya Alfinda Nursafa", "Belva Fithriyah Qaf", "Delia Khoerunnisa",
+                "Dinda Malika Khayrana", "Fadilla Yasmin", "Fakhira Husna Ramadhani", "Gendis Gisela Adeline", "Hilda Mutiara Hanifah",
+                "Ligar Nastiti Putri Nalendra", "Maulidya Kusuma Putri", "Mutiara Dewi Fathina", "Nafila Putri Shazia", "Najwa Manna Kholida",
+                "Nasywa Alifa Khoirunnisa", "Nida Nur Hikmah", "Salsabila Azzahra Sofyan", "Seni Amira Sari Mustika", "Sunny Oktaviani Dewi",
+                "Syaqila Kanza Fitria", "Syifa Nurhayati", "Thalita Ufaira Darmawan", "Yayang Apriliani", "Zahida Rosyifa Nadhifa",
+                "Zahira Octavia Suanto"
+            ],
+            "1E": [
+                "Adrian Al Jabar Pratama", "Akmal Lathif Fannan", "Almairi Baar Adlan", "Arshaka Rizky Narendra", "Azzam Saiful Islam",
+                "Dimas Rizki Saputra", "Elvio Muhammad Fadil", "Faeyza Ayman Pratama Setiawan", "Ghaisan Altamis hidayat", "Jauzan Ihsan Putra Muhidin",
+                "M. Hasybi Zain Al Azmi", "Mahad Madani Rafan", "Muammar Zainal Asyikin", "Muhamad Arifin Ilham", "Muhamad Yusup Fadilah",
+                "Muhammad Adly Nurrifqi", "Muhammad Ahsan Fathi Rahayu", "Muhammad Dzaky Muhyiddin", "Muhammad Fahal", "Muhammad Harlan Fadhilah",
+                "Muhammad Ilham Rahmatul Adha", "Muhammad Rafandra Ghossan", "Muhammad Reffan Ramadhan", "Muhammad Rizqi Muharram Al Jabbar", "Muhammad Yunus Arkha Altamis",
+                "Muhammad Zamzam Hamzah Alfarq", "Nafis Nur Aufa", "Nurkharisma Iskhak", "Paundra Davin Bimantara", "Qianu Arsya Rahman",
+                "Rafizal", "Raka Rama Wijaya", "Rasydan Khiar Adnar", "Rifa Fadhil Khairin", "Syafiq Muhammad Fauzan Hammani",
+                "Zidane Ahmad"
+            ],
+            "1F": [
+                "Abdul Latif Al Mughni", "Adrian Nugraha Wijaya", "Alfa Huda", "Arfan Syaputra Panjaitan", "Arsya Rabbany Azwan Putra",
+                "Aufar Fahriza Rinaldi", "Bagus Riady", "Dhena Alfaridzi Suhanda", "Dylan Mohammad El-Ka'bati", "Fadhil Yaqdan Nasrullah",
+                "Fahren Ahmad Azzamy", "Haikal Dzakwan Putra Yulianto", "Kenzie Muhammad Athariz", "M. Farzan Azzamy", "Muhamad Alfan Khoirul Fawwaz",
+                "Muhammad Arga Gerald Prasetya", "Muhammad Fachmi Azzaini", "Muhammad Faisal Syahputra", "Muhammad Fariz Fathurahman", "Muhammad Hazami Ar Rusdi",
+                "Muhammad Iqbal", "Muhammad Raihan Ihsan Kamil", "Muhammad Riko Sri Ramadhan", "Muhammad Sabian Zaheer", "Muhammad Zafhran Aqila Syahroni",
+                "Muhammad Ziyad Arzaq Wafi", "Nevan Azfar Sofyan", "Padlan Agistiyana", "Qiandra Delova Putra Wardaya", "Rafsan Maulana Sutandiana",
+                "Rama Satria Pratama Irawan", "Rasya Atharizz Calief", "Raufa Diera Ryuki", "Wafri Banu Akmal", "Zulfadli Fauzi Abdullah"
+            ],
+            "1G": [
+                "Al Abi Nur Khaizan", "Aldifa Akma Lathif", "Alfaqih Dzakwan Elzaman", "Azka Khoerurrizqi Qutburrifa", "Badai Sandi Setiadi",
+                "Daffa Risky", "Faidzan Ainurachman Ramadhan", "Faiz Fazarly Dinezard", "Fathir Heriansyah Fazrulloh", "Fazri Mufarrizal Hammi Fariz",
+                "Hasan Danish Jafar Sidik", "Ilham Fauzi", "Jaad Firoos Antarsiam Ahmad", "Kevin Kaindra Ardana", "Mikail Naufal Syakhi",
+                "Muhamad Aufar Alfatih", "Muhammad Abdul Hafidz", "Muhammad Abdurrahman Sa'id", "Muhammad Abidzar Al Ghifary", "Muhammad Azka Al-Khairy",
+                "Muhammad Bintang Rizki Kurnia", "Muhammad Milad Alhabsyi", "Restu Azhar Prayoga", "Reza Juliana Jumatulloh", "Rizki Ramadan",
+                "Septian Eka Saputra", "Tc Rizky Syahputra"
+            ],
+            "1H": [
+                "Adnan Adziqri", "Ahmad Multaji Billah", "Alifiandra Adrian Kusuma", "Arka Kiki Hadaya", "Aufa Davi Asy Sakhi",
+                "Azfar Rofik Abdilah", "Bintang Muhammad Rizky", "Dikyan Nursida Nata Wijaya", "Dzaki Naizar Sulaeman", "Fadil Muhammad Ansori",
+                "Fathir Naim Abdani", "Idza Lafie Afrizal", "Indra Kelana Anshori Hariri", "Luthfi Shidqi Alfakhri", "Muhamad Fajar Malik Ar-Rasyid Sutisna",
+                "Muhamad Rizky Fawaz Reza", "Muhammad 'Azmi Khoiruddawam", "Muhammad Fachri Azzaini", "Muhammad Fakhri Putra Husaeni", "Muhammad Ihsan Hasby Irawan",
+                "Muhammad Ilham Zabriansyah", "Muhammad Rafa El Muhyi", "Muhammad Razaqa Faiz Fazar", "Muhammad Virenno Anwarul Santosa", "Muhammad Zaheer Al-Faheem Noerzaman",
+                "Muhammad Zulfikar Antariksa Adi Putra", "Niqris Nasrillah Permana", "Pangeran Endreu Alvino", "Rafael Maulana Akbar", "Rahlil Alkhawarizmy Mansur",
+                "Rangga Rama Wijaya", "Rezky Bintang Prasetia", "Yuan Aldien Adriansyah"
+            ],
+            "2A": [
+                "Afifah Dzil'Izzati Amatullah", "Aisha Nadira", "Aliya Talita Jasmin", "Almira Rahma Kirana", "Athaya Naurah Syahirah",
+                "Ayu Elsi Rizki", "Dea Herlyanti Putri Pratiwi", "Elana Widya Putri", "Faa-Izza Zain Irlyan Hakim", "Haninda Khairatun Hisan",
+                "Indah Siti Fatimah", "Kayla Aprilia Zulkarnaen", "Khoirunnisa", "Marsa Azkia", "Meira Khalishah Tsara",
+                "Mushallina Latifa Al Ghazali", "Najwa Jannaeta Abdulah", "Nasya Athira Fadhilatunnisa", "Nayla Rafanda Musya", "Nazla Nur Sayyida",
+                "Refani Fauzuleha", "Riska Atiyatun Nafisah", "Sri Andini", "Syahwa Syauqila Ar'Ras", "Zhafira Syahla Salsabila"
+            ],
+            "2B": [
+                "Ana Nurhalisa", "Ashri Audiya Afifah", "Athifa Mumtaza Falah", "Aufa Rachmi", "Cahaya Auliya Syifa",
+                "Callysta Azalia Tshasiswoyo", "Fakhira Azmi Mufida", "Ghaisan Fitriyatuz Zahra", "Hafiza Sabrina Akfa", "Kalila Khairunnisa Azahraa",
+                "Khayla Naifa Lathifa", "Nadin Aulia", "Naura Nikita Aulia", "Nazwa Afiqah Azhar", "Nurnaila Srihartati",
+                "Pahmanazwaina Qalesya Azzahra", "Reyna Anggraeni Putri", "Salwa Prasti Rengganis", "Sarah Azahra", "Shafira Maulida El-Karimi",
+                "Silvia Raisya Apriliyan", "Silviana Nazwa Setiawan", "Taqiyya Zen Meizar"
+            ],
+            "2C": [
+                "Andini Shafa Aqilah", "Anita Ayla Zahara", "Aulia Shafira Wulandari", "Ayra", "Deana Khansa Salsabila",
+                "Farrah Ghaniyyah Rhamadani", "Fatmalanika Hanifiah Laksono", "Felisha Fitriyana Sabrina", "Firosya Hilyah Resnano", "Hannan Febriani",
+                "Icha Intan Sari", "Jasmine Azzahra Kusnadi", "Kaila Amira Putri", "Khansaa Audrey Devika", "Kinanti Istiqomah Sadikin",
+                "Mutiara Nasywa Salsabila Nabil", "Naila Hana Ramadhani Hutapea", "Nazwa Zanjabilla Hadi", "Putri Khairunnisa Alfatihani", "Rahmi Sofwatin Niswah",
+                "Ratu Halilah Meila DW", "Sabrina Khairunnisa Arrami", "Siti Fadilah Nur’Azizah", "Sri Nurdiani Naila Shofiah", "Vhiny Nabila Purnama Dewi",
+                "Zahira Maulida Rismanudin"
+            ],
+            "2D": [
+                "Adjeng Ramadhani", "Aika Azhar Sausan", "Aisyah Putri Malahayati Royyani", "Ashfiya Hazimah Gunawan", "Azkya Cahaya Putri",
+                "Berlian Alya Husni'Ah", "Dafiya Fakhrunisa", "Diana Kamilatusyifa", "Fauziyyah Atsiilah", "Hafizhah Putria Nurkholis",
+                "Hafshah Nafeeza Imaniah Putri", "Haura Shaki Ghassani", "Kaylla Nidistira", "Khansa Khairunnisa Ramadhani", "Khoirotunnida",
+                "Maisya Putri", "Nabila Athaya Salsabila", "Naura Auni Ridwan", "Nayla Maulidina Marwah", "Nazwa Luthfiya Mahabbah",
+                "Rania Aulia Putri", "Shaqilla Azkia Nur Kamila", "Siti Fatimah Asy-Syi'bi", "Zahira Jasmine Nafisyah"
+            ],
+            "2E": [
+                "Abdillah Muhammad Ihsan", "Abdul Ghani Al-Fikri", "Ahmad Husaini Wibowo", "Daffa Muhammad Pratama", "Dika Nurzaelani",
+                "Fathian Rosada", "Faza Fauzan Akbar", "Hadi Zubair Ali", "Ihsan Maulana", "Ilham Wijaya Kusuma",
+                "Iqbal Adittya", "Jorfan Moharnika", "Muhamad Fardan Ardiansyah", "Muhamad Fikri Al-Faqih", "Muhamad Naizar Ramadhani",
+                "Muhammad Akbar Alhafizh", "Muhammad Akmal Ginanjar", "Muhammad Faqih Al Baihaqi", "Muhammad Hafiz Kamaludin", "Muhammad Raga Subagja",
+                "Muhammad Reza Sharif Hidayat", "Muhammad Zakwan Al Yasin", "Muhammad Zuhair Al Bahij", "Noah Reevan Sakhiya", "Qaidan Hannan Nurrahman",
+                "Tito Tonia Widyatmoko", "Umron Abdul Hadi", "Yosep Aria Permana", "Zildan Nur Zaman"
+            ],
+            "2F": [
+                "Agan Novalsyah Putra", "Alby Fhiandra Alkhalifi", "Alfian Ramadani", "Darren Muhammad Zain", "Dzikri Jalaludin Syah Alfaidzin",
+                "Faris Nabil Al Mubarak", "Iamzar Maqdish", "Khoirunnugrah", "M.Nazwan Kamil", "Maulana Shohibul Fahmi",
+                "Muhamad Fauzan Jamil", "Muhamad Ramdan", "Muhammad Acquilan Ihtisyam Setiarun", "Muhammad Alfard Zaelani", "Muhammad Altaf Jamadil Mashur",
+                "Muhammad Kamal", "Muhammad Nabil Zavier", "Muhammad Najwan Ilham", "Muhammad Rifai Sumawijaya", "Muhammad Willy Syahputra",
+                "Nizam Febriyan Alfazri", "Rafa Adhiya Ahmad", "Reivano Tirta Pratama", "Taofan Al Farisi Suparman", "Tazky Achmad Thaariq",
+                "Valdis Dzakwan Danendra", "Yusron Kurniawan Alkhotimi", "Zahwan Irhab Fawwaz"
+            ],
+            "2G": [
+                "Aditya Ainu Nurrochman", "Arfan Lazman Kaysan", "Arya Suryadjatmadja", "Azky Badillah Jayakusuma", "Davi Ramdhani",
+                "Diky Malik", "Faeyza Izzati Hermawan", "Galih Reza Pratama", "Irsyad Rakha Raqilla", "Isman Nur'Hakim",
+                "Khaidir Arkan Surya Lesmana", "M. Raihan Luqman Athullah", "Mochamad Ibram Hidayat", "Muhammad Alfan Al Hafiz", "Muhammad Alif Haryo Al Amin",
+                "Muhammad Hamdi Arafat", "Muhammad Noorfaizin Al-Bukhory", "Muhammad Yuda Ramdani", "Muhammad Zami Siddiq", "Najjar Ramadhan",
+                "Rafif Taufiqurohman Haq", "Rehan Ramadhan", "Rizvan Hakim El Jauhari", "Sulthan Baskara Gumilang", "Yazid Al Bustomi",
+                "Zam-Zam Achmad Fauzi"
+            ],
+            "2H": [
+                "Azka Syaban Khairullah", "Azriel Fahrizal Hamzah", "Byan Herza Rafael", "Fawwaz Faturrahman Alhadi", "Ghaisan Sakti Daffa Ashari",
+                "Husna Nuralamsyah", "Luthfi Arfa", "Moh Daffa Alfiansyah Putra Indrawan", "Moh Dzaahir Ramadhan Andriansyah", "Mohammad Kevin Hafid Nur Halim",
+                "Muhamad Fahrel Adya Pramesty", "Muhamad Rizki Firmansyah", "Muhammad Abyan Surahman", "Muhammad Algibran Zahwar Farid", "Muhammad Arsya Sunda Nagara Susanto",
+                "Muhammad Azhar Fahmi", "Muhammad Fadlan Fadhilah Adzikra", "Muhammad Fakhri Fauzan", "Muhammad Naufal Alfarisi", "Rayhan Arrafi",
+                "Rifqi Ammar Fauzi Hanudin", "Riziq Candra Hidayatullah", "Satria Arysta Putra", "Sunda Sudjiwo Hasan Permana", "Taufal Ashil Abdulmuhyi Saputra",
+                "Zaki Fahri Zaidanul Arifin"
+            ],
+            "3A": [
+                "Annisa Nur Fathonah", "Asyila Hanifah", "Azkia Amira Aufasilmi Arrifa'I", "Cahaya Kirana Ramadhani", "Davina Syaira Oktaviani",
+                "Delia Maharani Nasyila Haida", "Elena Putri", "Farida Sholihat", "Karlina Salsabila Khaerunisa", "Lutfiatul Wirda",
+                "Mutiara Kharisa", "Nabila Ashabira", "Nadiva Fauziah Sundari", "Nafia Nadira Zain", "Putri Faza Fauziah",
+                "Rachelia Silviana Assyifa", "Rahma Nur Alviani Sardi", "Renita Nur Hidayah", "Safira Maitsa Anggraeni", "Shabiyah Hasna Fahira",
+                "Shilvana  Khanza Azzahra", "Syabila Najla Sukma Nur Azeeza", "Syahrini Irawan", "Tiara Rahayu Pratiwi", "Zasqiya Nayshila Bilqis"
+            ],
+            "3B": [
+                "Almeida Azfira Sadly", "Ameera Widjayakusuma Fisher", "Dinda Sephia Azahra", "Dwi Nafisa", "Ghaina Maitsa Ayu",
+                "Hasna Zakiya Faridansyah", "Hasri Ainun Althafunnisa", "Hasya Hauratunnaziha", "Indyra Angely Firmansyah", "Kanasya Radinda Andriani",
+                "Kayla Nafeeza Malika", "Meisya Muvianti", "Nabila Khairunnisa", "Naimah Sari Febiyanti", "Nisha Aurellia",
+                "Putri Wulandari", "Qurrotu Aini Yusriyyah", "Regina Auliya Oktavia", "Rihhadah Aisy Anasyalu Ramadhani", "Salsa Fitria Ramadhani",
+                "Syahrini Aulia Pelani", "Tifany Fifa Kananda", "Vina Khairunnisa", "Vira Nur Alya Garniawan Kartawidjaja", "Zivana Almaira Nuryudha"
+            ],
+            "3C": [
+                "Alya Shafiqa Almahdi", "Amelia Febriani", "Azhara Khansa Putri Zalza", "Bilqis Khoerunnisa Komariah", "Davina Putri Dira",
+                "Fairuz Hasna Fatimah", "Juwita Rizkia", "Kanaia Salsyabila Lifia Putri", "Meilika Liviani", "Meisya Syifa An-Nazwa",
+                "Nabila Esa Lestari", "Nadiya Shahwa", "Naffiza Zara Adifa", "Naya Mufliha Kamil", "Nur Prisa Dina",
+                "Qisty Zahrani Hariri", "Rifa Humaira", "Rineke Rindu Putri Syamsudin", "Rizquita Putri Herwina", "Sabila Agustin Gunawan",
+                "Sandra Kirana", "Saski Nurul Azkiya", "Siti Salisatun Niqmah", "Syifa Aulia Bilqis", "Tiara Nadiah Putri",
+                "Widia Khoirunisa"
+            ],
+            "3D": [
+                "Aina Fariza Razkia Putri", "Aira Zahra Firdaus", "Al Egisa Nur Desi Yanti", "Amira Nurul Izzati Wahid", "Aretta Putri Saka Giri Kawiswari",
+                "Diva Silviya", "Filzah Hilwah Azizah", "Hafshah Khairun Nisa", "Meisya Sarah Nurfadillah", "Mikhayla Nikeisya Angelique Rahman",
+                "Missel Fairuz Queena", "Nadya Mustika Putri", "Nasya Shakila Kirania", "Qonita Mei Zerlina", "Ratu Kynan Avrisha",
+                "RD. Alexandria Kanaya Islamey", "Saqila Irdina", "Sayyidah Humaira Hikmatul Kamaliyah", "Syahla Atha Juni Zhahirah", "Siti Qodariyah",
+                "Syarifatul Aghniya", "Tania Rachmalina Mardani", "Vina Ramadhani", "Windi Diyanti Awaludin", "Yetce Sherryna Abriyati Nenre",
+                "Zahirah Addzikra Putrisyah"
+            ],
+            "3E": [
+                "Ajeng Olivia", "Anindita Khairinniswa", "Aqila Asyifa Putri", "Azmina Fatima Zahra", "Bilqiis Salwaa Sukarna Putri",
+                "Cindy Candrawati", "Dinda Permatasari", "Fathma Nailatul Izzah", "Flora Nisrina Eldianty", "Ghaisani Tsabita Zahran",
+                "Hasna Nurul Farzana", "Humaira Putri Vihandra", "Jihan Dwika Khairani", "Kanaya Andita Destari", "Kayyisa Rafifah",
+                "Mega Octaviani", "Mirza Auliya Thahira", "Nadhira Febriyani Putri Sulaeman", "Nurul Maudi Mauludina Suryani", "Paula Haiffa Patmanegara",
+                "Pratami Dina Miggan", "Putri Nurhibatillah", "Qiran Auliya Salma", "Rifda Kalila Sakhi", "Salma Dwi Nurfitriana",
+                "Syelvi Adyanti Syutari"
+            ],
+            "3F": [
+                "Aad Abdul Basith", "Arraffi Dian Ihsandy", "Arsa Azhuardi Vandani", "Arvila Dwi Anugrah", "Billy Ibnu Ardhani",
+                "Caesar Dzaky Mulyadi", "Daffa Alima Putra", "Dimas Robyhurahman Kabir", "Faiz Irsyad Anshari", "Ghusan Gathfan",
+                "Ilham Mulya Agung", "Kenzie Sulangga Behuku", "M. Randhika Al-Fahkry", "Mohammad Abdul Djabbar Al Harits", "Muhamad Arfa Al Qalil",
+                "Muhamad Firdaus Satria Nugraha", "Muhammad Akmal Bahari", "Muhammad Dafa Fahreza", "Muhammad Ikmal Riadussolihin", "Muhammad Zikri Zaenudin",
+                "Nathan Rafiiandra Muzakki", "Radika Raesha Putra", "Rayi Dwi Putra", "Ready Martua Hasibuan", "Rizal Akbar Suherman",
+                "Rizky Fadhil", "Rohmat Raynaldy", "Zidan Muhamad Habib Muslim", "Zidni Ilman Arrizkani"
+            ],
+            "3G": [
+                "Andara Putra", "Argya Putra Risnandar", "Bani Lukman Mulyazmi Susanto", "Fajar Syarief Hidayatullah", "Faza Rahadyan Sidiq",
+                "Hilman Ahmad Muharom", "Ilyas Hadi Kusuma", "Khoirul Azzam Ashidqi", "Luthfi Dwi Irawan", "M Dapa Ruslan",
+                "M. Risqi Pandowo", "M.Zingga Hamzah Ulumuddin", "Mochammad Erghian Aghni Rasyidan", "Much Natsir Fairus Nurman", "Muhammad Alif Farhan",
+                "Muhammad Daffa Almulqi Firdaus", "Muhammad Haikal Azmi", "Muhammad Najmy Tsaqib Annaisabury", "Muhammad Sayyidi Syafiq Fijratulloh", "Nabiel Ahmad Shodiq",
+                "Nanda Juan Pratama", "Naufallatif Ahmad", "Nur Muhammad Davan Alkhaesa", "Prabu Aljabbar Putra Juhana", "Reza Ediz Arfan",
+                "Rivan Saputra", "Satria Dwi Januar F", "Zhavier Muhammad Idrok"
+            ],
+            "3H": [
+                "A Rifky Muhaimin", "Adam Mustanir Hibatullah", "Arsyad Anwar", "Azka Fadillah Jayakusuma", "Daffa Bachdim Nadindra",
+                "Fakhri Aryasatya Rahman", "Fawwaz Alyasir", "Ghaly Fatani Fawaz", "Hafidh Atha Musari", "Hanif Khoiri Ash Shiddiqi",
+                "Iqbal Thoriq Al-Ghoni", "Mochamad Fachri Ediawan", "Muhamad Khoirul Akhbar", "Muhamad Raif Ramadhan", "Muhamad Zidan Awalludin",
+                "Muhammad Danish Amsyar Piliang", "Muhammad Dyaz Wijaksana", "Muhammad Hikam Husni Mubarrok", "Muhammad Syakur Ulwan", "Muhammad Zaidan Ramadhan",
+                "Nova Aris Mulyana", "Rainov Patrialis Sutami", "Sammi Adji Faatih Gardika", "Satria Andika Pratama", "Sayyid Munji Al-Hadi",
+                "Utsman Andhika Mukarom", "Zamzam Arifuzaman Sa'Ad", "Zein Naajil Hurry Ramdhani"
+            ],
+            "3I": [
+                "Aidil Ahza Sakiffa", "Arif Al Hafid", "Arkan Ataya Ramadhan", "Aufa Ripqi Zaidan", "Den Rizik Asyafari",
+                "El Fatih Nur Khoiron", "Farras Zahid Gunawan", "Fauzan Al Bairuni Surya", "Mahesya Chandra Wijaya", "Mochamad Rizki Adhitya Putra",
+                "Muhamad Marwan Hanafi", "Muhamad Nasril Ilham", "Muhammad Azzam Ash Shiddiq", "Muhammad Dimas Syahril Nur Taqwa", "Muhammad Fauzan",
+                "Muhammad Haikal Fathurahman", "Muhammad Naufal Musyaffa", "Muhammad Pray Raja Murtadla Rabany Alhamidi", "Muhammad Rahmat Fajar", "Naufal Raditya Putra",
+                "Raka Aditya Rubiana", "Rifa Dio Arvia Ahmad", "Rizki Naufal Arrafi", "Sami Auliya", "Syamil Sholahuddin Hariz",
+                "Zaidan Khairullah Firmansyah", "Zamzam Risnandi"
+            ],
+            "3J": [
+                "Abyan Zaki Al Ahnaf", "Althaf Farid Mutaqqin", "Arva Pratama Nuzulul Mauludin", "Azka Alvaro Hidayat", "Azka Deyandrika",
+                "Fikri Firman Firdaus", "Habib Rafi Rabbani", "Haris Febriansyah", "Ilham April Rizal", "Maulana Zidan Alfatih",
+                "Muhammad Azka Alfarhaby Rukman", "Muhammad Herlangga Pratama", "Muhammad Hudan Al Faruq", "Muhammad Radif Al Farizi", "Muhammad Ridho Wibowo",
+                "Muhammad Rizqi Fadilah", "Muhammad Ziqri Zayyani", "Nizam Joharudin Putra", "Panji Ikhwan Alkhoir", "Qidham Kholid Edriansyah",
+                "Radi Aditya Labdagati", "Rafa Ramdhani Badri Aziz", "Resya Sanda Sandrian", "Reza Permana Putra", "Rizqy Pratama",
+                "Sabiq Alif Arrasyid Hidayat", "Zian Fadhilah"
+            ],
+            "4A": [
+                "AIRA NURUL ZAHRA", "ANISA SALSABILA FAUZIYAH", "ARUMI NAVITA NURAZIZAH", "AURA INTAN SALSABILA", "AYESHA RAJNI DANICA LIE",
+                "CHAYYIRA NAJLA KYENDA", "FAEEZA ADLINA GHAISANI", "GHINA KHOIRUNNISA", "HAFIYYA AJDA MAZIDAH", "HASNA SHAFAA' NAFISAH",
+                "HASYA RIZKIA NAFIS", "KAILA INTAN KHOIRIYAH", "KEN DARA MUSTIKA RANI", "KHALISA NAJLA FITRIYAH", "KHUMAIRA ADZKIA RASYAID",
+                "MUTIARA SHIFA NURUMI", "NABIILAH RETNO PALUPI", "NAZLA RAISSA ISLAMI", "NIDA ALIMA KHANSA RIYADDI", "NUR AINI MULYANI",
+                "QISYA HAFEEZA RUSLI", "RAHMA AZAHRO RAMADHANI KORLIN", "RAISSA PUTRI NAILAH PURWITA", "RAZITA ABDATISSALAMAH", "SHALLY SYIFA NUR QOLBI",
+                "SIFA AL MAGHFIROH", "SYAFITRI AZ ZAHRA", "VANIA NICOLEN ZABRINA", "ZAHRA AZIZAH ULINNUHA"
+            ],
+            "4B": [
+                "ALMA IKRAMIYA", "ALZETA NAOMI KIRANA", "AMELIA SAADAH NABILA", "AQYLLAH FARRASYAH ZHAFIRA", "AZKA FADIA MUTHI'AH",
+                "CINDI ELMIRA HASHNA", "CITRA SITI NURSALAMAH", "DHIA AMALIA PUTRI WIYONO", "FAYCHA HASNA MAULYNDA", "HANIIFAH SALWAA FAADIYAH",
+                "HAWA SYAKIROH DAWAMATURROHMAH", "JANETA WARATSATU TSANIAH", "KAISHA NUR AISYI NUGRAHA", "KEISHA NAWANGWULAN SUSANTI", "MARZILA NUR AZMINA",
+                "MELSANDIVA GISELA KARAHSYA", "MUTIARA MAHARANI", "NAJWA ELVINNA AYU NAPISHA", "NAYLA ALYNFIRDAUSI", "NAYLATUL AULA",
+                "NAZWA RAYRA KAYLA BILQIS", "NIKA AULIA", "NISRINA NAJLA AULIA", "RADZWA AMIRA BATRISYA GUSAERI", "RAIHANA QANITA ASRI",
+                "RENATA FAHRANIA LUTHFIANI", "RISTA NUR AINI", "SALSABILA PUTRI NANDIYANTI", "SHAFA ALTHA FUNNISSA", "SHILVANI KHAIRUNISA",
+                "YUMNA ATHALLAJATNIKA"
+            ],
+            "4C": [
+                "ALFREEDA SYAFIRA SYAM", "AULIA BILQIS SUDARNO", "AULIA NUR AZIMAH ASHIHAB", "AVIERA NURIL JANNAH", "HASNA SYIFA EDNAWAN",
+                "INDIRA SANDRA SABRINA", "IZZ FAIZIA", "JAUZA NURHASNA", "KARNITA", "LULUL KARIMATUL NAFISAH",
+                "LUTHFIA ZAHRA YUSUF", "MUTIARA AZZAHRA ROHYANA", "NABILA HAMIDA RIDWAN", "NADIA PUTRI HIDAYAT", "NAJWA NURUL MUGNIA",
+                "NAZWA HAIFA MU'MINAH", "PUTRI AZMI ATIKAH", "RESTY KHOIRUNNISA", "RIKA NOVIA WIDI", "RISKA ALFAHREZI",
+                "SAFA NURKAHMILA", "SAKINA ATSRA SYAKIRA", "SHAFA AULIA KAMILA", "SHOLLICHAH ROMDONA ALIMMU ROHMAH", "SYAKHILA ARFA AZ'ZAHRA",
+                "ZAHIRA TSAMROTU SAIDAH", "ZANETA ALIA DEMITRI PERMANA"
+            ],
+            "4D": [
+                "AHMAD ZAKI RAISHAGFIK", "ASFAR AQIL PRAMUDYA", "AZKA MUHAMMAD SURYA", "AZKA ZIA ALHAQ", "BILAL RIZQI NAUFAL",
+                "DAFFA PRATAMA PUTRA WARDAYA", "FAIQ ABIYYU DZAKWAN", "FAUZAN HAMZAH KARSAFMAN", "FAZIL AFZAL NUZAYH", "FIKRI RIZALUL WAFI",
+                "HASHFI RAZAN SYAZANI", "KHAFID GHOZALI", "M FIQRI AL AZMI", "M. AHSANUL QODRI", "M. FAKHIRA RIFFATHA",
+                "M. FAQRUL RIZKY", "MOCH FALDA FADILAH", "MOCH. FAISALUL FUADI", "MOCHAMAD DAFFA AKHTAR FADILA", "MOCHAMAD YUSUF EKA FIRDHAUS",
+                "MOHAMMAD ZIDNY ILMAN AN NAFE", "MU'AMMAR FAIZ ARTHA MANGGALA", "MUHAMAD YUSUP AS SIDIQ", "MUHAMMAD ADAM RAMADHAN", "MUHAMMAD FATHURRAHMAN",
+                "MUHAMMAD IDZHARULHUDA MUTTAQIN", "MUHAMMAD IKHSAN ASH SHIDIQ", "MUHAMMAD RIAN AGUSTIAN", "MUHAMMAD RIZKI MUFIID", "MUHAMMAD WIJDAAN FAUZAAN",
+                "NIZAR MAULANA YUSUF", "RAFLY AZKYA RAMADAN", "RAYHANA FAJAR FAISHALDANA", "RAZAN MUHAMMAD IHSAN", "RAZI MUHAMMAD BAAQIR",
+                "RIDHO NUR ASGAR", "RISKI ALFAHREZA", "SUCHAO CHANDRA IRAWAN", "SYAHDIAN ADIT SAPUTRA"
+            ],
+            "4E": [
+                "ABDULLAH AKRAM ARROYYAN", "ACHMAD FADHIL", "ADITYA FACHRI NUGRAHA", "AHMAD FATHUR NURHAKIM", "AHMAD MUZAKI",
+                "ANTONIO HIDAYAT", "AQIL AKROMI DZIKRAKA", "DWI SUTAN HAKIIM", "FADIL ABDILAH", "FADIL WAL FARIQ",
+                "FAZRIL TAUFIQ NUR HAKIM", "HAIKAL TAMAM MAULANA", "HANIF MAULANA AKBAR", "IHZA ABDUL NASHER ROMADHONI", "IZZEEDDIN MUHAMMAD HASHIM",
+                "KAHFI AHMAD BAIHAQI", "KEANU RAYHAN PUTRA PRATAMA SOPYAN", "KHAIRUL AZAM RAMDANI", "M FAID AKMAL", "M NASYWAN AUFA ALFAIZ",
+                "MOCHAMAD FAQIH HARTONO", "MOCHAMAD RAIHAN BAGJA PUTRA YASIN", "MUGHNI AHMAD FAKHRUDDIN", "MUHAMAD GRAHA MUKTI MANDALA YUDHO", "MUHAMAD RAFFI",
+                "MUHAMMAD AKROM WIGUNA", "MUHAMMAD AZZAM ABDURRAHMAN", "MUHAMMAD DAFA DHIYAULHAQ", "MUHAMMAD FAUZAN ABRAR", "MUHAMMAD SALMAN NABIHA MAARIF",
+                "NAWWAF ZAHRAN HIBBATULLAH", "NAZRAN HARIZ IHZA SUNARYA", "RAFI ADITYA SHIDDIQ", "RAYIKA GIEUNENG PRATIDINA PRADJA", "REHAN HERDIANSYAH",
+                "REVAN DZULFIKAR", "WAHYU MAULID"
+            ],
+            "5A": [
+                "ADHWAA HAMDAH NUGRAHA", "AGNIA SALSABILA", "ALYAA LIDNA RIZKYANA", "AMELIA DWI RAMADHANI", "AQUILLA AXSHA KHEIRADYTA",
+                "ATHIFA LUBNA AZZAHRA", "AYIRIN RAFLIANA", "DELILA DINDA KIRANA", "DEVIANA KANAUMI FITRIZKY", "DEVINA AYU SYAHPUTRI",
+                "DZAKIRA FIRADISA", "HANNA NABILA SRIYANTO", "HASNA FARIH ADIBA", "HAURA SAHDA SALSABILA", "INTAN AZKI FITRIYANI",
+                "JIHAN NURUL SAFITRI", "KEYLA AZMI SAKHI", "KISTIA ANGGRAENI", "MAGHFIRA IZZANI MAULANIA", "MANDA AYU AZZAHRA",
+                "MUTIARA UL HUSNA JANUARI", "NAZHIFA ATHAYA GUNAWAN", "NINDYA NOORRIZQYA", "NUR ALPALAIL", "NUR HANIFAH",
+                "RAISHA ZAHIRA SHOFA", "RAISSA NAIFAH ISAURA AL MUMTAZ", "SALMA ZAKIAH NAFFSY JALALUDIN", "SASKIA PUTRI DITA FAKHIRA", "TALITA SAKHI HERINA",
+                "THALITA KIRANA SAKHI", "WAFI ALFIKHAIRA RAMADHANI", "ZAIRA AURA PUTRI", "ZAZKIA FAJAR MAHARANI"
+            ],
+            "5B": [
+                "ABDULLOH BAGIR", "ADLI MUHAMAD DZAKWAN", "AGUS SUNTANA", "AKMAL MAULANA", "ALFIN FAZA MAULANA",
+                "ASKHABULKAHFI ARHAN RAHARDJO", "AZHARI ALDIANSYAH BEHUKU", "DICKA SATRIA PRATAMA", "DWI SEPTIA RAMADIAN", "HILMY ZAHRAN MUAFA",
+                "KHAIRUL AZZAM", "LASKAR CENDEKIA HUNOWU", "MUHAMMAD ADAM MALIK RAMDHAN ALFARITSI", "MUHAMMAD BARRA MUSYAFA AL GHIFARI", "MUHAMMAD FAQIH AL ANSORI",
+                "MUHAMMAD ILHAM FIRDAUS", "MUHAMMAD MAULUDIN RAHMANSYAH", "MUHAMMAD NAUFAL ALBADII", "MUHAMMAD TARUNA DJAYA", "MUHAMMMAD FAQIH AL MUQODDAM",
+                "MUNJI ARIF RAMADHAN", "RAHMAT ILLAHI LUBIS", "REYHAN HIDAYATULLOH", "SYAH FAWWAZ AL WAFIQ", "SYAHRUL ERIZAL",
+                "SYAWAL MARTUA SAKTI LUBIS", "WILDAN AHMAD NABILAL"
+            ],
+            "5C": [
+                "AISHA ELMIRA PUNGKI ANINDYA", "ALYA SHAFA MAULIDA", "AULIA NURSYIFA SETIADI", "AZZAHRA ALFATIH WIDODO", "AZZAHRA HAIFA YODHA",
+                "DZAKIYAH TALITA SAKHI ZAINAL", "FARISSA HURIYA EL FARADIS", "FATHIA KHAIRUNNISA", "GHEANATHA FIRSTIARANY SANTOSA", "HAIBAH PUTRI KHADIJAH",
+                "JIHAN PUTRI NADIA NURRIZQY", "KAYLA NIRMALA SETYANINGRUM", "NAZILA QURROTA AINI", "NESSYA AZWA ADITHYA", "PUSPITA ADINDA FITRIANI",
+                "REGINA CAHYANI MULYA DEWI", "SAHARA", "SHALFINA FAUZIAH KAMIL", "SHAVA ADJIZA", "SITI KUSUMA WARDHANI",
+                "YASMIN FARHATUL JANNAH", "ZAIRA SYAKIRA"
+            ],
+            "5D": [
+                "ALIYA TSARA", "ALYSA PUTRI ISKANDAR", "ANNISA NURUL FATIMAH", "AVRIZA ZYAHRANI PUTRI LASTIO", "AZMI AURELIA PUTRI APIPAH",
+                "CICHA HANDAYYANI", "DONNA MAULIDAH SANTIKA", "FADIYA PUTRI FIRDANI", "FALISHA ALZENA HILWANI", "GHEFIRA FAIRUZ TSANIA",
+                "GIANA DWI RAHAYU", "HASNA SULTHONAH", "ITSNATUNNISA AL-MUNAWAROH", "KAMILA SALSABILLA NURPADILLAH", "KAYILA PUTRI AYUNINGTIAS RAHAYU",
+                "NADHILA PUTRI DWI APRISAN", "NIDA NAZARIA AZAHRA", "RAISYA KHANSA KAMILA", "REISYIFA ARWA LATIFAH", "SHAHIRA INTAN SARI",
+                "SHELLA PUSPITA DEWI", "SYARIFA HADIYATUL UULA S", "ULIMA VANIA EKAYANDA", "WAFA MUFIDAH"
+            ],
+            "5E": [
+                "A. ZAENI MUBAROK", "ALSABIL RASYAD ADZIKRA", "ANDIKA PRATAMA", "ANDRA MUHAMMAD RAMDHANI", "AZZAN AL FIKRI",
+                "DAFFA ADITYA PURNAMA", "FARIS SALMAN FASYA", "FATHIR ADIRA RAMADHAN", "ISA HAEDAR ROMANSYAH", "KEMAL GILANG MAHENDRA",
+                "KEVIN RINALDI", "LINGGA PRAYOGA", "MAULANA INSAN THABRANI", "MOCH NOOR JABBAR ROOFI", "MUHAMAD NUR PADILAH",
+                "MUHAMMAD ABDURRASYID", "MUHAMMAD ELTAJA AULIA", "MUHAMMAD FIRMANSYAH", "MUHAMMAD RAFA SHAQUILLE", "MUHAMMAD RIZAL AKBAR",
+                "MUHAMMAD RIZKI", "MUHAMMAD RIZKY MAULANA YUSUP", "MUHAMMAD SULTHAN ILMANI", "RACHMAT KHAIRUL IMAM", "RADITYA IZZAN GUMILAR",
+                "RAFANSYAH TIRTA WAHYUDI", "RAMDHI QURRATA A'YUN", "RANGGA PUTRA NOVIYANA", "REYZI DANUAR", "RISHAN MUHAMMAD AKBAR",
+                "SYAIRAZI SUMA", "TYO SEPTHA RAMADHAN", "VICO RAMADHANI", "YASIN FARRAS ALI"
+            ]
+        };
+
+        // DOM Elements
+        const selectKelas = document.getElementById('input-kelas');
+        const selectPelajaran = document.getElementById('input-pelajaran');
+        const selectSiswa = document.getElementById('input-siswa');
+        const inputManualNama = document.getElementById('input-manual-nama');
+        const formJuara = document.getElementById('form-juara');
+        
+        const wrapperPelajaran = document.getElementById('wrapper-pelajaran');
+        const wrapperSiswa = document.getElementById('wrapper-siswa');
+        const wrapperManualNama = document.getElementById('wrapper-manual-nama');
+        const wrapperSubmit = document.getElementById('wrapper-submit');
+        const noticeManual = document.getElementById('notice-input-manual');
+        const loadingOverlay = document.getElementById('loading-overlay');
+
+        const toast = document.getElementById('notification-toast');
+        const toastIcon = document.getElementById('toast-icon');
+        const toastIconBg = document.getElementById('toast-icon-bg');
+        const toastTitle = document.getElementById('toast-title');
+        const toastDesc = document.getElementById('toast-desc');
+        const toastClose = document.getElementById('toast-close');
+
+        const historyContainer = document.getElementById('history-container');
+        const historyEmpty = document.getElementById('history-empty');
+        const historyCount = document.getElementById('history-count');
+
+        // State Penyimpanan Lokal (Data yang dimasukkan tampil langsung secara dinamis di layar)
+        let localJuaraList = JSON.parse(localStorage.getItem('juara_list_KMMI')) || [];
+
+        // Inisialisasi daftar juara di layar awal
+        function renderHistory() {
+            if (localJuaraList.length === 0) {
+                historyEmpty.classList.remove('hidden');
+                historyCount.textContent = "0 Juara";
+            } else {
+                historyEmpty.classList.add('hidden');
+                historyCount.textContent = `${localJuaraList.length} Juara`;
+                
+                historyContainer.innerHTML = '';
+                localJuaraList.forEach((data, index) => {
+                    const div = document.createElement('div');
+                    div.className = "bg-slate-50 border border-slate-200 rounded-xl p-3 flex justify-between items-center flex gap-3 shadow-sm hover:border-indigo-300 smooth-transition";
+                    div.innerHTML = `
+                        <div class="flex-grow text-left">
+                            <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">${data.kelas}</span>
+                            <h4 class="text-xs font-bold text-slate-900 mt-1">Juara Mapel ${data.pelajaran}</h4>
+                            <p class="text-xs text-slate-500 mt-0.5">${data.siswa}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-slate-400 block">${data.timestamp}</span>
+                            <button onclick="removeLocalItem(${index})" class="text-slate-300 hover:text-rose-500 transition-colors mt-1">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                    `;
+                    historyContainer.appendChild(div);
+                });
+            }
+        }
+
+        window.removeLocalItem = function(index) {
+            localJuaraList.splice(index, 1);
+            localStorage.setItem('juara_list_KMMI', JSON.stringify(localJuaraList));
+            renderHistory();
+            showToast("Sukses", "Data dihapus dari layar lokal", "success");
+        };
+
+        // Web App URL Google Script (Ganti isi variabel ini dengan URL Deployment Apps Script Anda)
+        const GOOGLE_SCRIPT_URL = "PROSES_INTEGRASI_TERLAMPIR_DI_BAWAH";
+
+        // Toast Notification System
+        function showToast(title, message, type = "success") {
+            toastTitle.textContent = title;
+            toastDesc.textContent = message;
+            
+            if (type === "success") {
+                toastIconBg.className = "w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-emerald-50 text-emerald-600";
+                toastIcon.className = "fa-solid fa-circle-check";
+            } else if (type === "error") {
+                toastIconBg.className = "w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-rose-50 text-rose-600";
+                toastIcon.className = "fa-solid fa-circle-exclamation";
+            } else {
+                toastIconBg.className = "w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-indigo-50 text-indigo-600";
+                toastIcon.className = "fa-solid fa-info-circle";
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                hideToast();
+            }, 5000);
+        }
+
+        function hideToast() {
+            toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        }
+
+        toastClose.addEventListener('click', hideToast);
+
+        // Alur Form Pemilihan Interaktif
+        
+        // Tahap 1: Memilih Kelas
+        selectKelas.addEventListener('change', function() {
+            const kelasSelected = this.value;
+            
+            // Reset dropdown setelahnya
+            selectPelajaran.selectedIndex = 0;
+            selectSiswa.innerHTML = '<option value="" disabled selected>-- Pilih Siswa --</option>';
+            inputManualNama.value = '';
+            
+            // Nonaktifkan field tahap selanjutnya
+            wrapperSiswa.classList.add('opacity-40', 'pointer-events-none');
+            wrapperManualNama.classList.add('opacity-0', 'hidden');
+            wrapperSubmit.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+            noticeManual.classList.add('hidden');
+
+            // Aktifkan pilihan pelajaran (Tahap 2)
+            wrapperPelajaran.classList.remove('opacity-40', 'pointer-events-none');
+        });
+
+        // Tahap 2: Memilih Pelajaran
+        selectPelajaran.addEventListener('change', function() {
+            const kelasSelected = selectKelas.value;
+            
+            // Reset data siswa sebelumnya
+            selectSiswa.innerHTML = '<option value="" disabled selected>-- Pilih Siswa --</option>';
+            inputManualNama.value = '';
+            wrapperSubmit.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+
+            // Aktifkan pilihan siswa (Tahap 3)
+            wrapperSiswa.classList.remove('opacity-40', 'pointer-events-none');
+
+            // Cek ketersediaan kelas di database
+            if (databaseSiswa[kelasSelected]) {
+                noticeManual.classList.add('hidden');
+                wrapperManualNama.classList.add('hidden', 'opacity-0');
+                selectSiswa.required = true;
+                inputManualNama.required = false;
+
+                // Masukkan daftar siswa ke dropdown secara dinamis
+                databaseSiswa[kelasSelected].forEach(nama => {
+                    const opt = document.createElement('option');
+                    opt.value = nama;
+                    opt.textContent = nama;
+                    selectSiswa.appendChild(opt);
+                });
+            } else {
+                // Sediakan input manual jika kelas tidak ada dalam database
+                noticeManual.classList.remove('hidden');
+                wrapperManualNama.classList.remove('hidden');
+                setTimeout(() => {
+                    wrapperManualNama.classList.remove('opacity-0');
+                }, 50);
+                
+                selectSiswa.required = false;
+                inputManualNama.required = true;
+
+                const opt = document.createElement('option');
+                opt.value = "MANUAL_INPUT";
+                opt.textContent = "-- Masukkan Nama Secara Manual Di Bawah --";
+                selectSiswa.appendChild(opt);
+                selectSiswa.value = "MANUAL_INPUT";
+            }
+        });
+
+        // Tahap 3: Memilih Siswa
+        selectSiswa.addEventListener('change', function() {
+            if (this.value !== "") {
+                wrapperSubmit.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+            }
+        });
+
+        // Deteksi pengisian manual untuk memicu tombol kirim
+        inputManualNama.addEventListener('input', function() {
+            if (this.value.trim().length > 2) {
+                wrapperSubmit.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+            } else {
+                wrapperSubmit.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+            }
+        });
+
+        // Fungsi reset formulir secara visual
+        function resetFormState() {
+            formJuara.reset();
+            wrapperPelajaran.classList.add('opacity-40', 'pointer-events-none');
+            wrapperSiswa.classList.add('opacity-40', 'pointer-events-none');
+            wrapperManualNama.classList.add('hidden', 'opacity-0');
+            wrapperSubmit.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+            noticeManual.classList.add('hidden');
+        }
+
+        // Pengiriman Formulir (CORS-friendly dengan penanganan fallback)
+        formJuara.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const kelas = selectKelas.value;
+            const pelajaran = selectPelajaran.value;
+            let siswa = selectSiswa.value;
+
+            if (siswa === "MANUAL_INPUT") {
+                siswa = inputManualNama.value.trim();
+            }
+
+            if (!kelas || !pelajaran || !siswa) {
+                showToast("Peringatan", "Harap isi semua kolom dengan benar!", "error");
+                return;
+            }
+
+            // Tampilkan efek loading
+            loadingOverlay.classList.remove('hidden');
+            setTimeout(() => { loadingOverlay.classList.add('opacity-100'); }, 10);
+
+            const payload = {
+                kelas: kelas,
+                pelajaran: pelajaran,
+                siswa: siswa,
+                timestamp: new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' })
+            };
+
+            // Deteksi jika tautan Google Script belum diganti (Mode Demo Aktif)
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === "" || GOOGLE_SCRIPT_URL.indexOf("PROSES_INTEGRASI_TERLAMPIR_DI_BAWAH") !== -1) {
+                console.warn("API URL belum dikonfigurasi. Menyimpan secara lokal (Mode Demo).");
+                
+                setTimeout(() => {
+                    localJuaraList.unshift(payload);
+                    localStorage.setItem('juara_list_KMMI', JSON.stringify(localJuaraList));
+                    
+                    renderHistory();
+                    resetFormState();
+
+                    // Sembunyikan Loading
+                    loadingOverlay.classList.remove('opacity-100');
+                    setTimeout(() => { loadingOverlay.classList.add('hidden'); }, 300);
+
+                    // Berikan pemberitahuan demo
+                    showToast("Mode Demo Aktif", `Siswa "${siswa}" sukses tersimpan di browser. Konfigurasikan GOOGLE_SCRIPT_URL di dalam file untuk mengirim langsung ke Google Sheets.`, "warning");
+                }, 1200);
+                
+                return;
+            }
+
+            // Mengirim data menggunakan API Fetch CORS ke Web App Google Apps Script
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                // Tambahkan data ke daftar histori lokal
+                localJuaraList.unshift(payload);
+                localStorage.setItem('juara_list_KMMI', JSON.stringify(localJuaraList));
+                
+                renderHistory();
+                resetFormState();
+
+                // Sembunyikan Loading
+                loadingOverlay.classList.remove('opacity-100');
+                setTimeout(() => { loadingOverlay.classList.add('hidden'); }, 300);
+
+                // Pesan Sukses Real-time
+                showToast("Berhasil", `Data Juara ${pelajaran} (${siswa}) sukses terkirim ke Spreadsheet!`, "success");
+            })
+            .catch(error => {
+                loadingOverlay.classList.remove('opacity-100');
+                setTimeout(() => { loadingOverlay.classList.add('hidden'); }, 300);
+
+                console.error("Gagal mengirim data:", error);
+                showToast("Kesalahan", "Terjadi kegagalan jaringan saat mengirim data.", "error");
+            });
+        });
+
+        // Muat data saat pertama kali halaman terbuka
+        document.addEventListener('DOMContentLoaded', renderHistory);
+    </script>
+</body>
+</html>
