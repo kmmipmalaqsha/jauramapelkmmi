@@ -53,7 +53,7 @@
             </div>
             <div class="text-right">
                 <span class="text-xs bg-emerald-700/50 px-3 py-1.5 rounded-full font-semibold border border-emerald-500/30 text-emerald-100">
-                    <i class="fa-regular fa-calendar-check mr-1.5"></i> Batas Pengumpulan: 12 Juni 2026
+                    <i class="fa-regular fa-calendar-check mr-1.5"></i> Batas Pengumpulan: Sabtu, 13 Juni 2026
                 </span>
             </div>
         </div>
@@ -87,27 +87,55 @@
                     </div>
                     <div class="flex gap-2 items-center bg-teal-50 border border-teal-100 text-teal-800 p-3 rounded-xl">
                         <i class="fa-solid fa-clock-rotate-left text-sm text-teal-600"></i>
-                        <p class="text-xs font-semibold">Data dikumpulkan ke Kurikulum KMMI pada hari Sabtu, 12 Juni 2026.</p>
+                        <p class="text-xs font-semibold">Data dikumpulkan ke Kurikulum KMMI pada hari Sabtu, 13 Juni 2026.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 2: Juara Terpilih (Sesi Ini) -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex-grow flex flex-col justify-between transition-all hover:shadow-md">
+            <!-- Card 2: Juara Terpilih & Data Global Tab -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex-grow flex flex-col justify-between transition-all hover:shadow-md min-h-[400px]">
                 <div>
-                    <div class="flex justify-between items-center border-b pb-3 mb-4">
-                        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                            <i class="fa-solid fa-medal text-amber-500"></i>
-                            Live Preview Juara
-                        </h3>
-                        <span id="draft-count" class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-full font-bold">0 Sesi</span>
+                    <!-- Tab Navigation -->
+                    <div class="flex border-b border-slate-100 pb-2 mb-4 gap-2">
+                        <button type="button" onclick="switchSidebarTab('draft')" id="tab-draft-btn" class="flex-1 py-2 text-center text-xs font-bold border-b-2 border-teal-600 text-teal-600 transition-all">
+                            <i class="fa-solid fa-pen-to-square mr-1"></i> Draft Input
+                        </button>
+                        <button type="button" onclick="switchSidebarTab('global')" id="tab-global-btn" class="flex-1 py-2 text-center text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-all flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-globe"></i> Sudah Terinput
+                            <span id="global-badge" class="bg-slate-100 text-slate-600 text-[10px] px-1.5 py-0.5 rounded-full font-extrabold hidden">0</span>
+                        </button>
                     </div>
                     
-                    <!-- Dynamic List of Selected Champions with format requested -->
-                    <div id="selected-list" class="space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar pr-1 text-xs sm:text-sm text-slate-500 italic flex flex-col justify-center items-center min-h-[150px]">
-                        <div class="text-center py-6">
-                            <i class="fa-solid fa-folder-open text-3xl text-slate-300 mb-2"></i>
-                            <p class="text-xs">Tentukan Pelajaran, Tingkat Kelas, dan pilih nama siswa di sebelah kanan untuk melihat ringkasan.</p>
+                    <!-- TAB CONTENT 1: Draft Aktif Guru -->
+                    <div id="tab-draft-content" class="space-y-3">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs text-slate-400 font-medium">Sesi saat ini:</span>
+                            <span id="draft-count" class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-full font-bold">0 Sesi</span>
+                        </div>
+                        <div id="selected-list" class="space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar pr-1 text-xs sm:text-sm text-slate-500 italic flex flex-col justify-center items-center min-h-[150px]">
+                            <div class="text-center py-6">
+                                <i class="fa-solid fa-folder-open text-3xl text-slate-300 mb-2"></i>
+                                <p class="text-xs">Tentukan Pelajaran, Tingkat Kelas, dan pilih nama siswa di sebelah kanan untuk melihat ringkasan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB CONTENT 2: Data Global Terinput (Real-time dari Spreadsheet) -->
+                    <div id="tab-global-content" class="hidden space-y-3">
+                        <!-- Search Box for Global Data -->
+                        <div class="relative mb-2">
+                            <input type="text" id="global-search" oninput="filterGlobalData()" placeholder="Cari nama, mapel, atau kelas..." class="w-full pl-8 pr-3 py-1.5 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-teal-500">
+                            <div class="absolute left-2.5 top-2.5 text-slate-400 text-[10px]">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </div>
+
+                        <!-- Real-time List Container -->
+                        <div id="global-list" class="space-y-2 max-h-[280px] overflow-y-auto custom-scrollbar pr-1 flex flex-col justify-center items-center min-h-[180px]">
+                            <div class="text-center py-6">
+                                <div class="animate-spin inline-block w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full mb-2"></div>
+                                <p class="text-xs text-slate-400">Menghubungkan ke database...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -394,7 +422,7 @@
             {id: 109, name: "Mutiara Dewi Fathina", class: "1D"},
             {id: 110, name: "Nafila Putri Shazia", class: "1D"},
             {id: 111, name: "Najwa Manna Kholida", class: "1D"},
-            {id: 112, name: "Nasywa Alifa Khoirunnisa 	", class: "1D"},
+            {id: 112, name: "Nasywa Alifa Khoirunnisa", class: "1D"},
             {id: 113, name: "Nida Nur Hikmah", class: "1D"},
             {id: 114, name: "Salsabila Azzahra Sofyan", class: "1D"},
             {id: 115, name: "Seni Amira Sari Mustika", class: "1D"},
@@ -1013,76 +1041,76 @@
             {id: 687, name: "Muhammad Dimas Syahril Nur Taqwa", class: "3I"},
             {id: 688, name: "Muhammad Fauzan", class: "3I"},
             {id: 689, name: "Muhammad Haikal Fathurahman", class: "3I"},
-            {id: 690, name: "Muhammad Naufal Musyaffa", class: "3I"},
-            {id: 691, name: "Muhammad Pray Raja Murtadla Rabany Alhamidi", class: "3I"},
-            {id: 692, name: "Muhammad Rahmat Fajar", class: "3I"},
-            {id: 693, name: "Naufal Raditya Putra", class: "3I"},
-            {id: 694, name: "Raka Aditya Rubiana", class: "3I"},
-            {id: 695, name: "Rifa Dio Arvia Ahmad", class: "3I"},
-            {id: 696, name: "Rizki Naufal Arrafi", class: "3I"},
-            {id: 697, name: "Sami Auliya", class: "3I"},
-            {id: 698, name: "Syamil Sholahuddin Hariz", class: "3I"},
-            {id: 699, name: "Zaidan Khairullah Firmansyah", class: "3I"},
-            {id: 700, name: "Zamzam Risnandi", class: "3I"},
+            {id: 700, name: "Muhammad Naufal Musyaffa", class: "3I"},
+            {id: 701, name: "Muhammad Pray Raja Murtadla Rabany Alhamidi", class: "3I"},
+            {id: 702, name: "Muhammad Rahmat Fajar", class: "3I"},
+            {id: 703, name: "Naufal Raditya Putra", class: "3I"},
+            {id: 704, name: "Raka Aditya Rubiana", class: "3I"},
+            {id: 705, name: "Rifa Dio Arvia Ahmad", class: "3I"},
+            {id: 706, name: "Rizki Naufal Arrafi", class: "3I"},
+            {id: 707, name: "Sami Auliya", class: "3I"},
+            {id: 708, name: "Syamil Sholahuddin Hariz", class: "3I"},
+            {id: 709, name: "Zaidan Khairullah Firmansyah", class: "3I"},
+            {id: 710, name: "Zamzam Risnandi", class: "3I"},
 
             // KELAS 3J
-            {id: 701, name: "Abyan Zaki Al Ahnaf", class: "3J"},
-            {id: 702, name: "Althaf Farid Mutaqqin", class: "3J"},
-            {id: 703, name: "Arva Pratama Nuzulul Mauludin", class: "3J"},
-            {id: 704, name: "Azka Alvaro Hidayat", class: "3J"},
-            {id: 705, name: "Azka Deyandrika", class: "3J"},
-            {id: 706, name: "Fikri Firman Firdaus", class: "3J"},
-            {id: 707, name: "Habib Rafi Rabbani", class: "3J"},
-            {id: 708, name: "Haris Febriansyah", class: "3J"},
-            {id: 709, name: "Ilham April Rizal", class: "3J"},
-            {id: 710, name: "Maulana Zidan Alfatih", class: "3J"},
-            {id: 711, name: "Muhammad Azka Alfarhaby Rukman", class: "3J"},
-            {id: 712, name: "Muhammad Herlangga Pratama", class: "3J"},
-            {id: 713, name: "Muhammad Hudan Al Faruq", class: "3J"},
-            {id: 714, name: "Muhammad Radif Al Farizi", class: "3J"},
-            {id: 715, name: "Muhammad Ridho Wibowo", class: "3J"},
-            {id: 716, name: "Muhammad Rizqi Fadilah", class: "3J"},
-            {id: 717, name: "Muhammad Ziqri Zayyani", class: "3J"},
-            {id: 718, name: "Nizam Joharudin Putra", class: "3J"},
-            {id: 719, name: "Panji Ikhwan Alkhoir", class: "3J"},
-            {id: 720, name: "Qidham Kholid Edriansyah", class: "3J"},
-            {id: 721, name: "Radi Aditya Labdagati", class: "3J"},
-            {id: 722, name: "Rafa Ramdhani Badri Aziz", class: "3J"},
-            {id: 723, name: "Resya Sanda Sandrian", class: "3J"},
-            {id: 724, name: "Reza Permana Putra", class: "3J"},
-            {id: 725, name: "Rizqy Pratama", class: "3J"},
-            {id: 726, name: "Sabiq Alif Arrasyid Hidayat", class: "3J"},
-            {id: 727, name: "Zian Fadhilah", class: "3J"},
+            {id: 711, name: "Abyan Zaki Al Ahnaf", class: "3J"},
+            {id: 712, name: "Althaf Farid Mutaqqin", class: "3J"},
+            {id: 713, name: "Arva Pratama Nuzulul Mauludin", class: "3J"},
+            {id: 714, name: "Azka Alvaro Hidayat", class: "3J"},
+            {id: 715, name: "Azka Deyandrika", class: "3J"},
+            {id: 716, name: "Fikri Firman Firdaus", class: "3J"},
+            {id: 717, name: "Habib Rafi Rabbani", class: "3J"},
+            {id: 718, name: "Haris Febriansyah", class: "3J"},
+            {id: 719, name: "Ilham April Rizal", class: "3J"},
+            {id: 720, name: "Maulana Zidan Alfatih", class: "3J"},
+            {id: 721, name: "Muhammad Azka Alfarhaby Rukman", class: "3J"},
+            {id: 722, name: "Muhammad Herlangga Pratama", class: "3J"},
+            {id: 723, name: "Muhammad Hudan Al Faruq", class: "3J"},
+            {id: 724, name: "Muhammad Radif Al Farizi", class: "3J"},
+            {id: 725, name: "Muhammad Ridho Wibowo", class: "3J"},
+            {id: 726, name: "Muhammad Rizqi Fadilah", class: "3J"},
+            {id: 727, name: "Muhammad Ziqri Zayyani", class: "3J"},
+            {id: 728, name: "Nizam Joharudin Putra", class: "3J"},
+            {id: 729, name: "Panji Ikhwan Alkhoir", class: "3J"},
+            {id: 730, name: "Qidham Kholid Edriansyah", class: "3J"},
+            {id: 731, name: "Radi Aditya Labdagati", class: "3J"},
+            {id: 732, name: "Rafa Ramdhani Badri Aziz", class: "3J"},
+            {id: 733, name: "Resya Sanda Sandrian", class: "3J"},
+            {id: 734, name: "Reza Permana Putra", class: "3J"},
+            {id: 735, name: "Rizqy Pratama", class: "3J"},
+            {id: 736, name: "Sabiq Alif Arrasyid Hidayat", class: "3J"},
+            {id: 737, name: "Zian Fadhilah", class: "3J"},
 
             // KELAS 4A
-            {id: 728, name: "AIRA NURUL ZAHRA", class: "4A"},
-            {id: 729, name: "ANISA SALSABILA FAUZIYAH", class: "4A"},
-            {id: 730, name: "ARUMI NAVITA NURAZIZAH", class: "4A"},
-            {id: 731, name: "AURA INTAN SALSABILA", class: "4A"},
-            {id: 732, name: "AYESHA RAJNI DANICA LIE", class: "4A"},
-            {id: 733, name: "CHAYYIRA NAJLA KYENDA", class: "4A"},
-            {id: 734, name: "FAEEZA ADLINA GHAISANI", class: "4A"},
-            {id: 735, name: "GHINA KHOIRUNNISA", class: "4A"},
-            {id: 736, name: "HAFIYYA AJDA MAZIDAH", class: "4A"},
-            {id: 737, name: "HASNA SHAFAA' NAFISAH", class: "4A"},
-            {id: 738, name: "HASYA RIZKIA NAFIS", class: "4A"},
-            {id: 739, name: "KAILA INTAN KHOIRIYAH", class: "4A"},
-            {id: 740, name: "KEN DARA MUSTIKA RANI", class: "4A"},
-            {id: 741, name: "KHALISA NAJLA FITRIYAH", class: "4A"},
-            {id: 742, name: "KHUMAIRA ADZKIA RASYAID", class: "4A"},
-            {id: 743, name: "MUTIARA SHIFA NURUMI", class: "4A"},
-            {id: 744, name: "NABIILAH RETNO PALUPI", class: "4A"},
-            {id: 745, name: "NAZLA RAISSA ISLAMI", class: "4A"},
-            {id: 746, name: "NIDA ALIMA KHANSA RIYADDI", class: "4A"},
-            {id: 747, name: "NUR AINI MULYANI", class: "4A"},
-            {id: 748, name: "QISYA HAFEEZA RUSLI", class: "4A"},
-            {id: 749, name: "RAHMA AZAHRO RAMADHANI KORLIN", class: "4A"},
-            {id: 750, name: "RAISSA PUTRI NAILAH PURWITA", class: "4A"},
-            {id: 751, name: "RAZITA ABDATISSALAMAH", class: "4A"},
-            {id: 752, name: "SHALLY SYIFA NUR QOLBI", class: "4A"},
-            {id: 753, name: "SIFA AL MAGHFIROH", class: "4A"},
-            {id: 754, name: "SYAFITRI AZ ZAHRA", class: "4A"},
-            {id: 755, name: "VANIA NICOLEN ZABRINA", class: "4A"},
+            {id: 738, name: "AIRA NURUL ZAHRA", class: "4A"},
+            {id: 739, name: "ANISA SALSABILA FAUZIYAH", class: "4A"},
+            {id: 740, name: "ARUMI NAVITA NURAZIZAH", class: "4A"},
+            {id: 741, name: "AURA INTAN SALSABILA", class: "4A"},
+            {id: 742, name: "AYESHA RAJNI DANICA LIE", class: "4A"},
+            {id: 743, name: "CHAYYIRA NAJLA KYENDA", class: "4A"},
+            {id: 744, name: "FAEEZA ADLINA GHAISANI", class: "4A"},
+            {id: 745, name: "GHINA KHOIRUNNISA", class: "4A"},
+            {id: 746, name: "HAFIYYA AJDA MAZIDAH", class: "4A"},
+            {id: 747, name: "HASNA SHAFAA' NAFISAH", class: "4A"},
+            {id: 748, name: "HASYA RIZKIA NAFIS", class: "4A"},
+            {id: 749, name: "KAILA INTAN KHOIRIYAH", class: "4A"},
+            {id: 750, name: "KEN DARA MUSTIKA RANI", class: "4A"},
+            {id: 751, name: "KHALISA NAJLA FITRIYAH", class: "4A"},
+            {id: 752, name: "KHUMAIRA ADZKIA RASYAID", class: "4A"},
+            {id: 753, name: "MUTIARA SHIFA NURUMI", class: "4A"},
+            {id: 754, name: "NABIILAH RETNO PALUPI", class: "4A"},
+            {id: 755, name: "NAZLA RAISSA ISLAMI", class: "4A"},
+            {id: 756, name: "NIDA ALIMA KHANSA RIYADDI", class: "4A"},
+            {id: 757, name: "NUR AINI MULYANI", class: "4A"},
+            {id: 758, name: "QISYA HAFEEZA RUSLI", class: "4A"},
+            {id: 759, name: "RAHMA AZAHRO RAMADHANI KORLIN", class: "4A"},
+            {id: 760, name: "RAISSA PUTRI NAILAH PURWITA", class: "4A"},
+            {id: 761, name: "RAZITA ABDATISSALAMAH", class: "4A"},
+            {id: 762, name: "SHALLY SYIFA NUR QOLBI", class: "4A"},
+            {id: 763, name: "SIFA AL MAGHFIROH", class: "4A"},
+            {id: 764, name: "SYAFITRI AZ ZAHRA", class: "4A"},
+            {id: 765, name: "VANIA NICOLEN ZABRINA", class: "4A"},
             {id: 756, name: "ZAHRA AZIZAH ULINNUHA", class: "4A"},
 
             // KELAS 4B
@@ -1521,13 +1549,129 @@
             "6": ["6A", "6B", "6C", "6D", "6E"]
         };
 
+        // API Web App URL Google Sheets Admin Anda
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQ0w_0kg4CxkwYEqbWCHEm3aGVAIQGu5Gup1LNYKypLQrUGbyoEl5RSO0eX0quI9s/exec";
+        
+        let globalJuaraData = []; // Cache untuk data dari spreadsheet
+
         // Inisialisasi awal saat halaman selesai dimuat
         window.addEventListener('DOMContentLoaded', () => {
             // Pasang event listener dinamis untuk perubahan input Pelajaran & Tingkat Kelas
             document.getElementById('mata-pelajaran').addEventListener('change', handleWizardTrigger);
             document.getElementById('tingkat-kelas').addEventListener('change', handleWizardTrigger);
             document.getElementById('juaraForm').addEventListener('submit', handleFormSubmit);
+            
+            // Muat data global secara otomatis dari spreadsheet saat start
+            loadGlobalSpreadsheetData();
         });
+
+        // Pengaturan Pergantian Tab Sidebar Kiri (Draft vs Sudah Terinput)
+        function switchSidebarTab(tabName) {
+            const draftBtn = document.getElementById('tab-draft-btn');
+            const globalBtn = document.getElementById('tab-global-btn');
+            const draftContent = document.getElementById('tab-draft-content');
+            const globalContent = document.getElementById('tab-global-content');
+
+            if (tabName === 'draft') {
+                draftBtn.className = "flex-1 py-2 text-center text-xs font-bold border-b-2 border-teal-600 text-teal-600 transition-all";
+                globalBtn.className = "flex-1 py-2 text-center text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-all flex items-center justify-center gap-1";
+                draftContent.classList.remove('hidden');
+                globalContent.classList.add('hidden');
+            } else {
+                globalBtn.className = "flex-1 py-2 text-center text-xs font-bold border-b-2 border-teal-600 text-teal-600 transition-all flex items-center justify-center gap-1";
+                draftBtn.className = "flex-1 py-2 text-center text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-all";
+                globalContent.classList.remove('hidden');
+                draftContent.classList.add('hidden');
+                // Muat ulang data secara berkala saat tab global diklik guru
+                loadGlobalSpreadsheetData();
+            }
+        }
+
+        // Penarikan Data Penilaian Global dari Google Sheets Spreadsheet Admin
+        async function loadGlobalSpreadsheetData() {
+            const listContainer = document.getElementById('global-list');
+            const globalBadge = document.getElementById('global-badge');
+            
+            try {
+                // Fetch data dari Apps Script (menggunakan parameter GET ?action=read)
+                const response = await fetch(`${GOOGLE_SCRIPT_URL}?action=read`);
+                const result = await response.json();
+
+                if (result && result.status === "success" && Array.isArray(result.data)) {
+                    globalJuaraData = result.data;
+                    
+                    // Urutkan data berdasarkan timestamp terbaru di atas
+                    globalJuaraData.reverse();
+                    
+                    renderGlobalData(globalJuaraData);
+                } else {
+                    renderGlobalDataEmpty("Format respon data tidak valid atau kosong.");
+                }
+            } catch (err) {
+                console.warn("Koneksi gagal atau CORS iFrame terblokir local preview:", err);
+                renderGlobalDataEmpty("Gagal memuat otomatis. Spreadsheet kosong atau koneksi masih terisolasi.");
+            }
+        }
+
+        // Tampilkan List Data Global
+        function renderGlobalData(data) {
+            const listContainer = document.getElementById('global-list');
+            const globalBadge = document.getElementById('global-badge');
+
+            if (data.length === 0) {
+                renderGlobalDataEmpty("Belum ada data juara yang diinput oleh semua guru.");
+                return;
+            }
+
+            globalBadge.innerText = data.length;
+            globalBadge.classList.remove('hidden');
+
+            let htmlContent = "";
+            data.forEach((item, index) => {
+                // Sesuai format permintaan: Juara Mapel [Pelajaran]: [Nama Santri]
+                htmlContent += `
+                    <div class="bg-slate-50 border border-slate-100 p-2.5 rounded-lg text-left w-full text-xs hover:border-teal-200 transition-all animate-fade-in">
+                        <div class="font-bold text-slate-800 leading-tight">Juara Mapel ${item.mataPelajaran || 'Umum'}: <span class="text-teal-700">${item.namaSiswa}</span></div>
+                        <div class="flex justify-between items-center text-[10px] text-slate-400 mt-1 font-semibold">
+                            <span>Kelas ${item.kelas || '??'}</span>
+                            <span class="text-[9px] font-normal text-slate-400/80">${item.timestamp ? item.timestamp.split(' ')[0] : ''}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            listContainer.innerHTML = htmlContent;
+            listContainer.className = "space-y-2 max-h-[280px] overflow-y-auto custom-scrollbar pr-1 w-full";
+        }
+
+        function renderGlobalDataEmpty(message) {
+            const listContainer = document.getElementById('global-list');
+            listContainer.innerHTML = `
+                <div class="text-center py-6 text-slate-400">
+                    <i class="fa-solid fa-server text-2xl text-slate-300 mb-2"></i>
+                    <p class="text-[11px] leading-relaxed px-4">${message}</p>
+                </div>
+            `;
+            listContainer.className = "space-y-2 max-h-[280px] overflow-y-auto custom-scrollbar pr-1 flex flex-col justify-center items-center min-h-[180px]";
+        }
+
+        // Penyaringan Berdasarkan Pencarian Instan
+        function filterGlobalData() {
+            const query = document.getElementById('global-search').value.toLowerCase();
+            if (!query) {
+                renderGlobalData(globalJuaraData);
+                return;
+            }
+
+            const filtered = globalJuaraData.filter(item => {
+                const name = (item.namaSiswa || "").toLowerCase();
+                const mapel = (item.mataPelajaran || "").toLowerCase();
+                const kelas = (item.kelas || "").toLowerCase();
+                return name.includes(query) || mapel.includes(query) || kelas.includes(query);
+            });
+
+            renderGlobalData(filtered);
+        }
 
         // Handler utama untuk men-trigger pembuatan input sub-kelas otomatis
         function handleWizardTrigger() {
@@ -1685,6 +1829,9 @@
             modal.querySelector('div').classList.remove('scale-100');
             modal.querySelector('div').classList.add('scale-95');
             clearAllDrafts();
+            
+            // Muat ulang data global setelah berhasil input agar langsung terupdate
+            loadGlobalSpreadsheetData();
         }
 
         // Toast Notification System
@@ -1750,12 +1897,6 @@
 
             // Tampilkan Loading Screen
             showLoading(true);
-
-            // ==========================================
-            // LOGIKA INTEGRASI GOOGLE SCRIPT (SECURE)
-            // ==========================================
-            // API Web App URL Google Sheets Admin Anda
-            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQ0w_0kg4CxkwYEqbWCHEm3aGVAIQGu5Gup1LNYKypLQrUGbyoEl5RSO0eX0quI9s/exec";
 
             try {
                 // Mengirimkan data via POST ke Apps Script
