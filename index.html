@@ -3,850 +3,1651 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Input Juara Mata Pelajaran KMMI 2026</title>
+    <title>Sistem Input Juara Mata Pelajaran KMMI 2026</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+    <!-- FontAwesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
         }
-        .smooth-transition {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-        /* Sembunyikan scrollbar tanpa menghilangkan fungsi scroll */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-slate-50 min-h-screen text-slate-800 antialiased flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between text-slate-800">
 
-    <!-- Header Aplikasi -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <div class="bg-indigo-600 text-white p-2.5 rounded-xl shadow-md shadow-indigo-100 flex items-center justify-center">
-                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-lg sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/10 p-2.5 rounded-xl backdrop-blur-md border border-white/20">
+                    <i class="fa-solid fa-trophy text-2xl text-yellow-300 animate-pulse"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg font-bold text-slate-900 tracking-tight">Kurikulum KMMI 2026</h1>
-                    <p class="text-xs text-slate-500 font-medium">Sistem Pemilihan Juara Mata Pelajaran</p>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-wide">KMMI 2026</h1>
+                    <p class="text-xs text-emerald-100 font-medium">Sistem Pengumpulan Juara Mata Pelajaran</p>
                 </div>
             </div>
-            <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-800 px-3 py-1.5 rounded-lg text-xs font-semibold">
-                <i class="fa-regular fa-clock text-sm"></i>
-                <span>Batas Pengumpulan: Sabtu, 12 Juni 2026</span>
+            <div class="text-right">
+                <span class="text-xs bg-emerald-700/50 px-3 py-1.5 rounded-full font-semibold border border-emerald-500/30 text-emerald-100">
+                    <i class="fa-regular fa-calendar-check mr-1.5"></i> Batas Pengumpulan: 12 Juni 2026
+                </span>
             </div>
         </div>
     </header>
 
-    <!-- Konten Utama -->
-    <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Kolom Kiri: Keterangan & Riwayat Pemilihan -->
-        <div class="lg:col-span-5 flex flex-col gap-6">
-            
-            <!-- Box Keterangan / Petunjuk Pengisian -->
-            <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
-                    <i class="fa-solid fa-circle-info"></i>
-                </div>
-                <div class="relative z-10">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="bg-indigo-500 text-white px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider">Keterangan</span>
-                        <h2 class="text-base font-bold">Petunjuk Pengisian Nilai</h2>
+        <!-- Left Side: Instructions & Dashboard (Juara Terpilih) -->
+        <div class="lg:col-span-4 space-y-6 flex flex-col">
+            <!-- Card 1: Petunjuk Keterangan -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 transition-all hover:shadow-md">
+                <h3 class="text-base font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-teal-600"></i>
+                    Petunjuk Pengisian Nilai
+                </h3>
+                <div class="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <div class="flex gap-2">
+                        <span class="font-bold text-teal-600">1.</span>
+                        <p>Pilihlah Nama-nama santri yang berprestasi atau terbaik pada mata pelajaran yang diampu.</p>
                     </div>
-                    
-                    <ul class="space-y-4 text-slate-300 text-sm">
-                        <li class="flex gap-3 items-start">
-                            <span class="bg-slate-800 text-indigo-400 w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">1</span>
-                            <p>Pilihlah Nama-nama santri yang berprestasi atau terbaik pada mata pelajaran yang diampu.</p>
-                        </li>
-                        <li class="flex gap-3 items-start">
-                            <span class="bg-slate-800 text-indigo-400 w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">2</span>
-                            <div>
-                                <p class="font-semibold text-slate-200 mb-1">Kategori terbaik bisa diambil dari:</p>
-                                <ul class="list-disc pl-5 space-y-1 text-slate-400 text-xs">
-                                    <li>Nilai tertinggi Ujian Akhir KMMI 2026</li>
-                                    <li>Kehadiran di kelas</li>
-                                    <li>Keaktifan di kelas</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="flex gap-3 items-start">
-                            <span class="bg-slate-800 text-indigo-400 w-5 h-5 rounded-full flex items-center justify-center shrink-0 font-bold text-xs mt-0.5">3</span>
-                            <p>Data dikumpulkan ke Kurikulum KMMI pada hari Sabtu, 12 Juni 2026.</p>
-                        </li>
-                    </ul>
+                    <div class="flex flex-col gap-1.5 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                        <span class="font-bold text-slate-700 flex items-center gap-1.5 mb-1 text-xs">
+                            <i class="fa-solid fa-star text-amber-500"></i> Kategori terbaik bisa diambil dari:
+                        </span>
+                        <div class="pl-4 space-y-1 text-xs">
+                            <p>a. Nilai tertinggi Ujian Akhir KMMI 2026</p>
+                            <p>b. Kehadiran di kelas</p>
+                            <p>c. Keaktifan di kelas</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 items-center bg-teal-50 border border-teal-100 text-teal-800 p-3 rounded-xl">
+                        <i class="fa-solid fa-clock-rotate-left text-sm text-teal-600"></i>
+                        <p class="text-xs font-semibold">Data dikumpulkan ke Kurikulum KMMI pada hari Sabtu, 12 Juni 2026.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Tampilan Data Juara yang Telah Dipilih -->
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col gap-4">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <h3 class="font-bold text-slate-950 flex items-center gap-2 text-sm">
-                        <i class="fa-solid fa-trophy text-amber-500"></i>
-                        Daftar Juara Terpilih
-                    </h3>
-                    <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-full font-medium" id="history-count">0 Juara</span>
+            <!-- Card 2: Juara Terpilih (Sesi Ini) -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex-grow flex flex-col justify-between transition-all hover:shadow-md">
+                <div>
+                    <div class="flex justify-between items-center border-b pb-3 mb-4">
+                        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-medal text-amber-500"></i>
+                            Live Preview Juara
+                        </h3>
+                        <span id="draft-count" class="bg-slate-100 text-slate-700 text-xs px-2.5 py-1 rounded-full font-bold">0 Sesi</span>
+                    </div>
+                    
+                    <!-- Dynamic List of Selected Champions with format requested -->
+                    <div id="selected-list" class="space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar pr-1 text-xs sm:text-sm text-slate-500 italic flex flex-col justify-center items-center min-h-[150px]">
+                        <div class="text-center py-6">
+                            <i class="fa-solid fa-folder-open text-3xl text-slate-300 mb-2"></i>
+                            <p class="text-xs">Tentukan Pelajaran, Tingkat Kelas, dan pilih nama siswa di sebelah kanan untuk melihat ringkasan.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="max-h-64 overflow-y-auto no-scrollbar flex flex-col gap-2.5" id="history-container">
-                    <!-- Tampilan Kosong -->
-                    <div class="text-center py-8 text-slate-400 text-xs flex flex-col items-center gap-2" id="history-empty">
-                        <i class="fa-regular fa-folder-open text-3xl text-slate-300"></i>
-                        <span>Belum ada juara yang dimasukkan.</span>
-                    </div>
+                <!-- Footer draft helper -->
+                <div id="selected-list-footer" class="hidden mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 flex items-center justify-between">
+                    <span>*Data di atas akan dikirim secara kolektif</span>
+                    <button onclick="clearAllDrafts()" class="text-rose-500 hover:text-rose-700 font-semibold flex items-center gap-1 transition-colors">
+                        <i class="fa-regular fa-trash-can"></i> Reset Pilihan
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Kolom Kanan: Form Input Interaktif -->
-        <div class="lg:col-span-7">
-            <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm relative">
+        <!-- Right Side: Interactive Dynamic Form -->
+        <div class="lg:col-span-8">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 transition-all hover:shadow-md">
                 
-                <!-- Overlay Loading saat Mengirim Data -->
-                <div id="loading-overlay" class="absolute inset-0 bg-white/90 backdrop-blur-sm rounded-2xl z-50 flex flex-col items-center justify-center gap-3 hidden opacity-0 transition-opacity duration-300">
-                    <div class="w-12 h-12 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
-                    <p class="text-sm font-semibold text-slate-700">Sedang mengirim data ke Spreadsheet...</p>
+                <!-- Form Header -->
+                <div class="mb-6 border-b pb-4">
+                    <span class="text-xs font-bold text-emerald-600 tracking-wider uppercase">Langkah Pengisian</span>
+                    <h2 class="text-xl font-extrabold text-slate-900 mt-1">Formulir Pemilihan Juara Mapel</h2>
+                    <p class="text-xs text-slate-500 mt-1">Sistem akan memunculkan seluruh sub-kelas secara otomatis setelah Anda memilih tingkatan kelas.</p>
                 </div>
 
-                <div class="border-b border-slate-100 pb-4 mb-6">
-                    <h2 class="text-xl font-extrabold text-slate-900">Form Pemilihan Juara</h2>
-                    <p class="text-xs text-slate-500 mt-1">Silakan pilih kelas, mata pelajaran, lalu nama santri berprestasi.</p>
-                </div>
-
-                <!-- FORM INPUT -->
-                <form id="form-juara" class="space-y-6">
+                <!-- Main Form Block -->
+                <form id="juaraForm" class="space-y-6">
                     
-                    <!-- Tahap 1: Dropdown Kelas -->
-                    <div class="space-y-2">
-                        <label for="input-kelas" class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                            <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-[10px]">1</span>
-                            Pilih Kelas
-                        </label>
-                        <div class="relative">
-                            <select id="input-kelas" required
-                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none appearance-none smooth-transition cursor-pointer">
-                                <option value="" disabled selected>-- Pilih Kelas --</option>
-                                <!-- Kelas 1 -->
-                                <optgroup label="Kelas 1">
-                                    <option value="1A">Kelas 1A</option><option value="1B">Kelas 1B</option><option value="1C">Kelas 1C</option><option value="1D">Kelas 1D</option>
-                                    <option value="1E">Kelas 1E</option><option value="1F">Kelas 1F</option><option value="1G">Kelas 1G</option><option value="1H">Kelas 1H</option>
-                                </optgroup>
-                                <!-- Kelas 2 -->
-                                <optgroup label="Kelas 2">
-                                    <option value="2A">Kelas 2A</option><option value="2B">Kelas 2B</option><option value="2C">Kelas 2C</option><option value="2D">Kelas 2D</option>
-                                    <option value="2E">Kelas 2E</option><option value="2F">Kelas 2F</option><option value="2G">Kelas 2G</option><option value="2H">Kelas 2H</option>
-                                </optgroup>
-                                <!-- Kelas 3 -->
-                                <optgroup label="Kelas 3">
-                                    <option value="3A">Kelas 3A</option><option value="3B">Kelas 3B</option><option value="3C">Kelas 3C</option><option value="3D">Kelas 3D</option>
-                                    <option value="3E">Kelas 3E</option><option value="3F">Kelas 3F</option><option value="3G">Kelas 3G</option><option value="3H">Kelas 3H</option>
-                                    <option value="3I">Kelas 3I</option><option value="3J">Kelas 3J</option>
-                                </optgroup>
-                                <!-- Kelas 4 -->
-                                <optgroup label="Kelas 4">
-                                    <option value="4A">Kelas 4A</option><option value="4B">Kelas 4B</option><option value="4C">Kelas 4C</option><option value="4D">Kelas 4D</option>
-                                    <option value="4E">Kelas 4E</option>
-                                </optgroup>
-                                <!-- Kelas 5 -->
-                                <optgroup label="Kelas 5">
-                                    <option value="5A">Kelas 5A</option><option value="5B">Kelas 5B</option><option value="5C">Kelas 5C</option><option value="5D">Kelas 5D</option>
-                                    <option value="5E">Kelas 5E</option>
-                                </optgroup>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- 1. Mata Pelajaran Selector (Global) -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <label for="mata-pelajaran" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                                1. Pilih Mata Pelajaran
+                            </label>
+                            <div class="relative">
+                                <select id="mata-pelajaran" required class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 appearance-none text-slate-700 font-medium text-sm transition-all shadow-sm">
+                                    <option value="" disabled selected>-- Pilih Mata Pelajaran --</option>
+                                    <option value="Al-Qur'an">Al-Qur'an</option>
+                                    <option value="Akhlak">Akhlak</option>
+                                    <option value="Bahasa Arab">Bahasa Arab</option>
+                                    <option value="Faroidh">Faroidh</option>
+                                    <option value="Fiqih">Fiqih</option>
+                                    <option value="Hadits">Hadits</option>
+                                    <option value="Imla'">Imla'</option>
+                                    <option value="Insya'">Insya'</option>
+                                    <option value="Khot">Khot</option>
+                                    <option value="Mahfudzat">Mahfudzat</option>
+                                    <option value="Mantiq">Mantiq</option>
+                                    <option value="Mustholah Hadits">Mustholah Hadits</option>
+                                    <option value="Mutholaah">Mutholaah</option>
+                                    <option value="Nahwu">Nahwu</option>
+                                    <option value="Shorof">Shorof</option>
+                                    <option value="Tafsir">Tafsir</option>
+                                    <option value="Tajwid">Tajwid</option>
+                                    <option value="Tauhid">Tauhid</option>
+                                    <option value="Tarbiyah">Tarbiyah</option>
+                                    <option value="Tarikh Islam">Tarikh Islam</option>
+                                    <option value="Ushul Fiqih">Ushul Fiqih</option>
+                                </select>
+                                <div class="absolute left-3.5 top-3.5 text-slate-400">
+                                    <i class="fa-solid fa-book-open"></i>
+                                </div>
+                                <div class="absolute right-3.5 top-3.5 pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Tingkat Kelas Selector -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <label for="tingkat-kelas" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                                2. Pilih Tingkat Kelas
+                            </label>
+                            <div class="relative">
+                                <select id="tingkat-kelas" required class="w-full pl-10 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 appearance-none text-slate-700 font-medium text-sm transition-all shadow-sm">
+                                    <option value="" disabled selected>-- Pilih Tingkat Kelas --</option>
+                                    <option value="1">Tingkat 1 (1A - 1H)</option>
+                                    <option value="2">Tingkat 2 (2A - 2H)</option>
+                                    <option value="3">Tingkat 3 (3A - 3J)</option>
+                                    <option value="4">Tingkat 4 (4A - 4E)</option>
+                                    <option value="5">Tingkat 5 (5A - 5E)</option>
+                                </select>
+                                <div class="absolute left-3.5 top-3.5 text-slate-400">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </div>
+                                <div class="absolute right-3.5 top-3.5 pointer-events-none text-slate-400">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tahap 2: Dropdown Pelajaran (Aktif setelah Kelas dipilih) -->
-                    <div id="wrapper-pelajaran" class="space-y-2 opacity-40 pointer-events-none smooth-transition">
-                        <label for="input-pelajaran" class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                            <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-[10px]">2</span>
-                            Pilih Mata Pelajaran
-                        </label>
-                        <div class="relative">
-                            <select id="input-pelajaran" required
-                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none appearance-none smooth-transition cursor-pointer">
-                                <option value="" disabled selected>-- Pilih Mata Pelajaran --</option>
-                                <option value="Akhlak">Akhlak</option>
-                                <option value="Bahasa Arab">Bahasa Arab</option>
-                                <option value="Faroidh">Faroidh</option>
-                                <option value="Fiqih">Fiqih</option>
-                                <option value="Hadits">Hadits</option>
-                                <option value="Imla'">Imla'</option>
-                                <option value="Insya'">Insya'</option>
-                                <option value="Khot">Khot</option>
-                                <option value="Mahfudzat">Mahfudzat</option>
-                                <option value="Mantiq">Mantiq</option>
-                                <option value="Mustholah Hadits">Mustholah Hadits</option>
-                                <option value="Mutholaah">Mutholaah</option>
-                                <option value="Nahwu">Nahwu</option>
-                                <option value="Shorof">Shorof</option>
-                                <option value="Tafsir">Tafsir</option>
-                                <option value="Tajwid">Tajwid</option>
-                                <option value="Tauhid">Tauhid</option>
-                                <option value="Tarbiyah">Tarbiyah</option>
-                                <option value="Tarikh Islam">Tarikh Islam</option>
-                                <option value="Ushul Fiqih">Ushul Fiqih</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                                <i class="fa-solid fa-chevron-down text-xs"></i>
-                            </div>
+                    <!-- Dynamic Subclass Container Grid -->
+                    <div id="subclass-section" class="hidden space-y-4 pt-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group text-teal-600"></i>
+                                Pilih Siswa Terbaik per Sub-Kelas
+                            </h3>
+                            <span class="text-xs text-teal-600 font-semibold" id="tingkat-badge"></span>
+                        </div>
+                        
+                        <div id="subclass-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Dynamic Cards Generated via JS -->
                         </div>
                     </div>
 
-                    <!-- Tahap 3: Dropdown Nama Siswa (Aktif setelah Pelajaran dipilih) -->
-                    <div id="wrapper-siswa" class="space-y-2 opacity-40 pointer-events-none smooth-transition">
-                        <label for="input-siswa" class="block text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-                            <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-[10px]">3</span>
-                            Pilih Nama Siswa Terbaik
-                        </label>
-                        <div class="relative">
-                            <select id="input-siswa" required
-                                class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none appearance-none smooth-transition cursor-pointer">
-                                <option value="" disabled selected>-- Pilih Siswa --</option>
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                                <i class="fa-solid fa-chevron-down text-xs"></i>
-                            </div>
+                    <!-- Submit Button Area with Validation Check -->
+                    <div id="submit-section" class="hidden pt-6 border-t border-slate-100 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                        <div class="flex items-start gap-2 max-w-md">
+                            <input type="checkbox" id="validation-check" required class="mt-1 h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500">
+                            <label for="validation-check" class="text-xs text-slate-500 select-none cursor-pointer">
+                                Saya menyatakan bahwa data ini sudah benar, sesuai kriteria penilaian prestasi santri, dan siap disimpan ke sistem Kurikulum.
+                            </label>
                         </div>
-                        <div id="notice-input-manual" class="hidden text-xs text-amber-600 bg-amber-50 px-3 py-2 rounded-lg flex items-center gap-1.5 mt-1">
-                            <i class="fa-solid fa-lightbulb"></i>
-                            <span>Daftar siswa tidak terdeteksi otomatis, silakan masukkan nama secara manual di bawah.</span>
-                        </div>
-                    </div>
-
-                    <!-- Input Nama Manual (Apabila kelas yang dipilih tidak terdaftar di database lokal) -->
-                    <div id="wrapper-manual-nama" class="space-y-2 hidden opacity-0 smooth-transition">
-                        <label for="input-manual-nama" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
-                            Tulis Nama Siswa Secara Manual
-                        </label>
-                        <input type="text" id="input-manual-nama" placeholder="Masukkan nama lengkap santri..."
-                            class="w-full bg-slate-50 border border-slate-200 text-slate-800 text-sm rounded-xl px-4 py-3.5 focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none smooth-transition">
-                    </div>
-
-                    <!-- Tombol Kirim Data (Muncul setelah semua form terisi) -->
-                    <div id="wrapper-submit" class="opacity-0 pointer-events-none transform translate-y-2 smooth-transition pt-4">
-                        <button type="submit" 
-                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 active:scale-[0.98] smooth-transition cursor-pointer">
-                            <i class="fa-regular fa-paper-plane"></i>
-                            Kirim Data Ke Spreadsheet
+                        <button type="submit" id="submit-btn" class="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-sm rounded-xl shadow-md shadow-emerald-700/10 hover:shadow-lg transition-all flex items-center justify-center gap-2 min-w-[180px]">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Kirim Data Juara
                         </button>
                     </div>
 
                 </form>
-
             </div>
         </div>
 
     </main>
 
-    <!-- Custom Toast Notification -->
-    <div id="notification-toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none smooth-transition max-w-sm w-full bg-white border border-slate-200 p-4 rounded-xl shadow-xl flex gap-3 items-center">
-        <div id="toast-icon-bg" class="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
-            <i id="toast-icon" class="text-lg"></i>
+    <!-- Custom Popups & Toast Notifications -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-3 pointer-events-none"></div>
+
+    <!-- Processing Modal -->
+    <div id="loading-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex justify-center items-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-2xl shadow-xl max-w-sm w-full mx-4 text-center">
+            <div class="relative w-16 h-16 mx-auto mb-4">
+                <div class="absolute inset-0 rounded-full border-4 border-slate-100"></div>
+                <div class="absolute inset-0 rounded-full border-4 border-emerald-500 border-t-transparent animate-spin"></div>
+            </div>
+            <h3 class="font-bold text-slate-900 text-lg mb-1">Sedang Menyimpan Data</h3>
+            <p class="text-slate-500 text-sm">Harap tunggu, data juara sedang dikirim secara otomatis ke Spreadsheet Admin...</p>
         </div>
-        <div class="flex-grow">
-            <h4 id="toast-title" class="text-sm font-bold text-slate-900"></h4>
-            <p id="toast-desc" class="text-xs text-slate-500 mt-0.5"></p>
-        </div>
-        <button id="toast-close" class="text-slate-400 hover:text-slate-600 shrink-0">
-            <i class="fa-solid fa-xmark text-sm"></i>
-        </button>
     </div>
 
-    <!-- Kaki Halaman -->
-    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-400 font-medium">
-        <p>© 2026 Kurikulum KMMI. Sistem Validasi Otomatis & Terenkripsi.</p>
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex justify-center items-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full mx-4 text-center scale-95 transition-all duration-300 transform">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 animate-bounce">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-extrabold text-slate-900 text-xl mb-2">Data Berhasil Terkirim!</h3>
+            <p class="text-slate-500 text-sm mb-6">Pilihan Juara Mata Pelajaran telah sukses disimpan secara permanen di database kurikulum.</p>
+            <button onclick="closeSuccessModal()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl transition-colors">
+                Kembali Isi Tingkat Lainnya
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 mt-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-xs gap-4">
+            <p>&copy; 2026 Kurikulum KMMI. Semua hak dilindungi undang-undang.</p>
+            <p class="text-slate-500">Secure Protocol &bull; Pengiriman Data Terenkripsi</p>
+        </div>
     </footer>
 
-    <!-- Database & Alur Logika Utama -->
+    <!-- Database Siswa KMMI -->
     <script>
-        // Database Santri Lengkap KMMI 2026
-        const databaseSiswa = {
-            "1A": [
-                "Adeeva Athaleta Charmaraiza", "Afifa Fitiya", "Agnia Halimatu Sa'adah", "Aini Siti Nurlatifah", "Allea Nurri Azzahra",
-                "Aqila Putri Shabir", "Arsyilla Noureen Maulani", "Aufaa Mecca Anata", "Azzahra Malika Sidqia", "Bulan Falesia Ardhelia",
-                "Desi Humaira Syahputri", "Dzihni Vidia Dyno", "Hafiya Dinar", "Jelita Az Zahra", "Kanaya Zahro Adhiyaullami Fadilah",
-                "Kenza Syamela Elfaida", "Lulu Silviana Rahmah", "Meisya Trisha Xena", "Nadhirah Aflah Alesha", "Naura Dea Anindya",
-                "Nayla Husna Aulia", "Nurul Zahra Hidayat", "Raira Pratiwi Jatnika", "Runa Zahratur Raniah", "Salwa Khoirunnisa",
-                "Syaika Naqiyya Bhuwana", "Syifa Fauziah", "Tami Dawa Fuadi Jaelani", "Tazkia Ramadani Sadevi", "Yasmin Izzatul Imtyaz Nur Alam",
-                "Zilan Haura Izdihar"
-            ],
-            "1B": [
-                "Almahira Aisyah Putri", "Alya Yassirni Syarifah", "Alyanuha Khansa Zahramaulida", "Annisa Ramadhani", "Asyifa Husna",
-                "Aulia Sri Rahmawati", "Azzahra Putri Almesya", "Delawati", "Dinar Marchelina Winata", "Elsa Mardiana",
-                "Faiza Ainiya Syawalia", "Fionna Pramuditha Arisanti", "Haura Azkia Ramadhani", "Jihan Nuria Meisyabila", "Khanza Elma Mazea",
-                "Liefya Embun Roudhatunnisya", "Malca Khairana", "Mutiara Anisa Rahim", "Nadzifah Sadrina M Purba", "Naila Rahma Fauziyah Muttaqien",
-                "Nazwa Kirana", "Oriana Zarahusna", "Raisa Qazun", "Rajwa Naura Natisha", "Sabilla Natasya Ardiansyah",
-                "Salwa Nur Khoerunnisa", "Soraya Aisy", "Syaila Devita Nugraha", "Syifa Nur Fadhila", "Zahira Yumna Aufarachma"
-            ],
-            "1C": [
-                "Adinda Putri Kharenina", "Adiva Naimah Salsabila", "Afiqah Nadhira Salsabila", "Aisha Tsabita", "Alfiyya Farra Atthayalishy",
-                "Annisa Amira Azzahra", "Azkia Zahratunnisa Ridaka", "Azzahra Dinda Naira", "Chaitra Rifdah Hamidah", "Fitriyah Andini Febriyanti",
-                "Ghisyari Putri Allena", "Jihan Shafira Maharani", "Kalea Hasna Muttaqin", "Kaleysha Afifah Rahmah", "Kayla Livara Tsaqofa",
-                "Mahersa Qaireen Ellyana", "Maliqa Sakhiraissa Azalia", "Naila Alya Mahfudzah", "Naura Syaza Dzakira", "Naysila Nurfitria Sutisna",
-                "Neisya Aurellia", "Neng Anisa Sri Mulyani", "Queenyna Khansa Az Zahra", "Reisya Azkadina Setiaji", "Sidraturohmah Widaniah",
-                "Silvia Rizki Waluyo", "Siti Fakhira Annaila", "Syabila Alfina Destari", "Syaqila Shaumy Azara", "Tasya Regina Putri"
-            ],
-            "1D": [
-                "Aila Zulfa Fauziah", "Alika Qurratul Aini", "Andinia Ghaida AL-Husna", "Anida Kamilaini Hubba", "Annisa Ratifa Nugraha",
-                "Aqira Siti Azizah", "Audrey Jasmine", "Azkiya Alfinda Nursafa", "Belva Fithriyah Qaf", "Delia Khoerunnisa",
-                "Dinda Malika Khayrana", "Fadilla Yasmin", "Fakhira Husna Ramadhani", "Gendis Gisela Adeline", "Hilda Mutiara Hanifah",
-                "Ligar Nastiti Putri Nalendra", "Maulidya Kusuma Putri", "Mutiara Dewi Fathina", "Nafila Putri Shazia", "Najwa Manna Kholida",
-                "Nasywa Alifa Khoirunnisa", "Nida Nur Hikmah", "Salsabila Azzahra Sofyan", "Seni Amira Sari Mustika", "Sunny Oktaviani Dewi",
-                "Syaqila Kanza Fitria", "Syifa Nurhayati", "Thalita Ufaira Darmawan", "Yayang Apriliani", "Zahida Rosyifa Nadhifa",
-                "Zahira Octavia Suanto"
-            ],
-            "1E": [
-                "Adrian Al Jabar Pratama", "Akmal Lathif Fannan", "Almairi Baar Adlan", "Arshaka Rizky Narendra", "Azzam Saiful Islam",
-                "Dimas Rizki Saputra", "Elvio Muhammad Fadil", "Faeyza Ayman Pratama Setiawan", "Ghaisan Altamis hidayat", "Jauzan Ihsan Putra Muhidin",
-                "M. Hasybi Zain Al Azmi", "Mahad Madani Rafan", "Muammar Zainal Asyikin", "Muhamad Arifin Ilham", "Muhamad Yusup Fadilah",
-                "Muhammad Adly Nurrifqi", "Muhammad Ahsan Fathi Rahayu", "Muhammad Dzaky Muhyiddin", "Muhammad Fahal", "Muhammad Harlan Fadhilah",
-                "Muhammad Ilham Rahmatul Adha", "Muhammad Rafandra Ghossan", "Muhammad Reffan Ramadhan", "Muhammad Rizqi Muharram Al Jabbar", "Muhammad Yunus Arkha Altamis",
-                "Muhammad Zamzam Hamzah Alfarq", "Nafis Nur Aufa", "Nurkharisma Iskhak", "Paundra Davin Bimantara", "Qianu Arsya Rahman",
-                "Rafizal", "Raka Rama Wijaya", "Rasydan Khiar Adnar", "Rifa Fadhil Khairin", "Syafiq Muhammad Fauzan Hammani",
-                "Zidane Ahmad"
-            ],
-            "1F": [
-                "Abdul Latif Al Mughni", "Adrian Nugraha Wijaya", "Alfa Huda", "Arfan Syaputra Panjaitan", "Arsya Rabbany Azwan Putra",
-                "Aufar Fahriza Rinaldi", "Bagus Riady", "Dhena Alfaridzi Suhanda", "Dylan Mohammad El-Ka'bati", "Fadhil Yaqdan Nasrullah",
-                "Fahren Ahmad Azzamy", "Haikal Dzakwan Putra Yulianto", "Kenzie Muhammad Athariz", "M. Farzan Azzamy", "Muhamad Alfan Khoirul Fawwaz",
-                "Muhammad Arga Gerald Prasetya", "Muhammad Fachmi Azzaini", "Muhammad Faisal Syahputra", "Muhammad Fariz Fathurahman", "Muhammad Hazami Ar Rusdi",
-                "Muhammad Iqbal", "Muhammad Raihan Ihsan Kamil", "Muhammad Riko Sri Ramadhan", "Muhammad Sabian Zaheer", "Muhammad Zafhran Aqila Syahroni",
-                "Muhammad Ziyad Arzaq Wafi", "Nevan Azfar Sofyan", "Padlan Agistiyana", "Qiandra Delova Putra Wardaya", "Rafsan Maulana Sutandiana",
-                "Rama Satria Pratama Irawan", "Rasya Atharizz Calief", "Raufa Diera Ryuki", "Wafri Banu Akmal", "Zulfadli Fauzi Abdullah"
-            ],
-            "1G": [
-                "Al Abi Nur Khaizan", "Aldifa Akma Lathif", "Alfaqih Dzakwan Elzaman", "Azka Khoerurrizqi Qutburrifa", "Badai Sandi Setiadi",
-                "Daffa Risky", "Faidzan Ainurachman Ramadhan", "Faiz Fazarly Dinezard", "Fathir Heriansyah Fazrulloh", "Fazri Mufarrizal Hammi Fariz",
-                "Hasan Danish Jafar Sidik", "Ilham Fauzi", "Jaad Firoos Antarsiam Ahmad", "Kevin Kaindra Ardana", "Mikail Naufal Syakhi",
-                "Muhamad Aufar Alfatih", "Muhammad Abdul Hafidz", "Muhammad Abdurrahman Sa'id", "Muhammad Abidzar Al Ghifary", "Muhammad Azka Al-Khairy",
-                "Muhammad Bintang Rizki Kurnia", "Muhammad Milad Alhabsyi", "Restu Azhar Prayoga", "Reza Juliana Jumatulloh", "Rizki Ramadan",
-                "Septian Eka Saputra", "Tc Rizky Syahputra"
-            ],
-            "1H": [
-                "Adnan Adziqri", "Ahmad Multaji Billah", "Alifiandra Adrian Kusuma", "Arka Kiki Hadaya", "Aufa Davi Asy Sakhi",
-                "Azfar Rofik Abdilah", "Bintang Muhammad Rizky", "Dikyan Nursida Nata Wijaya", "Dzaki Naizar Sulaeman", "Fadil Muhammad Ansori",
-                "Fathir Naim Abdani", "Idza Lafie Afrizal", "Indra Kelana Anshori Hariri", "Luthfi Shidqi Alfakhri", "Muhamad Fajar Malik Ar-Rasyid Sutisna",
-                "Muhamad Rizky Fawaz Reza", "Muhammad 'Azmi Khoiruddawam", "Muhammad Fachri Azzaini", "Muhammad Fakhri Putra Husaeni", "Muhammad Ihsan Hasby Irawan",
-                "Muhammad Ilham Zabriansyah", "Muhammad Rafa El Muhyi", "Muhammad Razaqa Faiz Fazar", "Muhammad Virenno Anwarul Santosa", "Muhammad Zaheer Al-Faheem Noerzaman",
-                "Muhammad Zulfikar Antariksa Adi Putra", "Niqris Nasrillah Permana", "Pangeran Endreu Alvino", "Rafael Maulana Akbar", "Rahlil Alkhawarizmy Mansur",
-                "Rangga Rama Wijaya", "Rezky Bintang Prasetia", "Yuan Aldien Adriansyah"
-            ],
-            "2A": [
-                "Afifah Dzil'Izzati Amatullah", "Aisha Nadira", "Aliya Talita Jasmin", "Almira Rahma Kirana", "Athaya Naurah Syahirah",
-                "Ayu Elsi Rizki", "Dea Herlyanti Putri Pratiwi", "Elana Widya Putri", "Faa-Izza Zain Irlyan Hakim", "Haninda Khairatun Hisan",
-                "Indah Siti Fatimah", "Kayla Aprilia Zulkarnaen", "Khoirunnisa", "Marsa Azkia", "Meira Khalishah Tsara",
-                "Mushallina Latifa Al Ghazali", "Najwa Jannaeta Abdulah", "Nasya Athira Fadhilatunnisa", "Nayla Rafanda Musya", "Nazla Nur Sayyida",
-                "Refani Fauzuleha", "Riska Atiyatun Nafisah", "Sri Andini", "Syahwa Syauqila Ar'Ras", "Zhafira Syahla Salsabila"
-            ],
-            "2B": [
-                "Ana Nurhalisa", "Ashri Audiya Afifah", "Athifa Mumtaza Falah", "Aufa Rachmi", "Cahaya Auliya Syifa",
-                "Callysta Azalia Tshasiswoyo", "Fakhira Azmi Mufida", "Ghaisan Fitriyatuz Zahra", "Hafiza Sabrina Akfa", "Kalila Khairunnisa Azahraa",
-                "Khayla Naifa Lathifa", "Nadin Aulia", "Naura Nikita Aulia", "Nazwa Afiqah Azhar", "Nurnaila Srihartati",
-                "Pahmanazwaina Qalesya Azzahra", "Reyna Anggraeni Putri", "Salwa Prasti Rengganis", "Sarah Azahra", "Shafira Maulida El-Karimi",
-                "Silvia Raisya Apriliyan", "Silviana Nazwa Setiawan", "Taqiyya Zen Meizar"
-            ],
-            "2C": [
-                "Andini Shafa Aqilah", "Anita Ayla Zahara", "Aulia Shafira Wulandari", "Ayra", "Deana Khansa Salsabila",
-                "Farrah Ghaniyyah Rhamadani", "Fatmalanika Hanifiah Laksono", "Felisha Fitriyana Sabrina", "Firosya Hilyah Resnano", "Hannan Febriani",
-                "Icha Intan Sari", "Jasmine Azzahra Kusnadi", "Kaila Amira Putri", "Khansaa Audrey Devika", "Kinanti Istiqomah Sadikin",
-                "Mutiara Nasywa Salsabila Nabil", "Naila Hana Ramadhani Hutapea", "Nazwa Zanjabilla Hadi", "Putri Khairunnisa Alfatihani", "Rahmi Sofwatin Niswah",
-                "Ratu Halilah Meila DW", "Sabrina Khairunnisa Arrami", "Siti Fadilah Nur’Azizah", "Sri Nurdiani Naila Shofiah", "Vhiny Nabila Purnama Dewi",
-                "Zahira Maulida Rismanudin"
-            ],
-            "2D": [
-                "Adjeng Ramadhani", "Aika Azhar Sausan", "Aisyah Putri Malahayati Royyani", "Ashfiya Hazimah Gunawan", "Azkya Cahaya Putri",
-                "Berlian Alya Husni'Ah", "Dafiya Fakhrunisa", "Diana Kamilatusyifa", "Fauziyyah Atsiilah", "Hafizhah Putria Nurkholis",
-                "Hafshah Nafeeza Imaniah Putri", "Haura Shaki Ghassani", "Kaylla Nidistira", "Khansa Khairunnisa Ramadhani", "Khoirotunnida",
-                "Maisya Putri", "Nabila Athaya Salsabila", "Naura Auni Ridwan", "Nayla Maulidina Marwah", "Nazwa Luthfiya Mahabbah",
-                "Rania Aulia Putri", "Shaqilla Azkia Nur Kamila", "Siti Fatimah Asy-Syi'bi", "Zahira Jasmine Nafisyah"
-            ],
-            "2E": [
-                "Abdillah Muhammad Ihsan", "Abdul Ghani Al-Fikri", "Ahmad Husaini Wibowo", "Daffa Muhammad Pratama", "Dika Nurzaelani",
-                "Fathian Rosada", "Faza Fauzan Akbar", "Hadi Zubair Ali", "Ihsan Maulana", "Ilham Wijaya Kusuma",
-                "Iqbal Adittya", "Jorfan Moharnika", "Muhamad Fardan Ardiansyah", "Muhamad Fikri Al-Faqih", "Muhamad Naizar Ramadhani",
-                "Muhammad Akbar Alhafizh", "Muhammad Akmal Ginanjar", "Muhammad Faqih Al Baihaqi", "Muhammad Hafiz Kamaludin", "Muhammad Raga Subagja",
-                "Muhammad Reza Sharif Hidayat", "Muhammad Zakwan Al Yasin", "Muhammad Zuhair Al Bahij", "Noah Reevan Sakhiya", "Qaidan Hannan Nurrahman",
-                "Tito Tonia Widyatmoko", "Umron Abdul Hadi", "Yosep Aria Permana", "Zildan Nur Zaman"
-            ],
-            "2F": [
-                "Agan Novalsyah Putra", "Alby Fhiandra Alkhalifi", "Alfian Ramadani", "Darren Muhammad Zain", "Dzikri Jalaludin Syah Alfaidzin",
-                "Faris Nabil Al Mubarak", "Iamzar Maqdish", "Khoirunnugrah", "M.Nazwan Kamil", "Maulana Shohibul Fahmi",
-                "Muhamad Fauzan Jamil", "Muhamad Ramdan", "Muhammad Acquilan Ihtisyam Setiarun", "Muhammad Alfard Zaelani", "Muhammad Altaf Jamadil Mashur",
-                "Muhammad Kamal", "Muhammad Nabil Zavier", "Muhammad Najwan Ilham", "Muhammad Rifai Sumawijaya", "Muhammad Willy Syahputra",
-                "Nizam Febriyan Alfazri", "Rafa Adhiya Ahmad", "Reivano Tirta Pratama", "Taofan Al Farisi Suparman", "Tazky Achmad Thaariq",
-                "Valdis Dzakwan Danendra", "Yusron Kurniawan Alkhotimi", "Zahwan Irhab Fawwaz"
-            ],
-            "2G": [
-                "Aditya Ainu Nurrochman", "Arfan Lazman Kaysan", "Arya Suryadjatmadja", "Azky Badillah Jayakusuma", "Davi Ramdhani",
-                "Diky Malik", "Faeyza Izzati Hermawan", "Galih Reza Pratama", "Irsyad Rakha Raqilla", "Isman Nur'Hakim",
-                "Khaidir Arkan Surya Lesmana", "M. Raihan Luqman Athullah", "Mochamad Ibram Hidayat", "Muhammad Alfan Al Hafiz", "Muhammad Alif Haryo Al Amin",
-                "Muhammad Hamdi Arafat", "Muhammad Noorfaizin Al-Bukhory", "Muhammad Yuda Ramdani", "Muhammad Zami Siddiq", "Najjar Ramadhan",
-                "Rafif Taufiqurohman Haq", "Rehan Ramadhan", "Rizvan Hakim El Jauhari", "Sulthan Baskara Gumilang", "Yazid Al Bustomi",
-                "Zam-Zam Achmad Fauzi"
-            ],
-            "2H": [
-                "Azka Syaban Khairullah", "Azriel Fahrizal Hamzah", "Byan Herza Rafael", "Fawwaz Faturrahman Alhadi", "Ghaisan Sakti Daffa Ashari",
-                "Husna Nuralamsyah", "Luthfi Arfa", "Moh Daffa Alfiansyah Putra Indrawan", "Moh Dzaahir Ramadhan Andriansyah", "Mohammad Kevin Hafid Nur Halim",
-                "Muhamad Fahrel Adya Pramesty", "Muhamad Rizki Firmansyah", "Muhammad Abyan Surahman", "Muhammad Algibran Zahwar Farid", "Muhammad Arsya Sunda Nagara Susanto",
-                "Muhammad Azhar Fahmi", "Muhammad Fadlan Fadhilah Adzikra", "Muhammad Fakhri Fauzan", "Muhammad Naufal Alfarisi", "Rayhan Arrafi",
-                "Rifqi Ammar Fauzi Hanudin", "Riziq Candra Hidayatullah", "Satria Arysta Putra", "Sunda Sudjiwo Hasan Permana", "Taufal Ashil Abdulmuhyi Saputra",
-                "Zaki Fahri Zaidanul Arifin"
-            ],
-            "3A": [
-                "Annisa Nur Fathonah", "Asyila Hanifah", "Azkia Amira Aufasilmi Arrifa'I", "Cahaya Kirana Ramadhani", "Davina Syaira Oktaviani",
-                "Delia Maharani Nasyila Haida", "Elena Putri", "Farida Sholihat", "Karlina Salsabila Khaerunisa", "Lutfiatul Wirda",
-                "Mutiara Kharisa", "Nabila Ashabira", "Nadiva Fauziah Sundari", "Nafia Nadira Zain", "Putri Faza Fauziah",
-                "Rachelia Silviana Assyifa", "Rahma Nur Alviani Sardi", "Renita Nur Hidayah", "Safira Maitsa Anggraeni", "Shabiyah Hasna Fahira",
-                "Shilvana  Khanza Azzahra", "Syabila Najla Sukma Nur Azeeza", "Syahrini Irawan", "Tiara Rahayu Pratiwi", "Zasqiya Nayshila Bilqis"
-            ],
-            "3B": [
-                "Almeida Azfira Sadly", "Ameera Widjayakusuma Fisher", "Dinda Sephia Azahra", "Dwi Nafisa", "Ghaina Maitsa Ayu",
-                "Hasna Zakiya Faridansyah", "Hasri Ainun Althafunnisa", "Hasya Hauratunnaziha", "Indyra Angely Firmansyah", "Kanasya Radinda Andriani",
-                "Kayla Nafeeza Malika", "Meisya Muvianti", "Nabila Khairunnisa", "Naimah Sari Febiyanti", "Nisha Aurellia",
-                "Putri Wulandari", "Qurrotu Aini Yusriyyah", "Regina Auliya Oktavia", "Rihhadah Aisy Anasyalu Ramadhani", "Salsa Fitria Ramadhani",
-                "Syahrini Aulia Pelani", "Tifany Fifa Kananda", "Vina Khairunnisa", "Vira Nur Alya Garniawan Kartawidjaja", "Zivana Almaira Nuryudha"
-            ],
-            "3C": [
-                "Alya Shafiqa Almahdi", "Amelia Febriani", "Azhara Khansa Putri Zalza", "Bilqis Khoerunnisa Komariah", "Davina Putri Dira",
-                "Fairuz Hasna Fatimah", "Juwita Rizkia", "Kanaia Salsyabila Lifia Putri", "Meilika Liviani", "Meisya Syifa An-Nazwa",
-                "Nabila Esa Lestari", "Nadiya Shahwa", "Naffiza Zara Adifa", "Naya Mufliha Kamil", "Nur Prisa Dina",
-                "Qisty Zahrani Hariri", "Rifa Humaira", "Rineke Rindu Putri Syamsudin", "Rizquita Putri Herwina", "Sabila Agustin Gunawan",
-                "Sandra Kirana", "Saski Nurul Azkiya", "Siti Salisatun Niqmah", "Syifa Aulia Bilqis", "Tiara Nadiah Putri",
-                "Widia Khoirunisa"
-            ],
-            "3D": [
-                "Aina Fariza Razkia Putri", "Aira Zahra Firdaus", "Al Egisa Nur Desi Yanti", "Amira Nurul Izzati Wahid", "Aretta Putri Saka Giri Kawiswari",
-                "Diva Silviya", "Filzah Hilwah Azizah", "Hafshah Khairun Nisa", "Meisya Sarah Nurfadillah", "Mikhayla Nikeisya Angelique Rahman",
-                "Missel Fairuz Queena", "Nadya Mustika Putri", "Nasya Shakila Kirania", "Qonita Mei Zerlina", "Ratu Kynan Avrisha",
-                "RD. Alexandria Kanaya Islamey", "Saqila Irdina", "Sayyidah Humaira Hikmatul Kamaliyah", "Syahla Atha Juni Zhahirah", "Siti Qodariyah",
-                "Syarifatul Aghniya", "Tania Rachmalina Mardani", "Vina Ramadhani", "Windi Diyanti Awaludin", "Yetce Sherryna Abriyati Nenre",
-                "Zahirah Addzikra Putrisyah"
-            ],
-            "3E": [
-                "Ajeng Olivia", "Anindita Khairinniswa", "Aqila Asyifa Putri", "Azmina Fatima Zahra", "Bilqiis Salwaa Sukarna Putri",
-                "Cindy Candrawati", "Dinda Permatasari", "Fathma Nailatul Izzah", "Flora Nisrina Eldianty", "Ghaisani Tsabita Zahran",
-                "Hasna Nurul Farzana", "Humaira Putri Vihandra", "Jihan Dwika Khairani", "Kanaya Andita Destari", "Kayyisa Rafifah",
-                "Mega Octaviani", "Mirza Auliya Thahira", "Nadhira Febriyani Putri Sulaeman", "Nurul Maudi Mauludina Suryani", "Paula Haiffa Patmanegara",
-                "Pratami Dina Miggan", "Putri Nurhibatillah", "Qiran Auliya Salma", "Rifda Kalila Sakhi", "Salma Dwi Nurfitriana",
-                "Syelvi Adyanti Syutari"
-            ],
-            "3F": [
-                "Aad Abdul Basith", "Arraffi Dian Ihsandy", "Arsa Azhuardi Vandani", "Arvila Dwi Anugrah", "Billy Ibnu Ardhani",
-                "Caesar Dzaky Mulyadi", "Daffa Alima Putra", "Dimas Robyhurahman Kabir", "Faiz Irsyad Anshari", "Ghusan Gathfan",
-                "Ilham Mulya Agung", "Kenzie Sulangga Behuku", "M. Randhika Al-Fahkry", "Mohammad Abdul Djabbar Al Harits", "Muhamad Arfa Al Qalil",
-                "Muhamad Firdaus Satria Nugraha", "Muhammad Akmal Bahari", "Muhammad Dafa Fahreza", "Muhammad Ikmal Riadussolihin", "Muhammad Zikri Zaenudin",
-                "Nathan Rafiiandra Muzakki", "Radika Raesha Putra", "Rayi Dwi Putra", "Ready Martua Hasibuan", "Rizal Akbar Suherman",
-                "Rizky Fadhil", "Rohmat Raynaldy", "Zidan Muhamad Habib Muslim", "Zidni Ilman Arrizkani"
-            ],
-            "3G": [
-                "Andara Putra", "Argya Putra Risnandar", "Bani Lukman Mulyazmi Susanto", "Fajar Syarief Hidayatullah", "Faza Rahadyan Sidiq",
-                "Hilman Ahmad Muharom", "Ilyas Hadi Kusuma", "Khoirul Azzam Ashidqi", "Luthfi Dwi Irawan", "M Dapa Ruslan",
-                "M. Risqi Pandowo", "M.Zingga Hamzah Ulumuddin", "Mochammad Erghian Aghni Rasyidan", "Much Natsir Fairus Nurman", "Muhammad Alif Farhan",
-                "Muhammad Daffa Almulqi Firdaus", "Muhammad Haikal Azmi", "Muhammad Najmy Tsaqib Annaisabury", "Muhammad Sayyidi Syafiq Fijratulloh", "Nabiel Ahmad Shodiq",
-                "Nanda Juan Pratama", "Naufallatif Ahmad", "Nur Muhammad Davan Alkhaesa", "Prabu Aljabbar Putra Juhana", "Reza Ediz Arfan",
-                "Rivan Saputra", "Satria Dwi Januar F", "Zhavier Muhammad Idrok"
-            ],
-            "3H": [
-                "A Rifky Muhaimin", "Adam Mustanir Hibatullah", "Arsyad Anwar", "Azka Fadillah Jayakusuma", "Daffa Bachdim Nadindra",
-                "Fakhri Aryasatya Rahman", "Fawwaz Alyasir", "Ghaly Fatani Fawaz", "Hafidh Atha Musari", "Hanif Khoiri Ash Shiddiqi",
-                "Iqbal Thoriq Al-Ghoni", "Mochamad Fachri Ediawan", "Muhamad Khoirul Akhbar", "Muhamad Raif Ramadhan", "Muhamad Zidan Awalludin",
-                "Muhammad Danish Amsyar Piliang", "Muhammad Dyaz Wijaksana", "Muhammad Hikam Husni Mubarrok", "Muhammad Syakur Ulwan", "Muhammad Zaidan Ramadhan",
-                "Nova Aris Mulyana", "Rainov Patrialis Sutami", "Sammi Adji Faatih Gardika", "Satria Andika Pratama", "Sayyid Munji Al-Hadi",
-                "Utsman Andhika Mukarom", "Zamzam Arifuzaman Sa'Ad", "Zein Naajil Hurry Ramdhani"
-            ],
-            "3I": [
-                "Aidil Ahza Sakiffa", "Arif Al Hafid", "Arkan Ataya Ramadhan", "Aufa Ripqi Zaidan", "Den Rizik Asyafari",
-                "El Fatih Nur Khoiron", "Farras Zahid Gunawan", "Fauzan Al Bairuni Surya", "Mahesya Chandra Wijaya", "Mochamad Rizki Adhitya Putra",
-                "Muhamad Marwan Hanafi", "Muhamad Nasril Ilham", "Muhammad Azzam Ash Shiddiq", "Muhammad Dimas Syahril Nur Taqwa", "Muhammad Fauzan",
-                "Muhammad Haikal Fathurahman", "Muhammad Naufal Musyaffa", "Muhammad Pray Raja Murtadla Rabany Alhamidi", "Muhammad Rahmat Fajar", "Naufal Raditya Putra",
-                "Raka Aditya Rubiana", "Rifa Dio Arvia Ahmad", "Rizki Naufal Arrafi", "Sami Auliya", "Syamil Sholahuddin Hariz",
-                "Zaidan Khairullah Firmansyah", "Zamzam Risnandi"
-            ],
-            "3J": [
-                "Abyan Zaki Al Ahnaf", "Althaf Farid Mutaqqin", "Arva Pratama Nuzulul Mauludin", "Azka Alvaro Hidayat", "Azka Deyandrika",
-                "Fikri Firman Firdaus", "Habib Rafi Rabbani", "Haris Febriansyah", "Ilham April Rizal", "Maulana Zidan Alfatih",
-                "Muhammad Azka Alfarhaby Rukman", "Muhammad Herlangga Pratama", "Muhammad Hudan Al Faruq", "Muhammad Radif Al Farizi", "Muhammad Ridho Wibowo",
-                "Muhammad Rizqi Fadilah", "Muhammad Ziqri Zayyani", "Nizam Joharudin Putra", "Panji Ikhwan Alkhoir", "Qidham Kholid Edriansyah",
-                "Radi Aditya Labdagati", "Rafa Ramdhani Badri Aziz", "Resya Sanda Sandrian", "Reza Permana Putra", "Rizqy Pratama",
-                "Sabiq Alif Arrasyid Hidayat", "Zian Fadhilah"
-            ],
-            "4A": [
-                "AIRA NURUL ZAHRA", "ANISA SALSABILA FAUZIYAH", "ARUMI NAVITA NURAZIZAH", "AURA INTAN SALSABILA", "AYESHA RAJNI DANICA LIE",
-                "CHAYYIRA NAJLA KYENDA", "FAEEZA ADLINA GHAISANI", "GHINA KHOIRUNNISA", "HAFIYYA AJDA MAZIDAH", "HASNA SHAFAA' NAFISAH",
-                "HASYA RIZKIA NAFIS", "KAILA INTAN KHOIRIYAH", "KEN DARA MUSTIKA RANI", "KHALISA NAJLA FITRIYAH", "KHUMAIRA ADZKIA RASYAID",
-                "MUTIARA SHIFA NURUMI", "NABIILAH RETNO PALUPI", "NAZLA RAISSA ISLAMI", "NIDA ALIMA KHANSA RIYADDI", "NUR AINI MULYANI",
-                "QISYA HAFEEZA RUSLI", "RAHMA AZAHRO RAMADHANI KORLIN", "RAISSA PUTRI NAILAH PURWITA", "RAZITA ABDATISSALAMAH", "SHALLY SYIFA NUR QOLBI",
-                "SIFA AL MAGHFIROH", "SYAFITRI AZ ZAHRA", "VANIA NICOLEN ZABRINA", "ZAHRA AZIZAH ULINNUHA"
-            ],
-            "4B": [
-                "ALMA IKRAMIYA", "ALZETA NAOMI KIRANA", "AMELIA SAADAH NABILA", "AQYLLAH FARRASYAH ZHAFIRA", "AZKA FADIA MUTHI'AH",
-                "CINDI ELMIRA HASHNA", "CITRA SITI NURSALAMAH", "DHIA AMALIA PUTRI WIYONO", "FAYCHA HASNA MAULYNDA", "HANIIFAH SALWAA FAADIYAH",
-                "HAWA SYAKIROH DAWAMATURROHMAH", "JANETA WARATSATU TSANIAH", "KAISHA NUR AISYI NUGRAHA", "KEISHA NAWANGWULAN SUSANTI", "MARZILA NUR AZMINA",
-                "MELSANDIVA GISELA KARAHSYA", "MUTIARA MAHARANI", "NAJWA ELVINNA AYU NAPISHA", "NAYLA ALYNFIRDAUSI", "NAYLATUL AULA",
-                "NAZWA RAYRA KAYLA BILQIS", "NIKA AULIA", "NISRINA NAJLA AULIA", "RADZWA AMIRA BATRISYA GUSAERI", "RAIHANA QANITA ASRI",
-                "RENATA FAHRANIA LUTHFIANI", "RISTA NUR AINI", "SALSABILA PUTRI NANDIYANTI", "SHAFA ALTHA FUNNISSA", "SHILVANI KHAIRUNISA",
-                "YUMNA ATHALLAJATNIKA"
-            ],
-            "4C": [
-                "ALFREEDA SYAFIRA SYAM", "AULIA BILQIS SUDARNO", "AULIA NUR AZIMAH ASHIHAB", "AVIERA NURIL JANNAH", "HASNA SYIFA EDNAWAN",
-                "INDIRA SANDRA SABRINA", "IZZ FAIZIA", "JAUZA NURHASNA", "KARNITA", "LULUL KARIMATUL NAFISAH",
-                "LUTHFIA ZAHRA YUSUF", "MUTIARA AZZAHRA ROHYANA", "NABILA HAMIDA RIDWAN", "NADIA PUTRI HIDAYAT", "NAJWA NURUL MUGNIA",
-                "NAZWA HAIFA MU'MINAH", "PUTRI AZMI ATIKAH", "RESTY KHOIRUNNISA", "RIKA NOVIA WIDI", "RISKA ALFAHREZI",
-                "SAFA NURKAHMILA", "SAKINA ATSRA SYAKIRA", "SHAFA AULIA KAMILA", "SHOLLICHAH ROMDONA ALIMMU ROHMAH", "SYAKHILA ARFA AZ'ZAHRA",
-                "ZAHIRA TSAMROTU SAIDAH", "ZANETA ALIA DEMITRI PERMANA"
-            ],
-            "4D": [
-                "AHMAD ZAKI RAISHAGFIK", "ASFAR AQIL PRAMUDYA", "AZKA MUHAMMAD SURYA", "AZKA ZIA ALHAQ", "BILAL RIZQI NAUFAL",
-                "DAFFA PRATAMA PUTRA WARDAYA", "FAIQ ABIYYU DZAKWAN", "FAUZAN HAMZAH KARSAFMAN", "FAZIL AFZAL NUZAYH", "FIKRI RIZALUL WAFI",
-                "HASHFI RAZAN SYAZANI", "KHAFID GHOZALI", "M FIQRI AL AZMI", "M. AHSANUL QODRI", "M. FAKHIRA RIFFATHA",
-                "M. FAQRUL RIZKY", "MOCH FALDA FADILAH", "MOCH. FAISALUL FUADI", "MOCHAMAD DAFFA AKHTAR FADILA", "MOCHAMAD YUSUF EKA FIRDHAUS",
-                "MOHAMMAD ZIDNY ILMAN AN NAFE", "MU'AMMAR FAIZ ARTHA MANGGALA", "MUHAMAD YUSUP AS SIDIQ", "MUHAMMAD ADAM RAMADHAN", "MUHAMMAD FATHURRAHMAN",
-                "MUHAMMAD IDZHARULHUDA MUTTAQIN", "MUHAMMAD IKHSAN ASH SHIDIQ", "MUHAMMAD RIAN AGUSTIAN", "MUHAMMAD RIZKI MUFIID", "MUHAMMAD WIJDAAN FAUZAAN",
-                "NIZAR MAULANA YUSUF", "RAFLY AZKYA RAMADAN", "RAYHANA FAJAR FAISHALDANA", "RAZAN MUHAMMAD IHSAN", "RAZI MUHAMMAD BAAQIR",
-                "RIDHO NUR ASGAR", "RISKI ALFAHREZA", "SUCHAO CHANDRA IRAWAN", "SYAHDIAN ADIT SAPUTRA"
-            ],
-            "4E": [
-                "ABDULLAH AKRAM ARROYYAN", "ACHMAD FADHIL", "ADITYA FACHRI NUGRAHA", "AHMAD FATHUR NURHAKIM", "AHMAD MUZAKI",
-                "ANTONIO HIDAYAT", "AQIL AKROMI DZIKRAKA", "DWI SUTAN HAKIIM", "FADIL ABDILAH", "FADIL WAL FARIQ",
-                "FAZRIL TAUFIQ NUR HAKIM", "HAIKAL TAMAM MAULANA", "HANIF MAULANA AKBAR", "IHZA ABDUL NASHER ROMADHONI", "IZZEEDDIN MUHAMMAD HASHIM",
-                "KAHFI AHMAD BAIHAQI", "KEANU RAYHAN PUTRA PRATAMA SOPYAN", "KHAIRUL AZAM RAMDANI", "M FAID AKMAL", "M NASYWAN AUFA ALFAIZ",
-                "MOCHAMAD FAQIH HARTONO", "MOCHAMAD RAIHAN BAGJA PUTRA YASIN", "MUGHNI AHMAD FAKHRUDDIN", "MUHAMAD GRAHA MUKTI MANDALA YUDHO", "MUHAMAD RAFFI",
-                "MUHAMMAD AKROM WIGUNA", "MUHAMMAD AZZAM ABDURRAHMAN", "MUHAMMAD DAFA DHIYAULHAQ", "MUHAMMAD FAUZAN ABRAR", "MUHAMMAD SALMAN NABIHA MAARIF",
-                "NAWWAF ZAHRAN HIBBATULLAH", "NAZRAN HARIZ IHZA SUNARYA", "RAFI ADITYA SHIDDIQ", "RAYIKA GIEUNENG PRATIDINA PRADJA", "REHAN HERDIANSYAH",
-                "REVAN DZULFIKAR", "WAHYU MAULID"
-            ],
-            "5A": [
-                "ADHWAA HAMDAH NUGRAHA", "AGNIA SALSABILA", "ALYAA LIDNA RIZKYANA", "AMELIA DWI RAMADHANI", "AQUILLA AXSHA KHEIRADYTA",
-                "ATHIFA LUBNA AZZAHRA", "AYIRIN RAFLIANA", "DELILA DINDA KIRANA", "DEVIANA KANAUMI FITRIZKY", "DEVINA AYU SYAHPUTRI",
-                "DZAKIRA FIRADISA", "HANNA NABILA SRIYANTO", "HASNA FARIH ADIBA", "HAURA SAHDA SALSABILA", "INTAN AZKI FITRIYANI",
-                "JIHAN NURUL SAFITRI", "KEYLA AZMI SAKHI", "KISTIA ANGGRAENI", "MAGHFIRA IZZANI MAULANIA", "MANDA AYU AZZAHRA",
-                "MUTIARA UL HUSNA JANUARI", "NAZHIFA ATHAYA GUNAWAN", "NINDYA NOORRIZQYA", "NUR ALPALAIL", "NUR HANIFAH",
-                "RAISHA ZAHIRA SHOFA", "RAISSA NAIFAH ISAURA AL MUMTAZ", "SALMA ZAKIAH NAFFSY JALALUDIN", "SASKIA PUTRI DITA FAKHIRA", "TALITA SAKHI HERINA",
-                "THALITA KIRANA SAKHI", "WAFI ALFIKHAIRA RAMADHANI", "ZAIRA AURA PUTRI", "ZAZKIA FAJAR MAHARANI"
-            ],
-            "5B": [
-                "ABDULLOH BAGIR", "ADLI MUHAMAD DZAKWAN", "AGUS SUNTANA", "AKMAL MAULANA", "ALFIN FAZA MAULANA",
-                "ASKHABULKAHFI ARHAN RAHARDJO", "AZHARI ALDIANSYAH BEHUKU", "DICKA SATRIA PRATAMA", "DWI SEPTIA RAMADIAN", "HILMY ZAHRAN MUAFA",
-                "KHAIRUL AZZAM", "LASKAR CENDEKIA HUNOWU", "MUHAMMAD ADAM MALIK RAMDHAN ALFARITSI", "MUHAMMAD BARRA MUSYAFA AL GHIFARI", "MUHAMMAD FAQIH AL ANSORI",
-                "MUHAMMAD ILHAM FIRDAUS", "MUHAMMAD MAULUDIN RAHMANSYAH", "MUHAMMAD NAUFAL ALBADII", "MUHAMMAD TARUNA DJAYA", "MUHAMMMAD FAQIH AL MUQODDAM",
-                "MUNJI ARIF RAMADHAN", "RAHMAT ILLAHI LUBIS", "REYHAN HIDAYATULLOH", "SYAH FAWWAZ AL WAFIQ", "SYAHRUL ERIZAL",
-                "SYAWAL MARTUA SAKTI LUBIS", "WILDAN AHMAD NABILAL"
-            ],
-            "5C": [
-                "AISHA ELMIRA PUNGKI ANINDYA", "ALYA SHAFA MAULIDA", "AULIA NURSYIFA SETIADI", "AZZAHRA ALFATIH WIDODO", "AZZAHRA HAIFA YODHA",
-                "DZAKIYAH TALITA SAKHI ZAINAL", "FARISSA HURIYA EL FARADIS", "FATHIA KHAIRUNNISA", "GHEANATHA FIRSTIARANY SANTOSA", "HAIBAH PUTRI KHADIJAH",
-                "JIHAN PUTRI NADIA NURRIZQY", "KAYLA NIRMALA SETYANINGRUM", "NAZILA QURROTA AINI", "NESSYA AZWA ADITHYA", "PUSPITA ADINDA FITRIANI",
-                "REGINA CAHYANI MULYA DEWI", "SAHARA", "SHALFINA FAUZIAH KAMIL", "SHAVA ADJIZA", "SITI KUSUMA WARDHANI",
-                "YASMIN FARHATUL JANNAH", "ZAIRA SYAKIRA"
-            ],
-            "5D": [
-                "ALIYA TSARA", "ALYSA PUTRI ISKANDAR", "ANNISA NURUL FATIMAH", "AVRIZA ZYAHRANI PUTRI LASTIO", "AZMI AURELIA PUTRI APIPAH",
-                "CICHA HANDAYYANI", "DONNA MAULIDAH SANTIKA", "FADIYA PUTRI FIRDANI", "FALISHA ALZENA HILWANI", "GHEFIRA FAIRUZ TSANIA",
-                "GIANA DWI RAHAYU", "HASNA SULTHONAH", "ITSNATUNNISA AL-MUNAWAROH", "KAMILA SALSABILLA NURPADILLAH", "KAYILA PUTRI AYUNINGTIAS RAHAYU",
-                "NADHILA PUTRI DWI APRISAN", "NIDA NAZARIA AZAHRA", "RAISYA KHANSA KAMILA", "REISYIFA ARWA LATIFAH", "SHAHIRA INTAN SARI",
-                "SHELLA PUSPITA DEWI", "SYARIFA HADIYATUL UULA S", "ULIMA VANIA EKAYANDA", "WAFA MUFIDAH"
-            ],
-            "5E": [
-                "A. ZAENI MUBAROK", "ALSABIL RASYAD ADZIKRA", "ANDIKA PRATAMA", "ANDRA MUHAMMAD RAMDHANI", "AZZAN AL FIKRI",
-                "DAFFA ADITYA PURNAMA", "FARIS SALMAN FASYA", "FATHIR ADIRA RAMADHAN", "ISA HAEDAR ROMANSYAH", "KEMAL GILANG MAHENDRA",
-                "KEVIN RINALDI", "LINGGA PRAYOGA", "MAULANA INSAN THABRANI", "MOCH NOOR JABBAR ROOFI", "MUHAMAD NUR PADILAH",
-                "MUHAMMAD ABDURRASYID", "MUHAMMAD ELTAJA AULIA", "MUHAMMAD FIRMANSYAH", "MUHAMMAD RAFA SHAQUILLE", "MUHAMMAD RIZAL AKBAR",
-                "MUHAMMAD RIZKI", "MUHAMMAD RIZKY MAULANA YUSUP", "MUHAMMAD SULTHAN ILMANI", "RACHMAT KHAIRUL IMAM", "RADITYA IZZAN GUMILAR",
-                "RAFANSYAH TIRTA WAHYUDI", "RAMDHI QURRATA A'YUN", "RANGGA PUTRA NOVIYANA", "REYZI DANUAR", "RISHAN MUHAMMAD AKBAR",
-                "SYAIRAZI SUMA", "TYO SEPTHA RAMADHAN", "VICO RAMADHANI", "YASIN FARRAS ALI"
-            ]
+        const studentDatabase = [
+            // KELAS 1A
+            {id: 1, name: "Adeeva Athaleta Charmaraiza", class: "1A"},
+            {id: 2, name: "Afifa Fitiya", class: "1A"},
+            {id: 3, name: "Agnia Halimatu Sa'adah", class: "1A"},
+            {id: 4, name: "Aini Siti Nurlatifah", class: "1A"},
+            {id: 5, name: "Allea Nurri Azzahra", class: "1A"},
+            {id: 6, name: "Aqila Putri Shabir", class: "1A"},
+            {id: 7, name: "Arsyilla Noureen Maulani", class: "1A"},
+            {id: 8, name: "Aufaa Mecca Anata", class: "1A"},
+            {id: 9, name: "Azzahra Malika Sidqia", class: "1A"},
+            {id: 10, name: "Bulan Falesia Ardhelia", class: "1A"},
+            {id: 11, name: "Desi Humaira Syahputri", class: "1A"},
+            {id: 12, name: "Dzihni Vidia Dyno", class: "1A"},
+            {id: 13, name: "Hafiya Dinar", class: "1A"},
+            {id: 14, name: "Jelita Az Zahra", class: "1A"},
+            {id: 15, name: "Kanaya Zahro Adhiyaullami Fadilah", class: "1A"},
+            {id: 16, name: "Kenza Syamela Elfaida", class: "1A"},
+            {id: 17, name: "Lulu Silviana Rahmah", class: "1A"},
+            {id: 18, name: "Meisya Trisha Xena", class: "1A"},
+            {id: 19, name: "Nadhirah Aflah Alesha", class: "1A"},
+            {id: 20, name: "Naura Dea Anindya", class: "1A"},
+            {id: 21, name: "Nayla Husna Aulia", class: "1A"},
+            {id: 22, name: "Nurul Zahra Hidayat", class: "1A"},
+            {id: 23, name: "Raira Pratiwi Jatnika", class: "1A"},
+            {id: 24, name: "Runa Zahratur Raniah", class: "1A"},
+            {id: 25, name: "Salwa Khoirunnisa", class: "1A"},
+            {id: 26, name: "Syaika Naqiyya Bhuwana", class: "1A"},
+            {id: 27, name: "Syifa Fauziah", class: "1A"},
+            {id: 28, name: "Tami Dawa Fuadi Jaelani", class: "1A"},
+            {id: 29, name: "Tazkia Ramadani Sadevi", class: "1A"},
+            {id: 30, name: "Yasmin Izzatul Imtyaz Nur Alam", class: "1A"},
+            {id: 31, name: "Zilan Haura Izdihar", class: "1A"},
+
+            // KELAS 1B
+            {id: 32, name: "Almahira Aisyah Putri", class: "1B"},
+            {id: 33, name: "Alya Yassirni Syarifah", class: "1B"},
+            {id: 34, name: "Alyanuha Khansa Zahramaulida", class: "1B"},
+            {id: 35, name: "Annisa Ramadhani", class: "1B"},
+            {id: 36, name: "Asyifa Husna", class: "1B"},
+            {id: 37, name: "Aulia Sri Rahmawati", class: "1B"},
+            {id: 38, name: "Azzahra Putri Almesya", class: "1B"},
+            {id: 39, name: "Delawati", class: "1B"},
+            {id: 40, name: "Dinar Marchelina Winata", class: "1B"},
+            {id: 41, name: "Elsa Mardiana", class: "1B"},
+            {id: 42, name: "Faiza Ainiya Syawalia", class: "1B"},
+            {id: 43, name: "Fionna Pramuditha Arisanti", class: "1B"},
+            {id: 44, name: "Haura Azkia Ramadhani", class: "1B"},
+            {id: 45, name: "Jihan Nuria Meisyabila", class: "1B"},
+            {id: 46, name: "Khanza Elma Mazea", class: "1B"},
+            {id: 47, name: "Liefya Embun Roudhatunnisya", class: "1B"},
+            {id: 48, name: "Malca Khairana", class: "1B"},
+            {id: 49, name: "Mutiara Anisa Rahim", class: "1B"},
+            {id: 50, name: "Nadzifah Sadrina M Purba", class: "1B"},
+            {id: 51, name: "Naila Rahma Fauziyah Muttaqien", class: "1B"},
+            {id: 52, name: "Nazwa Kirana", class: "1B"},
+            {id: 53, name: "Oriana Zarahusna", class: "1B"},
+            {id: 54, name: "Raisa Qazun", class: "1B"},
+            {id: 55, name: "Rajwa Naura Natisha", class: "1B"},
+            {id: 56, name: "Sabilla Natasya Ardiansyah", class: "1B"},
+            {id: 57, name: "Salwa Nur Khoerunnisa", class: "1B"},
+            {id: 58, name: "Soraya Aisy", class: "1B"},
+            {id: 59, name: "Syaila Devita Nugraha", class: "1B"},
+            {id: 60, name: "Syifa Nur Fadhila", class: "1B"},
+            {id: 61, name: "Zahira Yumna Aufarachma", class: "1B"},
+
+            // KELAS 1C
+            {id: 62, name: "Adinda Putri Kharenina", class: "1C"},
+            {id: 63, name: "Adiva Naimah Salsabila", class: "1C"},
+            {id: 64, name: "Afiqah Nadhira Salsabila", class: "1C"},
+            {id: 65, name: "Aisha Tsabita", class: "1C"},
+            {id: 66, name: "Alfiyya Farra Atthayalishy", class: "1C"},
+            {id: 67, name: "Annisa Amira Azzahra", class: "1C"},
+            {id: 68, name: "Azkia Zahratunnisa Ridaka", class: "1C"},
+            {id: 69, name: "Azzahra Dinda Naira", class: "1C"},
+            {id: 70, name: "Chaitra Rifdah Hamidah", class: "1C"},
+            {id: 71, name: "Fitriyah Andini Febriyanti", class: "1C"},
+            {id: 72, name: "Ghisyari Putri Allena", class: "1C"},
+            {id: 73, name: "Jihan Shafira Maharani", class: "1C"},
+            {id: 74, name: "Kalea Hasna Muttaqin", class: "1C"},
+            {id: 75, name: "Kaleysha Afifah Rahmah", class: "1C"},
+            {id: 76, name: "Kayla Livara Tsaqofa", class: "1C"},
+            {id: 77, name: "Mahersa Qaireen Ellyana", class: "1C"},
+            {id: 78, name: "Maliqa Sakhiraissa Azalia", class: "1C"},
+            {id: 79, name: "Naila Alya Mahfudzah", class: "1C"},
+            {id: 80, name: "Naura Syaza Dzakira", class: "1C"},
+            {id: 81, name: "Naysila Nurfitria Sutisna", class: "1C"},
+            {id: 82, name: "Neisya Aurellia", class: "1C"},
+            {id: 83, name: "Neng Anisa Sri Mulyani", class: "1C"},
+            {id: 84, name: "Queenyna Khansa Az Zahra", class: "1C"},
+            {id: 85, name: "Reisya Azkadina Setiaji", class: "1C"},
+            {id: 86, name: "Sidraturohmah Widaniah", class: "1C"},
+            {id: 87, name: "Silvia Rizki Waluyo", class: "1C"},
+            {id: 88, name: "Siti Fakhira Annaila", class: "1C"},
+            {id: 89, name: "Syabila Alfina Destari", class: "1C"},
+            {id: 90, name: "Syaqila Shaumy Azara", class: "1C"},
+            {id: 91, name: "Tasya Regina Putri", class: "1C"},
+
+            // KELAS 1D
+            {id: 92, name: "Aila Zulfa Fauziah", class: "1D"},
+            {id: 93, name: "Alika Qurratul Aini", class: "1D"},
+            {id: 94, name: "Andinia Ghaida AL-Husna", class: "1D"},
+            {id: 95, name: "Anida Kamilaini Hubba", class: "1D"},
+            {id: 96, name: "Annisa Ratifa Nugraha", class: "1D"},
+            {id: 97, name: "Aqira Siti Azizah", class: "1D"},
+            {id: 98, name: "Audrey Jasmine", class: "1D"},
+            {id: 99, name: "Azkiya Alfinda Nursafa", class: "1D"},
+            {id: 100, name: "Belva Fithriyah Qaf", class: "1D"},
+            {id: 101, name: "Delia Khoerunnisa", class: "1D"},
+            {id: 102, name: "Dinda Malika Khayrana", class: "1D"},
+            {id: 103, name: "Fadilla Yasmin", class: "1D"},
+            {id: 104, name: "Fakhira Husna Ramadhani", class: "1D"},
+            {id: 105, name: "Gendis Gisela Adeline", class: "1D"},
+            {id: 106, name: "Hilda Mutiara Hanifah", class: "1D"},
+            {id: 107, name: "Ligar Nastiti Putri Nalendra", class: "1D"},
+            {id: 108, name: "Maulidya Kusuma Putri", class: "1D"},
+            {id: 109, name: "Mutiara Dewi Fathina", class: "1D"},
+            {id: 110, name: "Nafila Putri Shazia", class: "1D"},
+            {id: 111, name: "Najwa Manna Kholida", class: "1D"},
+            {id: 112, name: "Nasywa Alifa Khoirunnisa 	", class: "1D"},
+            {id: 113, name: "Nida Nur Hikmah", class: "1D"},
+            {id: 114, name: "Salsabila Azzahra Sofyan", class: "1D"},
+            {id: 115, name: "Seni Amira Sari Mustika", class: "1D"},
+            {id: 116, name: "Sunny Oktaviani Dewi", class: "1D"},
+            {id: 117, name: "Syaqila Kanza Fitria", class: "1D"},
+            {id: 118, name: "Syifa Nurhayati", class: "1D"},
+            {id: 119, name: "Thalita Ufaira Darmawan", class: "1D"},
+            {id: 120, name: "Yayang Apriliani", class: "1D"},
+            {id: 121, name: "Zahida Rosyifa Nadhifa", class: "1D"},
+            {id: 122, name: "Zahira Octavia Suanto", class: "1D"},
+
+            // KELAS 1E
+            {id: 123, name: "Adrian Al Jabar Pratama", class: "1E"},
+            {id: 124, name: "Akmal Lathif Fannan", class: "1E"},
+            {id: 125, name: "Almairi Baar Adlan", class: "1E"},
+            {id: 126, name: "Arshaka Rizky Narendra", class: "1E"},
+            {id: 127, name: "Azzam Saiful Islam", class: "1E"},
+            {id: 128, name: "Dimas Rizki Saputra", class: "1E"},
+            {id: 129, name: "Elvio Muhammad Fadil", class: "1E"},
+            {id: 130, name: "Faeyza Ayman Pratama Setiawan", class: "1E"},
+            {id: 131, name: "Ghaisan Altamis hidayat", class: "1E"},
+            {id: 132, name: "Jauzan Ihsan Putra Muhidin", class: "1E"},
+            {id: 133, name: "M. Hasybi Zain Al Azmi", class: "1E"},
+            {id: 134, name: "Mahad Madani Rafan", class: "1E"},
+            {id: 135, name: "Muammar Zainal Asyikin", class: "1E"},
+            {id: 136, name: "Muhamad Arifin Ilham", class: "1E"},
+            {id: 137, name: "Muhamad Yusup Fadilah", class: "1E"},
+            {id: 138, name: "Muhammad Adly Nurrifqi", class: "1E"},
+            {id: 139, name: "Muhammad Ahsan Fathi Rahayu", class: "1E"},
+            {id: 140, name: "Muhammad Dzaky Muhyiddin", class: "1E"},
+            {id: 141, name: "Muhammad Fahal", class: "1E"},
+            {id: 142, name: "Muhammad Harlan Fadhilah", class: "1E"},
+            {id: 143, name: "Muhammad Ilham Rahmatul Adha", class: "1E"},
+            {id: 144, name: "Muhammad Rafandra Ghossan", class: "1E"},
+            {id: 145, name: "Muhammad Reffan Ramadhan", class: "1E"},
+            {id: 146, name: "Muhammad Rizqi Muharram Al Jabbar", class: "1E"},
+            {id: 147, name: "Muhammad Yunus Arkha Altamis", class: "1E"},
+            {id: 148, name: "Muhammad Zamzam Hamzah Alfarq", class: "1E"},
+            {id: 149, name: "Nafis Nur Aufa", class: "1E"},
+            {id: 150, name: "Nurkharisma Iskhak", class: "1E"},
+            {id: 151, name: "Paundra Davin Bimantara", class: "1E"},
+            {id: 152, name: "Qianu Arsya Rahman", class: "1E"},
+            {id: 153, name: "Rafizal", class: "1E"},
+            {id: 154, name: "Raka Rama Wijaya", class: "1E"},
+            {id: 155, name: "Rasydan Khiar Adnar", class: "1E"},
+            {id: 156, name: "Rifa Fadhil Khairin", class: "1E"},
+            {id: 157, name: "Syafiq Muhammad Fauzan Hammani", class: "1E"},
+            {id: 158, name: "Zidane Ahmad", class: "1E"},
+
+            // KELAS 1F
+            {id: 159, name: "Abdul Latif Al Mughni", class: "1F"},
+            {id: 160, name: "Adrian Nugraha Wijaya", class: "1F"},
+            {id: 161, name: "Alfa Huda", class: "1F"},
+            {id: 162, name: "Arfan Syaputra Panjaitan", class: "1F"},
+            {id: 163, name: "Arsya Rabbany Azwan Putra", class: "1F"},
+            {id: 164, name: "Aufar Fahriza Rinaldi", class: "1F"},
+            {id: 165, name: "Bagus Riady", class: "1F"},
+            {id: 166, name: "Dhena Alfaridzi Suhanda", class: "1F"},
+            {id: 167, name: "Dylan Mohammad El-Ka'bati", class: "1F"},
+            {id: 168, name: "Fadhil Yaqdan Nasrullah", class: "1F"},
+            {id: 169, name: "Fahren Ahmad Azzamy", class: "1F"},
+            {id: 170, name: "Haikal Dzakwan Putra Yulianto", class: "1F"},
+            {id: 171, name: "Kenzie Muhammad Athariz", class: "1F"},
+            {id: 172, name: "M. Farzan Azzamy", class: "1F"},
+            {id: 173, name: "Muhamad Alfan Khoirul Fawwaz", class: "1F"},
+            {id: 174, name: "Muhammad Arga Gerald Prasetya", class: "1F"},
+            {id: 175, name: "Muhammad Fachmi Azzaini", class: "1F"},
+            {id: 176, name: "Muhammad Faisal Syahputra", class: "1F"},
+            {id: 177, name: "Muhammad Fariz Fathurahman", class: "1F"},
+            {id: 178, name: "Muhammad Hazami Ar Rusdi", class: "1F"},
+            {id: 179, name: "Muhammad Iqbal", class: "1F"},
+            {id: 180, name: "Muhammad Raihan Ihsan Kamil", class: "1F"},
+            {id: 181, name: "Muhammad Riko Sri Ramadhan", class: "1F"},
+            {id: 182, name: "Muhammad Sabian Zaheer", class: "1F"},
+            {id: 183, name: "Muhammad Zafhran Aqila Syahroni", class: "1F"},
+            {id: 184, name: "Muhammad Ziyad Arzaq Wafi", class: "1F"},
+            {id: 185, name: "Nevan Azfar Sofyan", class: "1F"},
+            {id: 186, name: "Padlan Agistiyana", class: "1F"},
+            {id: 187, name: "Qiandra Delova Putra Wardaya", class: "1F"},
+            {id: 188, name: "Rafsan Maulana Sutandiana", class: "1F"},
+            {id: 189, name: "Rama Satria Pratama Irawan", class: "1F"},
+            {id: 190, name: "Rasya Atharizz Calief", class: "1F"},
+            {id: 191, name: "Raufa Diera Ryuki", class: "1F"},
+            {id: 192, name: "Wafri Banu Akmal", class: "1F"},
+            {id: 193, name: "Zulfadli Fauzi Abdullah", class: "1F"},
+
+            // KELAS 1G
+            {id: 194, name: "Al Abi Nur Khaizan", class: "1G"},
+            {id: 195, name: "Aldifa Akma Lathif", class: "1G"},
+            {id: 196, name: "Alfaqih Dzakwan Elzaman", class: "1G"},
+            {id: 197, name: "Azka Khoerurrizqi Qutburrifa", class: "1G"},
+            {id: 198, name: "Badai Sandi Setiadi", class: "1G"},
+            {id: 199, name: "Daffa Risky", class: "1G"},
+            {id: 200, name: "Faidzan Ainurachman Ramadhan", class: "1G"},
+            {id: 201, name: "Faiz Fazarly Dinezard", class: "1G"},
+            {id: 202, name: "Fathir Heriansyah Fazrulloh", class: "1G"},
+            {id: 203, name: "Fazri Mufarrizal Hammi Fariz", class: "1G"},
+            {id: 204, name: "Hasan Danish Jafar Sidik", class: "1G"},
+            {id: 205, name: "Ilham Fauzi", class: "1G"},
+            {id: 206, name: "Jaad Firoos Antarsiam Ahmad", class: "1G"},
+            {id: 207, name: "Kevin Kaindra Ardana", class: "1G"},
+            {id: 208, name: "Mikail Naufal Syakhi", class: "1G"},
+            {id: 209, name: "Muhamad Aufar Alfatih", class: "1G"},
+            {id: 210, name: "Muhammad Abdul Hafidz", class: "1G"},
+            {id: 211, name: "Muhammad Abdurrahman Sa'id", class: "1G"},
+            {id: 212, name: "Muhammad Abidzar Al Ghifary", class: "1G"},
+            {id: 213, name: "Muhammad Azka Al-Khairy", class: "1G"},
+            {id: 214, name: "Muhammad Bintang Rizki Kurnia", class: "1G"},
+            {id: 215, name: "Muhammad Milad Alhabsyi", class: "1G"},
+            {id: 216, name: "Restu Azhar Prayoga", class: "1G"},
+            {id: 217, name: "Reza Juliana Jumatulloh", class: "1G"},
+            {id: 218, name: "Rizki Ramadan", class: "1G"},
+            {id: 219, name: "Septian Eka Saputra", class: "1G"},
+            {id: 220, name: "Tc Rizky Syahputra", class: "1G"},
+
+            // KELAS 1H
+            {id: 221, name: "Adnan Adziqri", class: "1H"},
+            {id: 222, name: "Ahmad Multaji Billah", class: "1H"},
+            {id: 223, name: "Alifiandra Adrian Kusuma", class: "1H"},
+            {id: 224, name: "Arka Kiki Hadaya", class: "1H"},
+            {id: 225, name: "Aufa Davi Asy Sakhi", class: "1H"},
+            {id: 226, name: "Azfar Rofik Abdilah", class: "1H"},
+            {id: 227, name: "Bintang Muhammad Rizky", class: "1H"},
+            {id: 228, name: "Dikyan Nursida Nata Wijaya", class: "1H"},
+            {id: 229, name: "Dzaki Naizar Sulaeman", class: "1H"},
+            {id: 230, name: "Fadil Muhammad Ansori", class: "1H"},
+            {id: 231, name: "Fathir Naim Abdani", class: "1H"},
+            {id: 232, name: "Idza Lafie Afrizal", class: "1H"},
+            {id: 233, name: "Indra Kelana Anshori Hariri", class: "1H"},
+            {id: 234, name: "Luthfi Shidqi Alfakhri", class: "1H"},
+            {id: 235, name: "Muhamad Fajar Malik Ar-Rasyid Sutisna", class: "1H"},
+            {id: 236, name: "Muhamad Rizky Fawaz Reza", class: "1H"},
+            {id: 237, name: "Muhammad 'Azmi Khoiruddawam", class: "1H"},
+            {id: 238, name: "Muhammad Fachri Azzaini", class: "1H"},
+            {id: 239, name: "Muhammad Fakhri Putra Husaeni", class: "1H"},
+            {id: 240, name: "Muhammad Ihsan Hasby Irawan", class: "1H"},
+            {id: 241, name: "Muhammad Ilham Zabriansyah", class: "1H"},
+            {id: 242, name: "Muhammad Rafa El Muhyi", class: "1H"},
+            {id: 243, name: "Muhammad Razaqa Faiz Fazar", class: "1H"},
+            {id: 244, name: "Muhammad Virenno Anwarul Santosa", class: "1H"},
+            {id: 245, name: "Muhammad Zaheer Al-Faheem Noerzaman", class: "1H"},
+            {id: 246, name: "Muhammad Zulfikar Antariksa Adi Putra", class: "1H"},
+            {id: 247, name: "Niqris Nasrillah Permana", class: "1H"},
+            {id: 248, name: "Pangeran Endreu Alvino", class: "1H"},
+            {id: 249, name: "Rafael Maulana Akbar", class: "1H"},
+            {id: 250, name: "Rahlil Alkhawarizmy Mansur", class: "1H"},
+            {id: 251, name: "Rangga Rama Wijaya", class: "1H"},
+            {id: 252, name: "Rezky Bintang Prasetia", class: "1H"},
+            {id: 253, name: "Yuan Aldien Adriansyah", class: "1H"},
+
+            // KELAS 2A
+            {id: 254, name: "Afifah Dzil'Izzati Amatullah", class: "2A"},
+            {id: 255, name: "Aisha Nadira", class: "2A"},
+            {id: 256, name: "Aliya Talita Jasmin", class: "2A"},
+            {id: 257, name: "Almira Rahma Kirana", class: "2A"},
+            {id: 258, name: "Athaya Naurah Syahirah", class: "2A"},
+            {id: 259, name: "Ayu Elsi Rizki", class: "2A"},
+            {id: 260, name: "Dea Herlyanti Putri Pratiwi", class: "2A"},
+            {id: 261, name: "Elana Widya Putri", class: "2A"},
+            {id: 262, name: "Faa-Izza Zain Irlyan Hakim", class: "2A"},
+            {id: 263, name: "Haninda Khairatun Hisan", class: "2A"},
+            {id: 264, name: "Indah Siti Fatimah", class: "2A"},
+            {id: 265, name: "Kayla Aprilia Zulkarnaen", class: "2A"},
+            {id: 266, name: "Khoirunnisa", class: "2A"},
+            {id: 267, name: "Marsa Azkia", class: "2A"},
+            {id: 268, name: "Meira Khalishah Tsara", class: "2A"},
+            {id: 269, name: "Mushallina Latifa Al Ghazali", class: "2A"},
+            {id: 270, name: "Najwa Jannaeta Abdulah", class: "2A"},
+            {id: 271, name: "Nasya Athira Fadhilatunnisa", class: "2A"},
+            {id: 272, name: "Nayla Rafanda Musya", class: "2A"},
+            {id: 273, name: "Nazla Nur Sayyida", class: "2A"},
+            {id: 274, name: "Refani Fauzuleha", class: "2A"},
+            {id: 275, name: "Riska Atiyatun Nafisah", class: "2A"},
+            {id: 276, name: "Sri Andini", class: "2A"},
+            {id: 277, name: "Syahwa Syauqila Ar'Ras", class: "2A"},
+            {id: 278, name: "Zhafira Syahla Salsabila", class: "2A"},
+
+            // KELAS 2B
+            {id: 279, name: "Ana Nurhalisa", class: "2B"},
+            {id: 280, name: "Ashri Audiya Afifah", class: "2B"},
+            {id: 281, name: "Athifa Mumtaza Falah", class: "2B"},
+            {id: 282, name: "Aufa Rachmi", class: "2B"},
+            {id: 283, name: "Cahaya Auliya Syifa", class: "2B"},
+            {id: 284, name: "Callysta Azalia Tshasiswoyo", class: "2B"},
+            {id: 285, name: "Fakhira Azmi Mufida", class: "2B"},
+            {id: 286, name: "Ghaisan Fitriyatuz Zahra", class: "2B"},
+            {id: 287, name: "Hafiza Sabrina Akfa", class: "2B"},
+            {id: 288, name: "Kalila Khairunnisa Azahraa", class: "2B"},
+            {id: 289, name: "Khayla Naifa Lathifa", class: "2B"},
+            {id: 290, name: "Nadin Aulia", class: "2B"},
+            {id: 291, name: "Naura Nikita Aulia", class: "2B"},
+            {id: 292, name: "Nazwa Afiqah Azhar", class: "2B"},
+            {id: 293, name: "Nurnaila Srihartati", class: "2B"},
+            {id: 294, name: "Pahmanazwaina Qalesya Azzahra", class: "2B"},
+            {id: 295, name: "Reyna Anggraeni Putri", class: "2B"},
+            {id: 296, name: "Salwa Prasti Rengganis", class: "2B"},
+            {id: 297, name: "Sarah Azahra", class: "2B"},
+            {id: 298, name: "Shafira Maulida El-Karimi", class: "2B"},
+            {id: 299, name: "Silvia Raisya Apriliyan", class: "2B"},
+            {id: 300, name: "Silviana Nazwa Setiawan", class: "2B"},
+            {id: 301, name: "Taqiyya Zen Meizar", class: "2B"},
+
+            // KELAS 2C
+            {id: 302, name: "Andini Shafa Aqilah", class: "2C"},
+            {id: 303, name: "Anita Ayla Zahara", class: "2C"},
+            {id: 304, name: "Aulia Shafira Wulandari", class: "2C"},
+            {id: 305, name: "Ayra", class: "2C"},
+            {id: 306, name: "Deana Khansa Salsabila", class: "2C"},
+            {id: 307, name: "Farrah Ghaniyyah Rhamadani", class: "2C"},
+            {id: 308, name: "Fatmalanika Hanifiah Laksono", class: "2C"},
+            {id: 309, name: "Felisha Fitriyana Sabrina", class: "2C"},
+            {id: 310, name: "Firosya Hilyah Resnano", class: "2C"},
+            {id: 311, name: "Hannan Febriani", class: "2C"},
+            {id: 312, name: "Icha Intan Sari", class: "2C"},
+            {id: 313, name: "Jasmine Azzahra Kusnadi", class: "2C"},
+            {id: 314, name: "Kaila Amira Putri", class: "2C"},
+            {id: 315, name: "Khansaa Audrey Devika", class: "2C"},
+            {id: 316, name: "Kinanti Istiqomah Sadikin", class: "2C"},
+            {id: 317, name: "Mutiara Nasywa Salsabila Nabil", class: "2C"},
+            {id: 318, name: "Naila Hana Ramadhani Hutapea", class: "2C"},
+            {id: 319, name: "Nazwa Zanjabilla Hadi", class: "2C"},
+            {id: 320, name: "Putri Khairunnisa Alfatihani", class: "2C"},
+            {id: 321, name: "Rahmi Sofwatin Niswah", class: "2C"},
+            {id: 322, name: "Ratu Halilah Meila DW", class: "2C"},
+            {id: 323, name: "Sabrina Khairunnisa Arrami", class: "2C"},
+            {id: 324, name: "Siti Fadilah Nur’Azizah", class: "2C"},
+            {id: 325, name: "Sri Nurdiani Naila Shofiah", class: "2C"},
+            {id: 326, name: "Vhiny Nabila Purnama Dewi", class: "2C"},
+            {id: 327, name: "Zahira Maulida Rismanudin", class: "2C"},
+
+            // KELAS 2D
+            {id: 328, name: "Adjeng Ramadhani", class: "2D"},
+            {id: 329, name: "Aika Azhar Sausan", class: "2D"},
+            {id: 330, name: "Aisyah Putri Malahayati Royyani", class: "2D"},
+            {id: 331, name: "Ashfiya Hazimah Gunawan", class: "2D"},
+            {id: 332, name: "Azkya Cahaya Putri", class: "2D"},
+            {id: 333, name: "Berlian Alya Husni'Ah", class: "2D"},
+            {id: 334, name: "Dafiya Fakhrunisa", class: "2D"},
+            {id: 335, name: "Diana Kamilatusyifa", class: "2D"},
+            {id: 336, name: "Fauziyyah Atsiilah", class: "2D"},
+            {id: 337, name: "Hafizhah Putria Nurkholis", class: "2D"},
+            {id: 338, name: "Hafshah Nafeeza Imaniah Putri", class: "2D"},
+            {id: 339, name: "Haura Shaki Ghassani", class: "2D"},
+            {id: 340, name: "Kaylla Nidistira", class: "2D"},
+            {id: 341, name: "Khansa Khairunnisa Ramadhani", class: "2D"},
+            {id: 342, name: "Khoirotunnida", class: "2D"},
+            {id: 343, name: "Maisya Putri", class: "2D"},
+            {id: 344, name: "Nabila Athaya Salsabila", class: "2D"},
+            {id: 345, name: "Naura Auni Ridwan", class: "2D"},
+            {id: 346, name: "Nayla Maulidina Marwah", class: "2D"},
+            {id: 347, name: "Nazwa Luthfiya Mahabbah", class: "2D"},
+            {id: 348, name: "Rania Aulia Putri", class: "2D"},
+            {id: 349, name: "Shaqilla Azkia Nur Kamila", class: "2D"},
+            {id: 350, name: "Siti Fatimah Asy-Syi'bi", class: "2D"},
+            {id: 351, name: "Zahira Jasmine Nafisyah", class: "2D"},
+
+            // KELAS 2E
+            {id: 352, name: "Abdillah Muhammad Ihsan", class: "2E"},
+            {id: 353, name: "Abdul Ghani Al-Fikri", class: "2E"},
+            {id: 354, name: "Ahmad Husaini Wibowo", class: "2E"},
+            {id: 355, name: "Daffa Muhammad Pratama", class: "2E"},
+            {id: 356, name: "Dika Nurzaelani", class: "2E"},
+            {id: 357, name: "Fathian Rosada", class: "2E"},
+            {id: 358, name: "Faza Fauzan Akbar", class: "2E"},
+            {id: 359, name: "Hadi Zubair Ali", class: "2E"},
+            {id: 360, name: "Ihsan Maulana", class: "2E"},
+            {id: 361, name: "Ilham Wijaya Kusuma", class: "2E"},
+            {id: 362, name: "Iqbal Adittya", class: "2E"},
+            {id: 363, name: "Jorfan Moharnika", class: "2E"},
+            {id: 364, name: "Muhamad Fardan Ardiansyah", class: "2E"},
+            {id: 365, name: "Muhamad Fikri Al-Faqih", class: "2E"},
+            {id: 366, name: "Muhamad Naizar Ramadhani", class: "2E"},
+            {id: 367, name: "Muhammad Akbar Alhafizh", class: "2E"},
+            {id: 368, name: "Muhammad Akmal Ginanjar", class: "2E"},
+            {id: 369, name: "Muhammad Faqih Al Baihaqi", class: "2E"},
+            {id: 370, name: "Muhammad Hafiz Kamaludin", class: "2E"},
+            {id: 371, name: "Muhammad Raga Subagja", class: "2E"},
+            {id: 372, name: "Muhammad Reza Sharif Hidayat", class: "2E"},
+            {id: 373, name: "Muhammad Zakwan Al Yasin", class: "2E"},
+            {id: 374, name: "Muhammad Zuhair Al Bahij", class: "2E"},
+            {id: 375, name: "Noah Reevan Sakhiya", class: "2E"},
+            {id: 376, name: "Qaidan Hannan Nurrahman", class: "2E"},
+            {id: 377, name: "Tito Tonia Widyatmoko", class: "2E"},
+            {id: 378, name: "Umron Abdul Hadi", class: "2E"},
+            {id: 379, name: "Yosep Aria Permana", class: "2E"},
+            {id: 380, name: "Zildan Nur Zaman", class: "2E"},
+
+            // KELAS 2F
+            {id: 381, name: "Agan Novalsyah Putra", class: "2F"},
+            {id: 382, name: "Alby Fhiandra Alkhalifi", class: "2F"},
+            {id: 383, name: "Alfian Ramadani", class: "2F"},
+            {id: 384, name: "Darren Muhammad Zain", class: "2F"},
+            {id: 385, name: "Dzikri Jalaludin Syah Alfaidzin", class: "2F"},
+            {id: 386, name: "Faris Nabil Al Mubarak", class: "2F"},
+            {id: 387, name: "Iamzar Maqdish", class: "2F"},
+            {id: 388, name: "Khoirunnugrah", class: "2F"},
+            {id: 389, name: "M.Nazwan Kamil", class: "2F"},
+            {id: 390, name: "Maulana Shohibul Fahmi", class: "2F"},
+            {id: 391, name: "Muhamad Fauzan Jamil", class: "2F"},
+            {id: 392, name: "Muhamad Ramdan", class: "2F"},
+            {id: 393, name: "Muhammad Acquilan Ihtisyam Setiarun", class: "2F"},
+            {id: 394, name: "Muhammad Alfard Zaelani", class: "2F"},
+            {id: 395, name: "Muhammad Altaf Jamadil Mashur", class: "2F"},
+            {id: 396, name: "Muhammad Kamal", class: "2F"},
+            {id: 397, name: "Muhammad Nabil Zavier", class: "2F"},
+            {id: 398, name: "Muhammad Najwan Ilham", class: "2F"},
+            {id: 399, name: "Muhammad Rifai Sumawijaya", class: "2F"},
+            {id: 400, name: "Muhammad Willy Syahputra", class: "2F"},
+            {id: 401, name: "Nizam Febriyan Alfazri", class: "2F"},
+            {id: 402, name: "Rafa Adhiya Ahmad", class: "2F"},
+            {id: 403, name: "Reivano Tirta Pratama", class: "2F"},
+            {id: 404, name: "Taofan Al Farisi Suparman", class: "2F"},
+            {id: 405, name: "Tazky Achmad Thaariq", class: "2F"},
+            {id: 406, name: "Valdis Dzakwan Danendra", class: "2F"},
+            {id: 407, name: "Yusron Kurniawan Alkhotimi", class: "2F"},
+            {id: 408, name: "Zahwan Irhab Fawwaz", class: "2F"},
+
+            // KELAS 2G
+            {id: 409, name: "Aditya Ainu Nurrochman", class: "2G"},
+            {id: 410, name: "Arfan Lazman Kaysan", class: "2G"},
+            {id: 411, name: "Arya Suryadjatmadja", class: "2G"},
+            {id: 412, name: "Azky Badillah Jayakusuma", class: "2G"},
+            {id: 413, name: "Davi Ramdhani", class: "2G"},
+            {id: 414, name: "Diky Malik", class: "2G"},
+            {id: 415, name: "Faeyza Izzati Hermawan", class: "2G"},
+            {id: 416, name: "Galih Reza Pratama", class: "2G"},
+            {id: 417, name: "Irsyad Rakha Raqilla", class: "2G"},
+            {id: 418, name: "Isman Nur'Hakim", class: "2G"},
+            {id: 419, name: "Khaidir Arkan Surya Lesmana", class: "2G"},
+            {id: 420, name: "M. Raihan Luqman Athullah", class: "2G"},
+            {id: 421, name: "Mochamad Ibram Hidayat", class: "2G"},
+            {id: 422, name: "Muhammad Alfan Al Hafiz", class: "2G"},
+            {id: 423, name: "Muhammad Alif Haryo Al Amin", class: "2G"},
+            {id: 424, name: "Muhammad Hamdi Arafat", class: "2G"},
+            {id: 425, name: "Muhammad Noorfaizin Al-Bukhory", class: "2G"},
+            {id: 426, name: "Muhammad Yuda Ramdani", class: "2G"},
+            {id: 427, name: "Muhammad Zami Siddiq", class: "2G"},
+            {id: 428, name: "Najjar Ramadhan", class: "2G"},
+            {id: 429, name: "Rafif Taufiqurohman Haq", class: "2G"},
+            {id: 430, name: "Rehan Ramadhan", class: "2G"},
+            {id: 431, name: "Rizvan Hakim El Jauhari", class: "2G"},
+            {id: 432, name: "Sulthan Baskara Gumilang", class: "2G"},
+            {id: 433, name: "Yazid Al Bustomi", class: "2G"},
+            {id: 434, name: "Zam-Zam Achmad Fauzi", class: "2G"},
+
+            // KELAS 2H
+            {id: 435, name: "Azka Syaban Khairullah", class: "2H"},
+            {id: 436, name: "Azriel Fahrizal Hamzah", class: "2H"},
+            {id: 437, name: "Byan Herza Rafael", class: "2H"},
+            {id: 438, name: "Fawwaz Faturrahman Alhadi", class: "2H"},
+            {id: 439, name: "Ghaisan Sakti Daffa Ashari", class: "2H"},
+            {id: 440, name: "Husna Nuralamsyah", class: "2H"},
+            {id: 441, name: "Luthfi Arfa", class: "2H"},
+            {id: 442, name: "Moh Daffa Alfiansyah Putra Indrawan", class: "2H"},
+            {id: 443, name: "Moh Dzaahir Ramadhan Andriansyah", class: "2H"},
+            {id: 444, name: "Mohammad Kevin Hafid Nur Halim", class: "2H"},
+            {id: 445, name: "Muhamad Fahrel Adya Pramesty", class: "2H"},
+            {id: 446, name: "Muhamad Rizki Firmansyah", class: "2H"},
+            {id: 447, name: "Muhammad Abyan Surahman", class: "2H"},
+            {id: 448, name: "Muhammad Algibran Zahwar Farid", class: "2H"},
+            {id: 449, name: "Muhammad Arsya Sunda Nagara Susanto", class: "2H"},
+            {id: 450, name: "Muhammad Azhar Fahmi", class: "2H"},
+            {id: 451, name: "Muhammad Fadlan Fadhilah Adzikra", class: "2H"},
+            {id: 452, name: "Muhammad Fakhri Fauzan", class: "2H"},
+            {id: 453, name: "Muhammad Naufal Alfarisi", class: "2H"},
+            {id: 454, name: "Rayhan Arrafi", class: "2H"},
+            {id: 455, name: "Rifqi Ammar Fauzi Hanudin", class: "2H"},
+            {id: 456, name: "Riziq Candra Hidayatullah", class: "2H"},
+            {id: 457, name: "Satria Arysta Putra", class: "2H"},
+            {id: 458, name: "Sunda Sudjiwo Hasan Permana", class: "2H"},
+            {id: 459, name: "Taufal Ashil Abdulmuhyi Saputra", class: "2H"},
+            {id: 460, name: "Zaki Fahri Zaidanul Arifin", class: "2H"},
+
+            // KELAS 3A
+            {id: 461, name: "Annisa Nur Fathonah", class: "3A"},
+            {id: 462, name: "Asyila Hanifah", class: "3A"},
+            {id: 463, name: "Azkia Amira Aufasilmi Arrifa'I", class: "3A"},
+            {id: 464, name: "Cahaya Kirana Ramadhani", class: "3A"},
+            {id: 465, name: "Davina Syaira Oktaviani", class: "3A"},
+            {id: 466, name: "Delia Maharani Nasyila Haida", class: "3A"},
+            {id: 467, name: "Elena Putri", class: "3A"},
+            {id: 468, name: "Farida Sholihat", class: "3A"},
+            {id: 469, name: "Karlina Salsabila Khaerunisa", class: "3A"},
+            {id: 470, name: "Lutfiatul Wirda", class: "3A"},
+            {id: 471, name: "Mutiara Kharisa", class: "3A"},
+            {id: 472, name: "Nabila Ashabira", class: "3A"},
+            {id: 473, name: "Nadiva Fauziah Sundari", class: "3A"},
+            {id: 474, name: "Nafia Nadira Zain", class: "3A"},
+            {id: 475, name: "Putri Faza Fauziah", class: "3A"},
+            {id: 476, name: "Rachelia Silviana Assyifa", class: "3A"},
+            {id: 477, name: "Rahma Nur Alviani Sardi", class: "3A"},
+            {id: 478, name: "Renita Nur Hidayah", class: "3A"},
+            {id: 479, name: "Safira Maitsa Anggraeni", class: "3A"},
+            {id: 480, name: "Shabiyah Hasna Fahira", class: "3A"},
+            {id: 481, name: "Shilvana  Khanza Azzahra", class: "3A"},
+            {id: 482, name: "Syabila Najla Sukma Nur Azeeza", class: "3A"},
+            {id: 483, name: "Syahrini Irawan", class: "3A"},
+            {id: 484, name: "Tiara Rahayu Pratiwi", class: "3A"},
+            {id: 485, name: "Zasqiya Nayshila Bilqis", class: "3A"},
+
+            // KELAS 3B
+            {id: 486, name: "Almeida Azfira Sadly", class: "3B"},
+            {id: 487, name: "Ameera Widjayakusuma Fisher", class: "3B"},
+            {id: 488, name: "Dinda Sephia Azahra", class: "3B"},
+            {id: 489, name: "Dwi Nafisa", class: "3B"},
+            {id: 490, name: "Ghaina Maitsa Ayu", class: "3B"},
+            {id: 491, name: "Hasna Zakiya Faridansyah", class: "3B"},
+            {id: 492, name: "Hasri Ainun Althafunnisa", class: "3B"},
+            {id: 493, name: "Hasya Hauratunnaziha", class: "3B"},
+            {id: 494, name: "Indyra Angely Firmansyah", class: "3B"},
+            {id: 495, name: "Kanasya Radinda Andriani", class: "3B"},
+            {id: 496, name: "Kayla Nafeeza Malika", class: "3B"},
+            {id: 497, name: "Meisya Muvianti", class: "3B"},
+            {id: 498, name: "Nabila Khairunnisa", class: "3B"},
+            {id: 499, name: "Naimah Sari Febiyanti", class: "3B"},
+            {id: 500, name: "Nisha Aurellia", class: "3B"},
+            {id: 501, name: "Putri Wulandari", class: "3B"},
+            {id: 502, name: "Qurrotu Aini Yusriyyah", class: "3B"},
+            {id: 503, name: "Regina Auliya Oktavia", class: "3B"},
+            {id: 504, name: "Rihhadah Aisy Anasyalu Ramadhani", class: "3B"},
+            {id: 505, name: "Salsa Fitria Ramadhani", class: "3B"},
+            {id: 506, name: "Syahrini Aulia Pelani", class: "3B"},
+            {id: 507, name: "Tifany Fifa Kananda", class: "3B"},
+            {id: 508, name: "Vina Khairunnisa", class: "3B"},
+            {id: 509, name: "Vira Nur Alya Garniawan Kartawidjaja", class: "3B"},
+            {id: 510, name: "Zivana Almaira Nuryudha", class: "3B"},
+
+            // KELAS 3C
+            {id: 511, name: "Alya Shafiqa Almahdi", class: "3C"},
+            {id: 512, name: "Amelia Febriani", class: "3C"},
+            {id: 513, name: "Azhara Khansa Putri Zalza", class: "3C"},
+            {id: 514, name: "Bilqis Khoerunnisa Komariah", class: "3C"},
+            {id: 515, name: "Davina Putri Dira", class: "3C"},
+            {id: 516, name: "Fairuz Hasna Fatimah", class: "3C"},
+            {id: 517, name: "Juwita Rizkia", class: "3C"},
+            {id: 518, name: "Kanaia Salsyabila Lifia Putri", class: "3C"},
+            {id: 519, name: "Meilika Liviani", class: "3C"},
+            {id: 520, name: "Meisya Syifa An-Nazwa", class: "3C"},
+            {id: 521, name: "Nabila Esa Lestari", class: "3C"},
+            {id: 522, name: "Nadiya Shahwa", class: "3C"},
+            {id: 523, name: "Naffiza Zara Adifa", class: "3C"},
+            {id: 524, name: "Naya Mufliha Kamil", class: "3C"},
+            {id: 525, name: "Nur Prisa Dina", class: "3C"},
+            {id: 526, name: "Qisty Zahrani Hariri", class: "3C"},
+            {id: 527, name: "Rifa Humaira", class: "3C"},
+            {id: 528, name: "Rineke Rindu Putri Syamsudin", class: "3C"},
+            {id: 529, name: "Rizquita Putri Herwina", class: "3C"},
+            {id: 530, name: "Sabila Agustin Gunawan", class: "3C"},
+            {id: 531, name: "Sandra Kirana", class: "3C"},
+            {id: 532, name: "Saski Nurul Azkiya", class: "3C"},
+            {id: 533, name: "Siti Salisatun Niqmah", class: "3C"},
+            {id: 534, name: "Syifa Aulia Bilqis", class: "3C"},
+            {id: 535, name: "Tiara Nadiah Putri", class: "3C"},
+            {id: 536, name: "Widia Khoirunisa", class: "3C"},
+
+            // KELAS 3D
+            {id: 537, name: "Aina Fariza Razkia Putri", class: "3D"},
+            {id: 538, name: "Aira Zahra Firdaus", class: "3D"},
+            {id: 539, name: "Al Egisa Nur Desi Yanti", class: "3D"},
+            {id: 540, name: "Amira Nurul Izzati Wahid", class: "3D"},
+            {id: 541, name: "Aretta Putri Saka Giri Kawiswari", class: "3D"},
+            {id: 542, name: "Diva Silviya", class: "3D"},
+            {id: 543, name: "Filzah Hilwah Azizah", class: "3D"},
+            {id: 544, name: "Hafshah Khairun Nisa", class: "3D"},
+            {id: 545, name: "Meisya Sarah Nurfadillah", class: "3D"},
+            {id: 546, name: "Mikhayla Nikeisya Angelique Rahman", class: "3D"},
+            {id: 547, name: "Missel Fairuz Queena", class: "3D"},
+            {id: 548, name: "Nadya Mustika Putri", class: "3D"},
+            {id: 549, name: "Nasya Shakila Kirania", class: "3D"},
+            {id: 550, name: "Qonita Mei Zerlina", class: "3D"},
+            {id: 551, name: "Ratu Kynan Avrisha", class: "3D"},
+            {id: 552, name: "RD. Alexandria Kanaya Islamey", class: "3D"},
+            {id: 553, name: "Saqila Irdina", class: "3D"},
+            {id: 554, name: "Sayyidah Humaira Hikmatul Kamaliyah", class: "3D"},
+            {id: 555, name: "Syahla Atha Juni Zhahirah", class: "3D"},
+            {id: 556, name: "Siti Qodariyah", class: "3D"},
+            {id: 557, name: "Syarifatul Aghniya", class: "3D"},
+            {id: 558, name: "Tania Rachmalina Mardani", class: "3D"},
+            {id: 559, name: "Vina Ramadhani", class: "3D"},
+            {id: 560, name: "Windi Diyanti Awaludin", class: "3D"},
+            {id: 561, name: "Yetce Sherryna Abriyati Nenre", class: "3D"},
+            {id: 562, name: "Zahirah Addzikra Putrisyah", class: "3D"},
+
+            // KELAS 3E
+            {id: 563, name: "Ajeng Olivia", class: "3E"},
+            {id: 564, name: "Anindita Khairinniswa", class: "3E"},
+            {id: 565, name: "Aqila Asyifa Putri", class: "3E"},
+            {id: 566, name: "Azmina Fatima Zahra", class: "3E"},
+            {id: 567, name: "Bilqiis Salwaa Sukarna Putri", class: "3E"},
+            {id: 568, name: "Cindy Candrawati", class: "3E"},
+            {id: 569, name: "Dinda Permatasari", class: "3E"},
+            {id: 570, name: "Fathma Nailatul Izzah", class: "3E"},
+            {id: 571, name: "Flora Nisrina Eldianty", class: "3E"},
+            {id: 572, name: "Ghaisani Tsabita Zahran", class: "3E"},
+            {id: 573, name: "Hasna Nurul Farzana", class: "3E"},
+            {id: 574, name: "Humaira Putri Vihandra", class: "3E"},
+            {id: 575, name: "Jihan Dwika Khairani", class: "3E"},
+            {id: 576, name: "Kanaya Andita Destari", class: "3E"},
+            {id: 577, name: "Kayyisa Rafifah", class: "3E"},
+            {id: 578, name: "Mega Octaviani", class: "3E"},
+            {id: 579, name: "Mirza Auliya Thahira", class: "3E"},
+            {id: 580, name: "Nadhira Febriyani Putri Sulaeman", class: "3E"},
+            {id: 581, name: "Nurul Maudi Mauludina Suryani", class: "3E"},
+            {id: 582, name: "Paula Haiffa Patmanegara", class: "3E"},
+            {id: 583, name: "Pratami Dina Miggan", class: "3E"},
+            {id: 584, name: "Putri Nurhibatillah", class: "3E"},
+            {id: 585, name: "Qiran Auliya Salma", class: "3E"},
+            {id: 586, name: "Rifda Kalila Sakhi", class: "3E"},
+            {id: 587, name: "Salma Dwi Nurfitriana", class: "3E"},
+            {id: 588, name: "Syelvi Adyanti Syutari", class: "3E"},
+
+            // KELAS 3F
+            {id: 589, name: "Aad Abdul Basith", class: "3F"},
+            {id: 590, name: "Arraffi Dian Ihsandy", class: "3F"},
+            {id: 591, name: "Arsa Azhuardi Vandani", class: "3F"},
+            {id: 592, name: "Arvila Dwi Anugrah", class: "3F"},
+            {id: 593, name: "Billy Ibnu Ardhani", class: "3F"},
+            {id: 594, name: "Caesar Dzaky Mulyadi", class: "3F"},
+            {id: 595, name: "Daffa Alima Putra", class: "3F"},
+            {id: 596, name: "Dimas Robyhurahman Kabir", class: "3F"},
+            {id: 597, name: "Faiz Irsyad Anshari", class: "3F"},
+            {id: 598, name: "Ghusan Gathfan", class: "3F"},
+            {id: 599, name: "Ilham Mulya Agung", class: "3F"},
+            {id: 600, name: "Kenzie Sulangga Behuku", class: "3F"},
+            {id: 601, name: "M. Randhika Al-Fahkry", class: "3F"},
+            {id: 602, name: "Mohammad Abdul Djabbar Al Harits", class: "3F"},
+            {id: 603, name: "Muhamad Arfa Al Qalil", class: "3F"},
+            {id: 604, name: "Muhamad Firdaus Satria Nugraha", class: "3F"},
+            {id: 605, name: "Muhammad Akmal Bahari", class: "3F"},
+            {id: 606, name: "Muhammad Dafa Fahreza", class: "3F"},
+            {id: 607, name: "Muhammad Ikmal Riadussolihin", class: "3F"},
+            {id: 608, name: "Muhammad Zikri Zaenudin", class: "3F"},
+            {id: 609, name: "Nathan Rafiiandra Muzakki", class: "3F"},
+            {id: 610, name: "Radika Raesha Putra", class: "3F"},
+            {id: 611, name: "Rayi Dwi Putra", class: "3F"},
+            {id: 612, name: "Ready Martua Hasibuan", class: "3F"},
+            {id: 613, name: "Rizal Akbar Suherman", class: "3F"},
+            {id: 614, name: "Rizky Fadhil", class: "3F"},
+            {id: 615, name: "Rohmat Raynaldy", class: "3F"},
+            {id: 616, name: "Zidan Muhamad Habib Muslim", class: "3F"},
+            {id: 617, name: "Zidni Ilman Arrizkani", class: "3F"},
+
+            // KELAS 3G
+            {id: 618, name: "Andara Putra", class: "3G"},
+            {id: 619, name: "Argya Putra Risnandar", class: "3G"},
+            {id: 620, name: "Bani Lukman Mulyazmi Susanto", class: "3G"},
+            {id: 621, name: "Fajar Syarief Hidayatullah", class: "3G"},
+            {id: 622, name: "Faza Rahadyan Sidiq", class: "3G"},
+            {id: 623, name: "Hilman Ahmad Muharom", class: "3G"},
+            {id: 624, name: "Ilyas Hadi Kusuma", class: "3G"},
+            {id: 625, name: "Khoirul Azzam Ashidqi", class: "3G"},
+            {id: 626, name: "Luthfi Dwi Irawan", class: "3G"},
+            {id: 627, name: "M Dapa Ruslan", class: "3G"},
+            {id: 628, name: "M. Risqi Pandowo", class: "3G"},
+            {id: 629, name: "M.Zingga Hamzah Ulumuddin", class: "3G"},
+            {id: 630, name: "Mochammad Erghian Aghni Rasyidan", class: "3G"},
+            {id: 631, name: "Much Natsir Fairus Nurman", class: "3G"},
+            {id: 632, name: "Muhammad Alif Farhan", class: "3G"},
+            {id: 633, name: "Muhammad Daffa Almulqi Firdaus", class: "3G"},
+            {id: 634, name: "Muhammad Haikal Azmi", class: "3G"},
+            {id: 635, name: "Muhammad Najmy Tsaqib Annaisabury", class: "3G"},
+            {id: 636, name: "Muhammad Sayyidi Syafiq Fijratulloh", class: "3G"},
+            {id: 637, name: "Nabiel Ahmad Shodiq", class: "3G"},
+            {id: 638, name: "Nanda Juan Pratama", class: "3G"},
+            {id: 639, name: "Naufallatif Ahmad", class: "3G"},
+            {id: 640, name: "Nur Muhammad Davan Alkhaesa", class: "3G"},
+            {id: 641, name: "Prabu Aljabbar Putra Juhana", class: "3G"},
+            {id: 642, name: "Reza Ediz Arfan", class: "3G"},
+            {id: 643, name: "Rivan Saputra", class: "3G"},
+            {id: 644, name: "Satria Dwi Januar F", class: "3G"},
+            {id: 645, name: "Zhavier Muhammad Idrok", class: "3G"},
+
+            // KELAS 3H
+            {id: 646, name: "A Rifky Muhaimin", class: "3H"},
+            {id: 647, name: "Adam Mustanir Hibatullah", class: "3H"},
+            {id: 648, name: "Arsyad Anwar", class: "3H"},
+            {id: 649, name: "Azka Fadillah Jayakusuma", class: "3H"},
+            {id: 650, name: "Daffa Bachdim Nadindra", class: "3H"},
+            {id: 651, name: "Fakhri Aryasatya Rahman", class: "3H"},
+            {id: 652, name: "Fawwaz Alyasir", class: "3H"},
+            {id: 653, name: "Ghaly Fatani Fawaz", class: "3H"},
+            {id: 654, name: "Hafidh Atha Musari", class: "3H"},
+            {id: 655, name: "Hanif Khoiri Ash Shiddiqi", class: "3H"},
+            {id: 656, name: "Iqbal Thoriq Al-Ghoni", class: "3H"},
+            {id: 657, name: "Mochamad Fachri Ediawan", class: "3H"},
+            {id: 658, name: "Muhamad Khoirul Akhbar", class: "3H"},
+            {id: 659, name: "Muhamad Raif Ramadhan", class: "3H"},
+            {id: 660, name: "Muhamad Zidan Awalludin", class: "3H"},
+            {id: 661, name: "Muhammad Danish Amsyar Piliang", class: "3H"},
+            {id: 662, name: "Muhammad Dyaz Wijaksana", class: "3H"},
+            {id: 663, name: "Muhammad Hikam Husni Mubarrok", class: "3H"},
+            {id: 664, name: "Muhammad Syakur Ulwan", class: "3H"},
+            {id: 665, name: "Muhammad Zaidan Ramadhan", class: "3H"},
+            {id: 666, name: "Nova Aris Mulyana", class: "3H"},
+            {id: 667, name: "Rainov Patrialis Sutami", class: "3H"},
+            {id: 668, name: "Sammi Adji Faatih Gardika", class: "3H"},
+            {id: 669, name: "Satria Andika Pratama", class: "3H"},
+            {id: 670, name: "Sayyid Munji Al-Hadi", class: "3H"},
+            {id: 671, name: "Utsman Andhika Mukarom", class: "3H"},
+            {id: 672, name: "Zamzam Arifuzaman Sa'Ad", class: "3H"},
+            {id: 673, name: "Zein Naajil Hurry Ramdhani", class: "3H"},
+
+            // KELAS 3I
+            {id: 674, name: "Aidil Ahza Sakiffa", class: "3I"},
+            {id: 675, name: "Arif Al Hafid", class: "3I"},
+            {id: 676, name: "Arkan Ataya Ramadhan", class: "3I"},
+            {id: 677, name: "Aufa Ripqi Zaidan", class: "3I"},
+            {id: 678, name: "Den Rizik Asyafari", class: "3I"},
+            {id: 679, name: "El Fatih Nur Khoiron", class: "3I"},
+            {id: 680, name: "Farras Zahid Gunawan", class: "3I"},
+            {id: 681, name: "Fauzan Al Bairuni Surya", class: "3I"},
+            {id: 682, name: "Mahesya Chandra Wijaya", class: "3I"},
+            {id: 683, name: "Mochamad Rizki Adhitya Putra", class: "3I"},
+            {id: 684, name: "Muhamad Marwan Hanafi", class: "3I"},
+            {id: 685, name: "Muhamad Nasril Ilham", class: "3I"},
+            {id: 686, name: "Muhammad Azzam Ash Shiddiq", class: "3I"},
+            {id: 687, name: "Muhammad Dimas Syahril Nur Taqwa", class: "3I"},
+            {id: 688, name: "Muhammad Fauzan", class: "3I"},
+            {id: 689, name: "Muhammad Haikal Fathurahman", class: "3I"},
+            {id: 690, name: "Muhammad Naufal Musyaffa", class: "3I"},
+            {id: 691, name: "Muhammad Pray Raja Murtadla Rabany Alhamidi", class: "3I"},
+            {id: 692, name: "Muhammad Rahmat Fajar", class: "3I"},
+            {id: 693, name: "Naufal Raditya Putra", class: "3I"},
+            {id: 694, name: "Raka Aditya Rubiana", class: "3I"},
+            {id: 695, name: "Rifa Dio Arvia Ahmad", class: "3I"},
+            {id: 696, name: "Rizki Naufal Arrafi", class: "3I"},
+            {id: 697, name: "Sami Auliya", class: "3I"},
+            {id: 698, name: "Syamil Sholahuddin Hariz", class: "3I"},
+            {id: 699, name: "Zaidan Khairullah Firmansyah", class: "3I"},
+            {id: 700, name: "Zamzam Risnandi", class: "3I"},
+
+            // KELAS 3J
+            {id: 701, name: "Abyan Zaki Al Ahnaf", class: "3J"},
+            {id: 702, name: "Althaf Farid Mutaqqin", class: "3J"},
+            {id: 703, name: "Arva Pratama Nuzulul Mauludin", class: "3J"},
+            {id: 704, name: "Azka Alvaro Hidayat", class: "3J"},
+            {id: 705, name: "Azka Deyandrika", class: "3J"},
+            {id: 706, name: "Fikri Firman Firdaus", class: "3J"},
+            {id: 707, name: "Habib Rafi Rabbani", class: "3J"},
+            {id: 708, name: "Haris Febriansyah", class: "3J"},
+            {id: 709, name: "Ilham April Rizal", class: "3J"},
+            {id: 710, name: "Maulana Zidan Alfatih", class: "3J"},
+            {id: 711, name: "Muhammad Azka Alfarhaby Rukman", class: "3J"},
+            {id: 712, name: "Muhammad Herlangga Pratama", class: "3J"},
+            {id: 713, name: "Muhammad Hudan Al Faruq", class: "3J"},
+            {id: 714, name: "Muhammad Radif Al Farizi", class: "3J"},
+            {id: 715, name: "Muhammad Ridho Wibowo", class: "3J"},
+            {id: 716, name: "Muhammad Rizqi Fadilah", class: "3J"},
+            {id: 717, name: "Muhammad Ziqri Zayyani", class: "3J"},
+            {id: 718, name: "Nizam Joharudin Putra", class: "3J"},
+            {id: 719, name: "Panji Ikhwan Alkhoir", class: "3J"},
+            {id: 720, name: "Qidham Kholid Edriansyah", class: "3J"},
+            {id: 721, name: "Radi Aditya Labdagati", class: "3J"},
+            {id: 722, name: "Rafa Ramdhani Badri Aziz", class: "3J"},
+            {id: 723, name: "Resya Sanda Sandrian", class: "3J"},
+            {id: 724, name: "Reza Permana Putra", class: "3J"},
+            {id: 725, name: "Rizqy Pratama", class: "3J"},
+            {id: 726, name: "Sabiq Alif Arrasyid Hidayat", class: "3J"},
+            {id: 727, name: "Zian Fadhilah", class: "3J"},
+
+            // KELAS 4A
+            {id: 728, name: "AIRA NURUL ZAHRA", class: "4A"},
+            {id: 729, name: "ANISA SALSABILA FAUZIYAH", class: "4A"},
+            {id: 730, name: "ARUMI NAVITA NURAZIZAH", class: "4A"},
+            {id: 731, name: "AURA INTAN SALSABILA", class: "4A"},
+            {id: 732, name: "AYESHA RAJNI DANICA LIE", class: "4A"},
+            {id: 733, name: "CHAYYIRA NAJLA KYENDA", class: "4A"},
+            {id: 734, name: "FAEEZA ADLINA GHAISANI", class: "4A"},
+            {id: 735, name: "GHINA KHOIRUNNISA", class: "4A"},
+            {id: 736, name: "HAFIYYA AJDA MAZIDAH", class: "4A"},
+            {id: 737, name: "HASNA SHAFAA' NAFISAH", class: "4A"},
+            {id: 738, name: "HASYA RIZKIA NAFIS", class: "4A"},
+            {id: 739, name: "KAILA INTAN KHOIRIYAH", class: "4A"},
+            {id: 740, name: "KEN DARA MUSTIKA RANI", class: "4A"},
+            {id: 741, name: "KHALISA NAJLA FITRIYAH", class: "4A"},
+            {id: 742, name: "KHUMAIRA ADZKIA RASYAID", class: "4A"},
+            {id: 743, name: "MUTIARA SHIFA NURUMI", class: "4A"},
+            {id: 744, name: "NABIILAH RETNO PALUPI", class: "4A"},
+            {id: 745, name: "NAZLA RAISSA ISLAMI", class: "4A"},
+            {id: 746, name: "NIDA ALIMA KHANSA RIYADDI", class: "4A"},
+            {id: 747, name: "NUR AINI MULYANI", class: "4A"},
+            {id: 748, name: "QISYA HAFEEZA RUSLI", class: "4A"},
+            {id: 749, name: "RAHMA AZAHRO RAMADHANI KORLIN", class: "4A"},
+            {id: 750, name: "RAISSA PUTRI NAILAH PURWITA", class: "4A"},
+            {id: 751, name: "RAZITA ABDATISSALAMAH", class: "4A"},
+            {id: 752, name: "SHALLY SYIFA NUR QOLBI", class: "4A"},
+            {id: 753, name: "SIFA AL MAGHFIROH", class: "4A"},
+            {id: 754, name: "SYAFITRI AZ ZAHRA", class: "4A"},
+            {id: 755, name: "VANIA NICOLEN ZABRINA", class: "4A"},
+            {id: 756, name: "ZAHRA AZIZAH ULINNUHA", class: "4A"},
+
+            // KELAS 4B
+            {id: 757, name: "ALMA IKRAMIYA", class: "4B"},
+            {id: 758, name: "ALZETA NAOMI KIRANA", class: "4B"},
+            {id: 759, name: "AMELIA SAADAH NABILA", class: "4B"},
+            {id: 760, name: "AQYLLAH FARRASYAH ZHAFIRA", class: "4B"},
+            {id: 761, name: "AZKA FADIA MUTHI'AH", class: "4B"},
+            {id: 762, name: "CINDI ELMIRA HASHNA", class: "4B"},
+            {id: 763, name: "CITRA SITI NURSALAMAH", class: "4B"},
+            {id: 764, name: "DHIA AMALIA PUTRI WIYONO", class: "4B"},
+            {id: 765, name: "FAYCHA HASNA MAULYNDA", class: "4B"},
+            {id: 766, name: "HANIIFAH SALWAA FAADIYAH", class: "4B"},
+            {id: 767, name: "HAWA SYAKIROH DAWAMATURROHMAH", class: "4B"},
+            {id: 768, name: "JANETA WARATSATU TSANIAH", class: "4B"},
+            {id: 769, name: "KAISHA NUR AISYI NUGRAHA", class: "4B"},
+            {id: 770, name: "KEISHA NAWANGWULAN SUSANTI", class: "4B"},
+            {id: 771, name: "MARZILA NUR AZMINA", class: "4B"},
+            {id: 772, name: "MELSANDIVA GISELA KARAHSYA", class: "4B"},
+            {id: 773, name: "MUTIARA MAHARANI", class: "4B"},
+            {id: 774, name: "NAJWA ELVINNA AYU NAPISHA", class: "4B"},
+            {id: 775, name: "NAYLA ALYNFIRDAUSI", class: "4B"},
+            {id: 776, name: "NAYLATUL AULA", class: "4B"},
+            {id: 777, name: "NAZWA RAYRA KAYLA BILQIS", class: "4B"},
+            {id: 778, name: "NIKA AULIA", class: "4B"},
+            {id: 779, name: "NISRINA NAJLA AULIA", class: "4B"},
+            {id: 780, name: "RADZWA AMIRA BATRISYA GUSAERI", class: "4B"},
+            {id: 781, name: "RAIHANA QANITA ASRI", class: "4B"},
+            {id: 782, name: "RENATA FAHRANIA LUTHFIANI", class: "4B"},
+            {id: 783, name: "RISTA NUR AINI", class: "4B"},
+            {id: 784, name: "SALSABILA PUTRI NANDIYANTI", class: "4B"},
+            {id: 785, name: "SHAFA ALTHA FUNNISSA", class: "4B"},
+            {id: 786, name: "SHILVANI KHAIRUNISA", class: "4B"},
+            {id: 787, name: "YUMNA ATHALLAJATNIKA", class: "4B"},
+
+            // KELAS 4C
+            {id: 788, name: "ALFREEDA SYAFIRA SYAM", class: "4C"},
+            {id: 789, name: "AULIA BILQIS SUDARNO", class: "4C"},
+            {id: 790, name: "AULIA NUR AZIMAH ASHIHAB", class: "4C"},
+            {id: 791, name: "AVIERA NURIL JANNAH", class: "4C"},
+            {id: 792, name: "HASNA SYIFA EDNAWAN", class: "4C"},
+            {id: 793, name: "INDIRA SANDRA SABRINA", class: "4C"},
+            {id: 794, name: "IZZ FAIZIA", class: "4C"},
+            {id: 795, name: "JAUZA NURHASNA", class: "4C"},
+            {id: 796, name: "KARNITA", class: "4C"},
+            {id: 797, name: "LULUL KARIMATUL NAFISAH", class: "4C"},
+            {id: 798, name: "LUTHFIA ZAHRA YUSUF", class: "4C"},
+            {id: 799, name: "MUTIARA AZZAHRA ROHYANA", class: "4C"},
+            {id: 800, name: "NABILA HAMIDA RIDWAN", class: "4C"},
+            {id: 801, name: "NADIA PUTRI HIDAYAT", class: "4C"},
+            {id: 802, name: "NAJWA NURUL MUGNIA", class: "4C"},
+            {id: 803, name: "NAZWA HAIFA MU'MINAH", class: "4C"},
+            {id: 804, name: "PUTRI AZMI ATIKAH", class: "4C"},
+            {id: 805, name: "RESTY KHOIRUNNISA", class: "4C"},
+            {id: 806, name: "RIKA NOVIA WIDI", class: "4C"},
+            {id: 807, name: "RISKA ALFAHREZI", class: "4C"},
+            {id: 808, name: "SAFA NURKAHMILA", class: "4C"},
+            {id: 809, name: "SAKINA ATSRA SYAKIRA", class: "4C"},
+            {id: 810, name: "SHAFA AULIA KAMILA", class: "4C"},
+            {id: 811, name: "SHOLLICHAH ROMDONA ALIMMU ROHMAH", class: "4C"},
+            {id: 812, name: "SYAKHILA ARFA AZ'ZAHRA", class: "4C"},
+            {id: 813, name: "ZAHIRA TSAMROTU SAIDAH", class: "4C"},
+            {id: 814, name: "ZANETA ALIA DEMITRI PERMANA", class: "4C"},
+
+            // KELAS 4D
+            {id: 815, name: "AHMAD ZAKI RAISHAGFIK", class: "4D"},
+            {id: 816, name: "ASFAR AQIL PRAMUDYA", class: "4D"},
+            {id: 817, name: "AZKA MUHAMMAD SURYA", class: "4D"},
+            {id: 818, name: "AZKA ZIA ALHAQ", class: "4D"},
+            {id: 819, name: "BILAL RIZQI NAUFAL", class: "4D"},
+            {id: 820, name: "DAFFA PRATAMA PUTRA WARDAYA", class: "4D"},
+            {id: 821, name: "FAIQ ABIYYU DZAKWAN", class: "4D"},
+            {id: 822, name: "FAUZAN HAMZAH KARSAFMAN", class: "4D"},
+            {id: 823, name: "FAZIL AFZAL NUZAYH", class: "4D"},
+            {id: 824, name: "FIKRI RIZALUL WAFI", class: "4D"},
+            {id: 825, name: "HASHFI RAZAN SYAZANI", class: "4D"},
+            {id: 826, name: "KHAFID GHOZALI", class: "4D"},
+            {id: 827, name: "M FIQRI AL AZMI", class: "4D"},
+            {id: 828, name: "M. AHSANUL QODRI", class: "4D"},
+            {id: 829, name: "M. FAKHIRA RIFFATHA", class: "4D"},
+            {id: 830, name: "M. FAQRUL RIZKY", class: "4D"},
+            {id: 831, name: "MOCH FALDA FADILAH", class: "4D"},
+            {id: 832, name: "MOCH. FAISALUL FUADI", class: "4D"},
+            {id: 833, name: "MOCHAMAD DAFFA AKHTAR FADILA", class: "4D"},
+            {id: 834, name: "MOCHAMAD YUSUF EKA FIRDHAUS", class: "4D"},
+            {id: 835, name: "MOHAMMAD ZIDNY ILMAN AN NAFE", class: "4D"},
+            {id: 836, name: "MU'AMMAR FAIZ ARTHA MANGGALA", class: "4D"},
+            {id: 837, name: "MUHAMAD YUSUP AS SIDIQ", class: "4D"},
+            {id: 838, name: "MUHAMMAD ADAM RAMADHAN", class: "4D"},
+            {id: 839, name: "MUHAMMAD FATHURRAHMAN", class: "4D"},
+            {id: 840, name: "MUHAMMAD IDZHARULHUDA MUTTAQIN", class: "4D"},
+            {id: 841, name: "MUHAMMAD IKHSAN ASH SHIDIQ", class: "4D"},
+            {id: 842, name: "MUHAMMAD RIAN AGUSTIAN", class: "4D"},
+            {id: 843, name: "MUHAMMAD RIZKI MUFIID", class: "4D"},
+            {id: 844, name: "MUHAMMAD WIJDAAN FAUZAAN", class: "4D"},
+            {id: 845, name: "NIZAR MAULANA YUSUF", class: "4D"},
+            {id: 846, name: "RAFLY AZKYA RAMADAN", class: "4D"},
+            {id: 847, name: "RAYHAN FAJAR FAISHALDANA", class: "4D"},
+            {id: 848, name: "RAZAN MUHAMMAD IHSAN", class: "4D"},
+            {id: 849, name: "RAZI MUHAMMAD BAAQIR", class: "4D"},
+            {id: 850, name: "RIDHO NUR ASGAR", class: "4D"},
+            {id: 851, name: "RISKI ALFAHREZA", class: "4D"},
+            {id: 852, name: "SUCHAO CHANDRA IRAWAN", class: "4D"},
+            {id: 853, name: "SYAHDIAN ADIT SAPUTRA", class: "4D"},
+
+            // KELAS 4E
+            {id: 854, name: "ABDULLAH AKRAM ARROYYAN", class: "4E"},
+            {id: 855, name: "ACHMAD FADHIL", class: "4E"},
+            {id: 856, name: "ADITYA FACHRI NUGRAHA", class: "4E"},
+            {id: 857, name: "AHMAD FATHUR NURHAKIM", class: "4E"},
+            {id: 858, name: "AHMAD MUZAKI", class: "4E"},
+            {id: 859, name: "ANTONIO HIDAYAT", class: "4E"},
+            {id: 860, name: "AQIL AKROMI DZIKRAKA", class: "4E"},
+            {id: 861, name: "DWI SUTAN HAKIIM", class: "4E"},
+            {id: 862, name: "FADIL ABDILAH", class: "4E"},
+            {id: 863, name: "FADIL WAL FARIQ", class: "4E"},
+            {id: 864, name: "FAZRIL TAUFIQ NUR HAKIM", class: "4E"},
+            {id: 865, name: "HAIKAL TAMAM MAULANA", class: "4E"},
+            {id: 866, name: "HANIF MAULANA AKBAR", class: "4E"},
+            {id: 867, name: "IHZA ABDUL NASHER ROMADHONI", class: "4E"},
+            {id: 868, name: "IZZEEDDIN MUHAMMAD HASHIM", class: "4E"},
+            {id: 869, name: "KAHFI AHMAD BAIHAQI", class: "4E"},
+            {id: 870, name: "KEANU RAYHAN PUTRA PRATAMA SOPYAN", class: "4E"},
+            {id: 871, name: "KHAIRUL AZAM RAMDANI", class: "4E"},
+            {id: 872, name: "M FAID AKMAL", class: "4E"},
+            {id: 873, name: "M NASYWAN AUFA ALFAIZ", class: "4E"},
+            {id: 874, name: "MOCHAMAD FAQIH HARTONO", class: "4E"},
+            {id: 875, name: "MOCHAMAD RAIHAN BAGJA PUTRA YASIN", class: "4E"},
+            {id: 876, name: "MUGHNI AHMAD FAKHRUDDIN", class: "4E"},
+            {id: 877, name: "MUHAMAD GRAHA MUKTI MANDALA YUDHO", class: "4E"},
+            {id: 878, name: "MUHAMAD RAFFI", class: "4E"},
+            {id: 879, name: "MUHAMMAD AKROM WIGUNA", class: "4E"},
+            {id: 880, name: "MUHAMMAD AZZAM ABDURRAHMAN", class: "4E"},
+            {id: 881, name: "MUHAMMAD DAFA DHIYAULHAQ", class: "4E"},
+            {id: 882, name: "MUHAMMAD FAUZAN ABRAR", class: "4E"},
+            {id: 883, name: "MUHAMMAD SALMAN NABIHA MAARIF", class: "4E"},
+            {id: 884, name: "NAWWAF ZAHRAN HIBBATULLAH", class: "4E"},
+            {id: 885, name: "NAZRAN HARIZ IHZA SUNARYA", class: "4E"},
+            {id: 886, name: "RAFI ADITYA SHIDDIQ", class: "4E"},
+            {id: 887, name: "RAYIKA GIEUNENG PRATIDINA PRADJA", class: "4E"},
+            {id: 888, name: "REHAN HERDIANSYAH", class: "4E"},
+            {id: 889, name: "REVAN DZULFIKAR", class: "4E"},
+            {id: 890, name: "WAHYU MAULID", class: "4E"},
+
+            // KELAS 5A
+            {id: 891, name: "ADHWAA HAMDAH NUGRAHA", class: "5A"},
+            {id: 892, name: "AGNIA SALSABILA", class: "5A"},
+            {id: 893, name: "ALYAA LIDNA RIZKYANA", class: "5A"},
+            {id: 894, name: "AMELIA DWI RAMADHANI", class: "5A"},
+            {id: 895, name: "AQUILLA AXSHA KHEIRADYTA", class: "5A"},
+            {id: 896, name: "ATHIFA LUBNA AZZAHRA", class: "5A"},
+            {id: 897, name: "AYIRIN RAFLIANA", class: "5A"},
+            {id: 898, name: "DELILA DINDA KIRANA", class: "5A"},
+            {id: 899, name: "DEVIANA KANAUMI FITRIZKY", class: "5A"},
+            {id: 900, name: "DEVINA AYU SYAHPUTRI", class: "5A"},
+            {id: 901, name: "DZAKIRA FIRADISA", class: "5A"},
+            {id: 902, name: "HANNA NABILA SRIYANTO", class: "5A"},
+            {id: 903, name: "HASNA FARIH ADIBA", class: "5A"},
+            {id: 904, name: "HAURA SAHDA SALSABILA", class: "5A"},
+            {id: 905, name: "INTAN AZKI FITRIYANI", class: "5A"},
+            {id: 906, name: "JIHAN NURUL SAFITRI", class: "5A"},
+            {id: 907, name: "KEYLA AZMI SAKHI", class: "5A"},
+            {id: 908, name: "KISTIA ANGGRAENI", class: "5A"},
+            {id: 909, name: "MAGHFIRA IZZANI MAULANIA", class: "5A"},
+            {id: 910, name: "MANDA AYU AZZAHRA", class: "5A"},
+            {id: 911, name: "MUTIARA UL HUSNA JANUARI", class: "5A"},
+            {id: 912, name: "NAZHIFA ATHAYA GUNAWAN", class: "5A"},
+            {id: 913, name: "NINDYA NOORRIZQYA", class: "5A"},
+            {id: 914, name: "NUR ALPALAIL", class: "5A"},
+            {id: 915, name: "NUR HANIFAH", class: "5A"},
+            {id: 916, name: "RAISHA ZAHIRA SHOFA", class: "5A"},
+            {id: 917, name: "RAISSA NAIFAH ISAURA AL MUMTAZ", class: "5A"},
+            {id: 918, name: "SALMA ZAKIAH NAFFSY JALALUDIN", class: "5A"},
+            {id: 919, name: "SASKIA PUTRI DITA FAKHIRA", class: "5A"},
+            {id: 920, name: "TALITA SAKHI HERINA", class: "5A"},
+            {id: 921, name: "THALITA KIRANA SAKHI", class: "5A"},
+            {id: 922, name: "WAFI ALFIKHAIRA RAMADHANI", class: "5A"},
+            {id: 923, name: "ZAIRA AURA PUTRI", class: "5A"},
+            {id: 924, name: "ZAZKIA FAJAR MAHARANI", class: "5A"},
+
+            // KELAS 5B
+            {id: 925, name: "ABDULLOH BAGIR", class: "5B"},
+            {id: 926, name: "ADLI MUHAMAD DZAKWAN", class: "5B"},
+            {id: 927, name: "AGUS SUNTANA", class: "5B"},
+            {id: 928, name: "AKMAL MAULANA", class: "5B"},
+            {id: 929, name: "ALFIN FAZA MAULANA", class: "5B"},
+            {id: 930, name: "ASKHABULKAHFI ARHAN RAHARDJO", class: "5B"},
+            {id: 931, name: "AZHARI ALDIANSYAH BEHUKU", class: "5B"},
+            {id: 932, name: "DICKA SATRIA PRATAMA", class: "5B"},
+            {id: 933, name: "DWI SEPTIA RAMADIAN", class: "5B"},
+            {id: 934, name: "HILMY ZAHRAN MUAFA", class: "5B"},
+            {id: 935, name: "KHAIRUL AZZAM", class: "5B"},
+            {id: 936, name: "LASKAR CENDEKIA HUNOWU", class: "5B"},
+            {id: 937, name: "MUHAMMAD ADAM MALIK RAMDHAN ALFARITSI", class: "5B"},
+            {id: 938, name: "MUHAMMAD BARRA MUSYAFA AL GHIFARI", class: "5B"},
+            {id: 939, name: "MUHAMMAD FAQIH AL ANSORI", class: "5B"},
+            {id: 940, name: "MUHAMMAD ILHAM FIRDAUS", class: "5B"},
+            {id: 941, name: "MUHAMMAD MAULUDIN RAHMANSYAH", class: "5B"},
+            {id: 942, name: "MUHAMMAD NAUFAL ALBADII", class: "5B"},
+            {id: 943, name: "MUHAMMAD TARUNA DJAYA", class: "5B"},
+            {id: 944, name: "MUHAMMMAD FAQIH AL MUQODDAM", class: "5B"},
+            {id: 945, name: "MUNJI ARIF RAMADHAN", class: "5B"},
+            {id: 946, name: "RAHMAT ILLAHI LUBIS", class: "5B"},
+            {id: 947, name: "REYHAN HIDAYATULLOH", class: "5B"},
+            {id: 948, name: "SYAH FAWWAZ AL WAFIQ", class: "5B"},
+            {id: 949, name: "SYAHRUL ERIZAL", class: "5B"},
+            {id: 950, name: "SYAWAL MARTUA SAKTI LUBIS", class: "5B"},
+            {id: 951, name: "WILDAN AHMAD NABILAL", class: "5B"},
+
+            // KELAS 5C
+            {id: 952, name: "AISHA ELMIRA PUNGKI ANINDYA", class: "5C"},
+            {id: 953, name: "ALYA SHAFA MAULIDA", class: "5C"},
+            {id: 954, name: "AULIA NURSYIFA SETIADI", class: "5C"},
+            {id: 955, name: "AZZAHRA ALFATIH WIDODO", class: "5C"},
+            {id: 956, name: "AZZAHRA HAIFA YODHA", class: "5C"},
+            {id: 957, name: "DZAKIYAH TALITA SAKHI ZAINAL", class: "5C"},
+            {id: 958, name: "FARISSA HURIYA EL FARADIS", class: "5C"},
+            {id: 959, name: "FATHIA KHAIRUNNISA", class: "5C"},
+            {id: 960, name: "GHEANATHA FIRSTIARANY SANTOSA", class: "5C"},
+            {id: 961, name: "HAIBAH PUTRI KHADIJAH", class: "5C"},
+            {id: 962, name: "JIHAN PUTRI NADIA NURRIZQY", class: "5C"},
+            {id: 963, name: "KAYLA NIRMALA SETYANINGRUM", class: "5C"},
+            {id: 964, name: "NAZILA QURROTA AINI", class: "5C"},
+            {id: 965, name: "NESSYA AZWA ADITHYA", class: "5C"},
+            {id: 966, name: "PUSPITA ADINDA FITRIANI", class: "5C"},
+            {id: 967, name: "REGINA CAHYANI MULYA DEWI", class: "5C"},
+            {id: 968, name: "SAHARA", class: "5C"},
+            {id: 969, name: "SHALFINA FAUZIAH KAMIL", class: "5C"},
+            {id: 970, name: "SHAVA ADJIZA", class: "5C"},
+            {id: 971, name: "SITI KUSUMA WARDHANI", class: "5C"},
+            {id: 972, name: "YASMIN FARHATUL JANNAH", class: "5C"},
+            {id: 973, name: "ZAIRA SYAKIRA", class: "5C"},
+
+            // KELAS 5D
+            {id: 974, name: "ALIYA TSARA", class: "5D"},
+            {id: 975, name: "ALYSA PUTRI ISKANDAR", class: "5D"},
+            {id: 976, name: "ANNISA NURUL FATIMAH", class: "5D"},
+            {id: 977, name: "AVRIZA ZYAHRANI PUTRI LASTIO", class: "5D"},
+            {id: 978, name: "AZMI AURELIA PUTRI APIPAH", class: "5D"},
+            {id: 979, name: "CICHA HANDAYYANI", class: "5D"},
+            {id: 980, name: "DONNA MAULIDAH SANTIKA", class: "5D"},
+            {id: 981, name: "FADIYA PUTRI FIRDANI", class: "5D"},
+            {id: 982, name: "FALISHA ALZENA HILWANI", class: "5D"},
+            {id: 983, name: "GHEFIRA FAIRUZ TSANIA", class: "5D"},
+            {id: 984, name: "GIANA DWI RAHAYU", class: "5D"},
+            {id: 985, name: "HASNA SULTHONAH", class: "5D"},
+            {id: 986, name: "ITSNATUNNISA AL-MUNAWAROH", class: "5D"},
+            {id: 987, name: "KAMILA SALSABILLA NURPADILLAH", class: "5D"},
+            {id: 988, name: "KAYILA PUTRI AYUNINGTIAS RAHAYU", class: "5D"},
+            {id: 989, name: "NADHILA PUTRI DWI APRISAN", class: "5D"},
+            {id: 990, name: "NIDA NAZARIA AZAHRA", class: "5D"},
+            {id: 991, name: "RAISYA KHANSA KAMILA", class: "5D"},
+            {id: 992, name: "REISYIFA ARWA LATIFAH", class: "5D"},
+            {id: 993, name: "SHAHIRA INTAN SARI", class: "5D"},
+            {id: 994, name: "SHELLA PUSPITA DEWI", class: "5D"},
+            {id: 995, name: "SYARIFA HADIYATUL UULA S", class: "5D"},
+            {id: 996, name: "ULIMA VANIA EKAYANDA", class: "5D"},
+            {id: 997, name: "WAFA MUFIDAH", class: "5D"},
+
+            // KELAS 5E
+            {id: 998, name: "A. ZAENI MUBAROK", class: "5E"},
+            {id: 999, name: "ALSABIL RASYAD ADZIKRA", class: "5E"},
+            {id: 1000, name: "ANDIKA PRATAMA", class: "5E"},
+            {id: 1001, name: "ANDRA MUHAMMAD RAMDHANI", class: "5E"},
+            {id: 1002, name: "AZZAN AL FIKRI", class: "5E"},
+            {id: 1003, name: "DAFFA ADITYA PURNAMA", class: "5E"},
+            {id: 1004, name: "FARIS SALMAN FASYA", class: "5E"},
+            {id: 1005, name: "FATHIR ADIRA RAMADHAN", class: "5E"},
+            {id: 1006, name: "ISA HAEDAR ROMANSYAH", class: "5E"},
+            {id: 1007, name: "KEMAL GILANG MAHENDRA", class: "5E"},
+            {id: 1008, name: "KEVIN RINALDI", class: "5E"},
+            {id: 1009, name: "LINGGA PRAYOGA", class: "5E"},
+            {id: 1010, name: "MAULANA INSAN THABRANI", class: "5E"},
+            {id: 1011, name: "MOCH NOOR JABBAR ROOFI", class: "5E"},
+            {id: 1012, name: "MUHAMAD NUR PADILAH", class: "5E"},
+            {id: 1013, name: "MUHAMMAD ABDURRASYID", class: "5E"},
+            {id: 1014, name: "MUHAMMAD ELTAJA AULIA", class: "5E"},
+            {id: 1015, name: "MUHAMMAD FIRMANSYAH", class: "5E"},
+            {id: 1016, name: "MUHAMMAD RAFA SHAQUILLE ", class: "5E"},
+            {id: 1017, name: "MUHAMMAD RIZAL AKBAR", class: "5E"},
+            {id: 1018, name: "MUHAMMAD RIZKI", class: "5E"},
+            {id: 1019, name: "MUHAMMAD RIZKY MAULANA YUSUP", class: "5E"},
+            {id: 1020, name: "MUHAMMAD SULTHAN ILMANI", class: "5E"},
+            {id: 1021, name: "RACHMAT KHAIRUL IMAM", class: "5E"},
+            {id: 1022, name: "RADITYA IZZAN GUMILAR", class: "5E"},
+            {id: 1023, name: "RAFANSYAH TIRTA WAHYUDI", class: "5E"},
+            {id: 1024, name: "RAMDHI QURRATA A'YUN", class: "5E"},
+            {id: 1025, name: "RANGGA PUTRA NOVIYANA", class: "5E"},
+            {id: 1026, name: "REYZI DANUAR", class: "5E"},
+            {id: 1027, name: "RISHAN MUHAMMAD AKBAR", class: "5E"},
+            {id: 1028, name: "SYAIRAZI SUMA", class: "5E"},
+            {id: 1029, name: "TYO SEPTHA RAMADHAN", class: "5E"},
+            {id: 1030, name: "VICO RAMADHANI", class: "5E"},
+            {id: 1031, name: "YASIN FARRAS ALI", class: "5E"}
+        ];
+
+        // Definisi Rentang Kelas per Tingkat
+        const classRanges = {
+            "1": ["1A", "1B", "1C", "1D", "1E", "1F", "1G", "1H"],
+            "2": ["2A", "2B", "2C", "2D", "2E", "2F", "2G", "2H"],
+            "3": ["3A", "3B", "3C", "3D", "3E", "3F", "3G", "3H", "3I", "3J"],
+            "4": ["4A", "4B", "4C", "4D", "4E"],
+            "5": ["5A", "5B", "5C", "5D", "5E"]
         };
 
-        // DOM Elements
-        const selectKelas = document.getElementById('input-kelas');
-        const selectPelajaran = document.getElementById('input-pelajaran');
-        const selectSiswa = document.getElementById('input-siswa');
-        const inputManualNama = document.getElementById('input-manual-nama');
-        const formJuara = document.getElementById('form-juara');
-        
-        const wrapperPelajaran = document.getElementById('wrapper-pelajaran');
-        const wrapperSiswa = document.getElementById('wrapper-siswa');
-        const wrapperManualNama = document.getElementById('wrapper-manual-nama');
-        const wrapperSubmit = document.getElementById('wrapper-submit');
-        const noticeManual = document.getElementById('notice-input-manual');
-        const loadingOverlay = document.getElementById('loading-overlay');
+        // Inisialisasi awal saat halaman selesai dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            // Pasang event listener dinamis untuk perubahan input Pelajaran & Tingkat Kelas
+            document.getElementById('mata-pelajaran').addEventListener('change', handleWizardTrigger);
+            document.getElementById('tingkat-kelas').addEventListener('change', handleWizardTrigger);
+            document.getElementById('juaraForm').addEventListener('submit', handleFormSubmit);
+        });
 
-        const toast = document.getElementById('notification-toast');
-        const toastIcon = document.getElementById('toast-icon');
-        const toastIconBg = document.getElementById('toast-icon-bg');
-        const toastTitle = document.getElementById('toast-title');
-        const toastDesc = document.getElementById('toast-desc');
-        const toastClose = document.getElementById('toast-close');
+        // Handler utama untuk men-trigger pembuatan input sub-kelas otomatis
+        function handleWizardTrigger() {
+            const mapel = document.getElementById('mata-pelajaran').value;
+            const tingkat = document.getElementById('tingkat-kelas').value;
 
-        const historyContainer = document.getElementById('history-container');
-        const historyEmpty = document.getElementById('history-empty');
-        const historyCount = document.getElementById('history-count');
+            if (mapel && tingkat) {
+                renderSubclassCards(tingkat);
+            }
+        }
 
-        // State Penyimpanan Lokal (Data yang dimasukkan tampil langsung secara dinamis di layar)
-        let localJuaraList = JSON.parse(localStorage.getItem('juara_list_KMMI')) || [];
+        // Render otomatis list sub-kelas dalam layout grid interaktif
+        function renderSubclassCards(tingkat) {
+            const gridContainer = document.getElementById('subclass-grid');
+            const section = document.getElementById('subclass-section');
+            const submitSection = document.getElementById('submit-section');
+            const tingkatBadge = document.getElementById('tingkat-badge');
 
-        // Inisialisasi daftar juara di layar awal
-        function renderHistory() {
-            if (localJuaraList.length === 0) {
-                historyEmpty.classList.remove('hidden');
-                historyCount.textContent = "0 Juara";
-            } else {
-                historyEmpty.classList.add('hidden');
-                historyCount.textContent = `${localJuaraList.length} Juara`;
-                
-                historyContainer.innerHTML = '';
-                localJuaraList.forEach((data, index) => {
-                    const div = document.createElement('div');
-                    div.className = "bg-slate-50 border border-slate-200 rounded-xl p-3 flex justify-between items-center flex gap-3 shadow-sm hover:border-indigo-300 smooth-transition";
-                    div.innerHTML = `
-                        <div class="flex-grow text-left">
-                            <span class="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">${data.kelas}</span>
-                            <h4 class="text-xs font-bold text-slate-900 mt-1">Juara Mapel ${data.pelajaran}</h4>
-                            <p class="text-xs text-slate-500 mt-0.5">${data.siswa}</p>
+            // Reset kontainer terlebih dahulu
+            gridContainer.innerHTML = '';
+            
+            // Set text badge tingkat kelas yang sedang aktif
+            tingkatBadge.innerText = `Tingkat ${tingkat} Aktif`;
+
+            const subClasses = classRanges[tingkat];
+
+            subClasses.forEach((subCls) => {
+                // Saring siswa khusus kelas ini
+                const students = studentDatabase.filter(st => st.class === subCls);
+
+                let optionsHtml = `<option value="" disabled selected>-- Pilih Juara ${subCls} --</option>`;
+                students.forEach(st => {
+                    optionsHtml += `<option value="${st.name}">${st.name}</option>`;
+                });
+
+                const cardHtml = `
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col justify-between hover:shadow-sm transition-all animate-fade-in">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold text-teal-700 bg-teal-100/60 px-2.5 py-1 rounded-md uppercase">Kelas ${subCls}</span>
+                            <span class="text-[10px] text-slate-400 font-medium">${students.length} Santri</span>
                         </div>
-                        <div class="text-right">
-                            <span class="text-[10px] text-slate-400 block">${data.timestamp}</span>
-                            <button onclick="removeLocalItem(${index})" class="text-slate-300 hover:text-rose-500 transition-colors mt-1">
-                                <i class="fa-solid fa-trash-can text-xs"></i>
-                            </button>
+                        <div class="relative mt-1">
+                            <select id="subclass-student-${subCls}" onchange="updateSidebarPreview()" class="w-full pl-9 pr-3 py-2 bg-white border border-slate-200 rounded-lg text-xs sm:text-sm text-slate-700 font-medium focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all cursor-pointer">
+                                ${optionsHtml}
+                            </select>
+                            <div class="absolute left-3 top-2.5 text-slate-400">
+                                <i class="fa-solid fa-user-graduate text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                gridContainer.insertAdjacentHTML('beforeend', cardHtml);
+            });
+
+            // Munculkan container form & submit area
+            section.classList.remove('hidden');
+            submitSection.classList.remove('hidden');
+            
+            // Perbarui list di sebelah kiri
+            updateSidebarPreview();
+        }
+
+        // Fungsi Menampilkan Live Preview Juara yang Sedang Dipilih pada Sidebar Kiri
+        function updateSidebarPreview() {
+            const mapel = document.getElementById('mata-pelajaran').value;
+            const tingkat = document.getElementById('tingkat-kelas').value;
+            const listContainer = document.getElementById('selected-list');
+            const footer = document.getElementById('selected-list-footer');
+            const counter = document.getElementById('draft-count');
+            
+            if (!mapel || !tingkat) return;
+
+            let htmlContent = "";
+            let count = 0;
+
+            const subClasses = classRanges[tingkat];
+            
+            subClasses.forEach(subCls => {
+                const selectElement = document.getElementById(`subclass-student-${subCls}`);
+                if (selectElement && selectElement.value) {
+                    count++;
+                    // Sesuai format permintaan: Juara Mapel [Mapel]: [Nama Siswa] ([Kelas])
+                    htmlContent += `
+                        <div class="bg-teal-50/70 border border-teal-100 p-3 rounded-xl text-left w-full animate-fade-in shadow-sm">
+                            <div class="flex items-start gap-2.5">
+                                <div class="bg-teal-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">
+                                    ${count}
+                                </div>
+                                <div class="flex-grow">
+                                    <div class="text-xs text-teal-700 font-bold uppercase mb-0.5">Juara Mapel ${mapel}:</div>
+                                    <div class="font-bold text-slate-800 text-xs sm:text-sm leading-tight">${selectElement.value}</div>
+                                    <div class="text-[10px] text-slate-400 font-semibold mt-1">Kelas ${subCls}</div>
+                                </div>
+                            </div>
                         </div>
                     `;
-                    historyContainer.appendChild(div);
-                });
+                }
+            });
+
+            // Update Counter Badge Sesi Juara Aktif
+            counter.innerText = `${count} Santri`;
+
+            if (htmlContent === "") {
+                listContainer.innerHTML = `
+                    <div class="text-center py-6">
+                        <i class="fa-solid fa-folder-open text-3xl text-slate-300 mb-2"></i>
+                        <p class="text-xs">Tentukan Pelajaran, Tingkat Kelas, dan pilih nama siswa di sebelah kanan untuk melihat ringkasan.</p>
+                    </div>
+                `;
+                listContainer.className = "space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar pr-1 text-xs sm:text-sm text-slate-400 italic flex flex-col justify-center items-center min-h-[150px]";
+                footer.classList.add('hidden');
+            } else {
+                listContainer.innerHTML = htmlContent;
+                listContainer.className = "space-y-3 max-h-[300px] overflow-y-auto custom-scrollbar pr-1 w-full";
+                footer.classList.remove('hidden');
             }
         }
 
-        window.removeLocalItem = function(index) {
-            localJuaraList.splice(index, 1);
-            localStorage.setItem('juara_list_KMMI', JSON.stringify(localJuaraList));
-            renderHistory();
-            showToast("Sukses", "Data dihapus dari layar lokal", "success");
-        };
+        // Hapus Seluruh Draft Data Juara Terpilih
+        function clearAllDrafts() {
+            // Reset dropdown global mata pelajaran & tingkat kelas
+            document.getElementById('mata-pelajaran').value = "";
+            document.getElementById('tingkat-kelas').value = "";
+            document.getElementById('validation-check').checked = false;
 
-        // Web App URL Google Script (Ganti isi variabel ini dengan URL Deployment Apps Script Anda)
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwC8eM20X59eXaZqfZsQUDiwUzj5Pq-eXOdRkoBkCmmDAoyknkO9Meycgl5GxRw9hkjZg/exec";
+            // Sembunyikan grid section subkelas & tombol kirim
+            document.getElementById('subclass-section').classList.add('hidden');
+            document.getElementById('submit-section').classList.add('hidden');
+            document.getElementById('subclass-grid').innerHTML = '';
+
+            updateSidebarPreview();
+            showToast("Pilihan dibersihkan", "info");
+        }
+
+        // Management UI Modal Loading & Success
+        function showLoading(show) {
+            const modal = document.getElementById('loading-modal');
+            if (show) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        function showSuccess() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+            modal.querySelector('div').classList.add('scale-100');
+        }
+
+        function closeSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+            clearAllDrafts();
+        }
 
         // Toast Notification System
-        function showToast(title, message, type = "success") {
-            toastTitle.textContent = title;
-            toastDesc.textContent = message;
+        function showToast(message, type = "success") {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
             
-            if (type === "success") {
-                toastIconBg.className = "w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-emerald-50 text-emerald-600";
-                toastIcon.className = "fa-solid fa-circle-check";
-            } else if (type === "error") {
-                toastIconBg.className = "w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-rose-50 text-rose-600";
-                toastIcon.className = "fa-solid fa-circle-exclamation";
-            } else {
-                toastIconBg.className = "w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-indigo-50 text-indigo-600";
-                toastIcon.className = "fa-solid fa-info-circle";
-            }
+            const bgClass = type === "success" ? "bg-emerald-600" : type === "error" ? "bg-rose-600" : "bg-slate-800";
+            const iconClass = type === "success" ? "fa-circle-check" : type === "error" ? "fa-circle-xmark" : "fa-circle-info";
 
-            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.className = `flex items-center gap-3 px-4 py-3 rounded-xl text-white shadow-xl ${bgClass} transition-all duration-300 translate-y-2 opacity-0 text-xs sm:text-sm font-semibold pointer-events-auto`;
+            toast.innerHTML = `
+                <i class="fa-solid ${iconClass} text-base"></i>
+                <span>${message}</span>
+            `;
+
+            container.appendChild(toast);
+            
             setTimeout(() => {
-                hideToast();
-            }, 5000);
-        }
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
 
-        function hideToast() {
-            toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-        }
-
-        toastClose.addEventListener('click', hideToast);
-
-        // Alur Form Pemilihan Interaktif
-        
-        // Tahap 1: Memilih Kelas
-        selectKelas.addEventListener('change', function() {
-            const kelasSelected = this.value;
-            
-            // Reset dropdown setelahnya
-            selectPelajaran.selectedIndex = 0;
-            selectSiswa.innerHTML = '<option value="" disabled selected>-- Pilih Siswa --</option>';
-            inputManualNama.value = '';
-            
-            // Nonaktifkan field tahap selanjutnya
-            wrapperSiswa.classList.add('opacity-40', 'pointer-events-none');
-            wrapperManualNama.classList.add('opacity-0', 'hidden');
-            wrapperSubmit.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-            noticeManual.classList.add('hidden');
-
-            // Aktifkan pilihan pelajaran (Tahap 2)
-            wrapperPelajaran.classList.remove('opacity-40', 'pointer-events-none');
-        });
-
-        // Tahap 2: Memilih Pelajaran
-        selectPelajaran.addEventListener('change', function() {
-            const kelasSelected = selectKelas.value;
-            
-            // Reset data siswa sebelumnya
-            selectSiswa.innerHTML = '<option value="" disabled selected>-- Pilih Siswa --</option>';
-            inputManualNama.value = '';
-            wrapperSubmit.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-
-            // Aktifkan pilihan siswa (Tahap 3)
-            wrapperSiswa.classList.remove('opacity-40', 'pointer-events-none');
-
-            // Cek ketersediaan kelas di database
-            if (databaseSiswa[kelasSelected]) {
-                noticeManual.classList.add('hidden');
-                wrapperManualNama.classList.add('hidden', 'opacity-0');
-                selectSiswa.required = true;
-                inputManualNama.required = false;
-
-                // Masukkan daftar siswa ke dropdown secara dinamis
-                databaseSiswa[kelasSelected].forEach(nama => {
-                    const opt = document.createElement('option');
-                    opt.value = nama;
-                    opt.textContent = nama;
-                    selectSiswa.appendChild(opt);
-                });
-            } else {
-                // Sediakan input manual jika kelas tidak ada dalam database
-                noticeManual.classList.remove('hidden');
-                wrapperManualNama.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
                 setTimeout(() => {
-                    wrapperManualNama.classList.remove('opacity-0');
-                }, 50);
-                
-                selectSiswa.required = false;
-                inputManualNama.required = true;
-
-                const opt = document.createElement('option');
-                opt.value = "MANUAL_INPUT";
-                opt.textContent = "-- Masukkan Nama Secara Manual Di Bawah --";
-                selectSiswa.appendChild(opt);
-                selectSiswa.value = "MANUAL_INPUT";
-            }
-        });
-
-        // Tahap 3: Memilih Siswa
-        selectSiswa.addEventListener('change', function() {
-            if (this.value !== "") {
-                wrapperSubmit.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
-            }
-        });
-
-        // Deteksi pengisian manual untuk memicu tombol kirim
-        inputManualNama.addEventListener('input', function() {
-            if (this.value.trim().length > 2) {
-                wrapperSubmit.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
-            } else {
-                wrapperSubmit.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-            }
-        });
-
-        // Fungsi reset formulir secara visual
-        function resetFormState() {
-            formJuara.reset();
-            wrapperPelajaran.classList.add('opacity-40', 'pointer-events-none');
-            wrapperSiswa.classList.add('opacity-40', 'pointer-events-none');
-            wrapperManualNama.classList.add('hidden', 'opacity-0');
-            wrapperSubmit.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-            noticeManual.classList.add('hidden');
+                    toast.remove();
+                }, 300);
+            }, 3500);
         }
 
-        // Pengiriman Formulir (CORS-friendly dengan penanganan fallback)
-        formJuara.addEventListener('submit', function(e) {
+        // FUNGSI UTAMA: MENGIRIM DATA KE GOOGLE SPREADSHEET (ADMIN ONLY)
+        async function handleFormSubmit(e) {
             e.preventDefault();
+            
+            const mapel = document.getElementById('mata-pelajaran').value;
+            const tingkat = document.getElementById('tingkat-kelas').value;
 
-            const kelas = selectKelas.value;
-            const pelajaran = selectPelajaran.value;
-            let siswa = selectSiswa.value;
-
-            if (siswa === "MANUAL_INPUT") {
-                siswa = inputManualNama.value.trim();
-            }
-
-            if (!kelas || !pelajaran || !siswa) {
-                showToast("Peringatan", "Harap isi semua kolom dengan benar!", "error");
+            if (!mapel || !tingkat) {
+                showToast("Pilihlah mata pelajaran dan tingkat kelas terlebih dahulu!", "error");
                 return;
             }
 
-            // Tampilkan efek loading
-            loadingOverlay.classList.remove('hidden');
-            setTimeout(() => { loadingOverlay.classList.add('opacity-100'); }, 10);
-
-            const payload = {
-                kelas: kelas,
-                pelajaran: pelajaran,
-                siswa: siswa,
-                timestamp: new Date().toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' })
-            };
-
-            // Deteksi jika tautan Google Script belum diganti (Mode Demo Aktif)
-            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === "" || GOOGLE_SCRIPT_URL.indexOf("https://script.google.com/macros/s/AKfycbwC8eM20X59eXaZqfZsQUDiwUzj5Pq-eXOdRkoBkCmmDAoyknkO9Meycgl5GxRw9hkjZg/exec") !== -1) {
-                console.warn("API URL belum dikonfigurasi. Menyimpan secara lokal (Mode Demo).");
-                
-                setTimeout(() => {
-                    localJuaraList.unshift(payload);
-                    localStorage.setItem('juara_list_KMMI', JSON.stringify(localJuaraList));
-                    
-                    renderHistory();
-                    resetFormState();
-
-                    // Sembunyikan Loading
-                    loadingOverlay.classList.remove('opacity-100');
-                    setTimeout(() => { loadingOverlay.classList.add('hidden'); }, 300);
-
-                    // Berikan pemberitahuan demo
-                    showToast("Mode Demo Aktif", `Siswa "${siswa}" sukses tersimpan di browser. Konfigurasikan GOOGLE_SCRIPT_URL di dalam file untuk mengirim langsung ke Google Sheets.`, "warning");
-                }, 1200);
-                
-                return;
-            }
-
-            // Mengirim data menggunakan API Fetch CORS ke Web App Google Apps Script
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(() => {
-                // Tambahkan data ke daftar histori lokal
-                localJuaraList.unshift(payload);
-                localStorage.setItem('juara_list_KMMI', JSON.stringify(localJuaraList));
-                
-                renderHistory();
-                resetFormState();
-
-                // Sembunyikan Loading
-                loadingOverlay.classList.remove('opacity-100');
-                setTimeout(() => { loadingOverlay.classList.add('hidden'); }, 300);
-
-                // Pesan Sukses Real-time
-                showToast("Berhasil", `Data Juara ${pelajaran} (${siswa}) sukses terkirim ke Spreadsheet!`, "success");
-            })
-            .catch(error => {
-                loadingOverlay.classList.remove('opacity-100');
-                setTimeout(() => { loadingOverlay.classList.add('hidden'); }, 300);
-
-                console.error("Gagal mengirim data:", error);
-                showToast("Kesalahan", "Terjadi kegagalan jaringan saat mengirim data.", "error");
+            // Kumpulkan baris data juara yang valid (yang diisi oleh guru)
+            const payload = [];
+            const subClasses = classRanges[tingkat];
+            
+            subClasses.forEach(subCls => {
+                const studentSelect = document.getElementById(`subclass-student-${subCls}`);
+                if (studentSelect && studentSelect.value) {
+                    payload.push({
+                        mataPelajaran: mapel,
+                        kelas: subCls,
+                        namaSiswa: studentSelect.value,
+                        timestamp: new Date().toLocaleString('id-ID')
+                    });
+                }
             });
-        });
 
-        // Muat data saat pertama kali halaman terbuka
-        document.addEventListener('DOMContentLoaded', renderHistory);
+            if (payload.length === 0) {
+                showToast("Minimal pilih 1 nama juara santri sebelum mengirim!", "error");
+                return;
+            }
+
+            // Tampilkan Loading Screen
+            showLoading(true);
+
+            // ==========================================
+            // LOGIKA INTEGRASI GOOGLE SCRIPT (SECURE)
+            // ==========================================
+            // ID Script & API URL hanya didefinisikan secara internal di sini, tidak terlihat di UI utama.
+            const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQ0w_0kg4CxkwYEqbWCHEm3aGVAIQGu5Gup1LNYKypLQrUGbyoEl5RSO0eX0quI9s/exec";
+
+            try {
+                // Mengirimkan data via POST Request ke Apps Script
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Mencegah pemblokiran browser akibat regulasi CORS iFrame
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ juaraList: payload })
+                });
+
+                // Efek jeda interaktif singkat agar tampak mulus sebelum modal sukses muncul
+                setTimeout(() => {
+                    showLoading(false);
+                    showSuccess();
+                }, 1200);
+
+            } catch (error) {
+                console.error("Kesalahan pengiriman data:", error);
+                showLoading(false);
+                showToast("Koneksi gagal. Periksa jaringan Anda atau coba sesaat lagi.", "error");
+            }
+        }
     </script>
+
 </body>
 </html>
